@@ -1,3 +1,208 @@
 \renewcommand{\thespeaker}{Jacob Lurie}
-\renewcommand{\thetitle}{title}
+\renewcommand{\thetitle}{Overview}
 \section{\thetitle~(\thespeaker)}
+
+
+Let $G$ be a finite group, and consider a class in the cohomology of $G$, denoted $\eta \in H^n(BG; \mathbb{C}^\ast)$. Cohomology classes are things that you can integrate against cycles. So if we had a compact oriented manifold $M$ of dimension $n$, together with a map $f: M \to BG$, then we could take the fundamental class of $M$, and pair it to get an invertible complex number
+\begin{align*}
+    \left\langle [M], f^\ast \eta \right\rangle \in \mathbb{C}^\ast.
+\end{align*}
+
+If we want a quantity that only depends on $M$, we could form a combination which considers \textit{all} maps from $M$ into $BG$.
+
+There are lots of maps $M \to BG$, and if we wanted to classify them up to homotopy, we obtain a bijection with the set of principal $G$-bundles on $M$, considered up to isomorphism. To be really concrete, assume further that $M$ is connected and we have chosen a basepoint. Then we have a bijection
+\begin{align*}
+    \left[ M, BG \right] \leftrightarrow \left\{ \text{principal } G \text{-bundles on } M \right\} \leftrightarrow \left\{ \text{group homomorphisms } \pi_i \to M \right\}/\text{conjugation}
+\end{align*}
+Since group homomorphisms are determined by where the generators go, we only have finitely many such homomorphisms. We could sum over all group homomorphisms $\pi_1(M) \to G$ to get a complex number of the form
+\begin{align*}
+    \frac{1}{|G|} \sum_{\pi_1 M \to G} \left\langle [M], f^\ast \eta \right\rangle.
+\end{align*}
+This is almost the same as
+\begin{align*}
+    \sum_{\substack{\text{homomotopy classes} \\ f: M \to BG}} \left\langle [M], f^\ast \eta \right\rangle
+\end{align*}
+This would be true if $G$ were acting by group conjugation here, but it isn't. What we are really doing here is summing with multiplicity
+\begin{align*}
+    \sum_{G\text{-bundles } P\text{ on } M} \frac{\left\langle [M], f^\ast \eta \right\rangle}{\left| \Aut(P) \right|}.
+\end{align*}
+
+We will define this quantity the \textit{integral} over the space of all maps $M \to BG$:
+\begin{align*}
+    Z(M) := \int_{f: M \to BG} \left\langle [M], f^\ast \eta \right\rangle := \frac{1}{|G|} \sum_{\pi_1 M \to G} \left\langle [M], f^\ast\eta \right\rangle.
+\end{align*}
+If we fix $G$ and $M$, then this complex number $Z(M)$ is an invariant of manifolds. This is what is assigned to $M$ by Dijkgraaf--Witten theory. It is not a very interesting invariant, because it only depended on the fundamental group of $M$ and the homotopy class of $M$.
+
+
+\textbf{Goal}: Find more constructions ``like this.''
+
+That is, take this construction and vary the ingredients you used to make it. We could try to vary the field $\mathbb{C}$, but we couldn't use a field of characteristic $p$ if $p \mid |G|$. This is because we are normalizing by $|G|$, and we can't throw out the normalization without losing some structure.
+
+Given a manifold $M$, we can look at the space of maps $\Map(M, BG)$. We have an evaluation and projection
+\[ \begin{tikzcd}
+    M \times \Map(M,BG)\rar["\ev"]\dar["\pi" left] & BG\\
+    \Map(M,BG) &
+\end{tikzcd} \]
+So we are beginning with $\eta$, pulling it back to $\ev^\ast \eta$, and then pushing it forward along $\pi$ to obtain $\pi_\ast \ev^\ast \eta$, which is a cohomology class of degree zero, i.e. a function of the form $\Map(M,BG) \to \mathbb{C}^\ast$. This is what happens when $M$ is an $n$-manifold.
+
+Suppose $M$ is now an $(n-1)$-manifold. Then the pullback and pushforward will be a class
+\begin{align*}
+    \mathcal{L} := \pi_\ast \ev^\ast \eta \in H^1 \left( \Map(M,BG), \mathbb{C}^\ast \right).
+\end{align*}
+That is, it corresponds to a local system of 1-dimensional complex vector spaces. This cohomology class determines the local system $\mathcal{L}$ up to isomorphism.
+
+Given a 1-dimensional local system, we can try to integrate it, to obtain a single vector space. We could look at the cohomology $H^0 \left( \Map(M,BG), \mathcal{L} \right)$, or we could look at the homology $H_0 \left( \Map(M,BG), \mathcal{L} \right)$. We want to assign a complex vector space $Z(M)$ which corresponds to either of these. These two vector spaces \textit{turn out to be the same}.
+
+We have that $\pi_0 \Map(M,BG)$ corresponds to $G$-bundles on $M$, so
+\begin{align*}
+    \Map(M,BG) = \coprod_{\text{iso classes of G-bundles } P} B\Aut(P).
+\end{align*}
+
+So let's start by thinking about local systems on things like $B\Aut(P)$.
+
+Suppose that $H$ is a finite group, and let's consider complex local systems $\mathcal{L}$ on $BH$. This is the same thing as a complex representation $V$ of $H$. We have that
+\begin{align*}
+    H^0 \left( BG, \mathcal{L} \right) = V^H = \left\{ v\in V \colon hv=v \forall h \in H \right\}.
+\end{align*}
+The homology is
+\begin{align*}
+    H_0 \left( BG, \mathcal{L} \right) = V_H = V \big/\C\cdot \left\{ hv-v \right\}.
+\end{align*}
+This is the minimal quotient of $V$ you can form on which $H$ acts trivially. When $H$ is a finite group, there is an obvious relation between these. We have an averaging function
+\begin{align*}
+    V &\to V \\
+    v &\mapsto \sum_{h\in H} hv.
+\end{align*}
+This map factors through the subspace $V^H$, but it also factors through the quotient given by the coinvariants, since it annihilates vectors of the form $hv-v$. So we get a norm
+\[ \begin{tikzcd}
+    V\ar[rrr]\ar[dr] &  &  & V\\
+     & V_H\rar["\Nm" below] & V^H\ar[ur] & 
+\end{tikzcd} \]
+
+\textbf{Basic fact}: This map is an isomorphism (assuming characteristic zero).
+\begin{proof} We should write down the inverse map. There is an obvious map in the other direction:
+\begin{align*}
+    V^H \subseteq V \tto V_H.
+\end{align*}
+Let's call this map $\lambda$. We see that $\lambda \circ \Nm = \Nm \circ \lambda$, which is multiplication by the order of $H$. Over characteristic zero, this multiplication is an isomorphism.
+\end{proof}
+
+\begin{remark} Recall that if $M$ is an $n$-manifold, we thought about this function $\Map(M,BG) \to \mathbb{C}^\ast$, given by $f \mapsto \left\langle [M], f^\ast \eta \right\rangle$. This map gives us something in $H^0 \left( \Map(M,BG), \mathbb{C}^\ast \right)$. This integration procedure was
+\begin{align*}
+    Z(M) = \int_{\Map(M,BG)} \left\langle [M], f^\ast \eta \right\rangle,
+\end{align*}
+took the class in the degree zero cohomology, but we identified cohomology with homology by doing this norm map on every component.
+\end{remark}
+
+
+Thinking as an algebraic topologist, we can turn fields $K$ into cohomology theories $HK$. Thinking about fields from a very large distance, there are fields of characteristic zero, and those of characteristic $p$. Morava realized that in the world of cohomology theories, there are a hierarchy of examples which interpolate between things like $H \mathbb{Q}$ and things like $H \mathbb{F}_p$. Fixing a prime number $p$, we have that Morava $K$-theories are an infinite sequence of cohomology theories, with
+\begin{align*}
+    H \mathbb{Q} = K(0) \subseteq K(1) \subseteq \cdots \subseteq K(\infty) = H \mathbb{F}_p.
+\end{align*}
+
+\textbf{Question}: Do these constructions make sense ``over $K(n)$?''
+
+Morava $K$-theories are characteristic $p$ objects, since multiplication by $p$ is the zero map $K(n) \to K(n)$ for $n>0$. If we think characteristic $p$ is bad, we might think Morava $K$-theories are bad. However the answer to this question is yes!
+
+\begin{theorem} (Hovey--Sadofsky) Let $V$ be a $K(n)$-module with an action of a finite group $H$. Then the norm map
+\begin{align*}
+    \Nm_H : V_{hH} \to V^{hH}
+\end{align*}
+is an isomorphism for $n< \infty$.
+\end{theorem}
+
+Suppose that $V$ and $W$ are $K(n)$-modules and suppose we have a family of maps $f_x : V \to W$ parametrized by $x\in BH$. That is, a continuous map $f: BH \to \Map(V,W)$. Yet another way to think about this data is considering $f$ as an element of $H^0 \left( BH, \underline{\Map(V,W)} \right)$. Since $V$ and $W$ were $K(n)$-modules, we have that $\underline{\Map(V,W)}$ is a $K(n)$-module (with two $K(n)$-module structures). This theorem earlier tells us that
+\begin{align*}
+    H^0 \left( BH, \underline{\Map(V,W)} \right) \cong H_0 \left( BH, \underline{\Map(V,W)} \right) \to H_0 \left( \ast, \underline{\Map(V,W)} \right) = \pi_0 \Map(V,W),
+\end{align*}
+by mapping along $BH \to \ast$. Thus using this theorem from earlier, we can go from a \textit{family} of maps, to a \textit{single} map $V \to W$. We denote this procedure by
+\begin{align*}
+    \Map(BH, \Map(V,W)) &\to \pi_0 \Map(V,W) \\
+    f &\mapsto \int f.
+\end{align*}
+
+We saw this earlier when $n=0$ and when $V=W= \mathbb{C}$.
+
+Now let's assume that $H$ is abelian. Then $BH$ is an abelian group object in spaces. What if we want to study representations of $BH$? That is, local systems on $B(BH) = K(H,2)$. This is a simply connected space, so there should be no local systems on it, that is, this doesn't make sense classically.
+
+So instead we want to study representations of $BH$ on $K(n)$-modules, that is, local systems $\mathcal{L}$ of $BH$-modules. We could study the analogue of the coinvariants and invariants, which are the homotopy (co)limits over $\mathcal{L}_x$, where $x\in BH$. The Hovey--Sadofsky theorem gives
+\begin{align*}
+    \lim_{BH} : \hocolim_{y\in K(H,2)} \mathcal{L}_y \to \holim_{x\in K(H,2)} \mathcal{L}_x.
+\end{align*}
+
+To give such a map is to give a family of maps $f_{x,y} : \mathcal{L}_x \to \mathcal{L}_y$, and these should vary continuously in $x$ and $y$. Any path $p: [0,1] \to K(H,2)$ satisfying $p(0) = x$ and $p(1) = y$ determines an isomorphism $p_! : \mathcal{L}_y \to \mathcal{L}_x$. This depends not only on $x$ and $y$ but also on the path that we chose. The collection of such paths is parametrized by a space $\left\{ x \right\} \times^h_{K(H,2)} \left\{ y \right\}=: P_{x,y}$. So we have a collection of isomorphisms $\mathcal{L}_y \xto{\sim} \mathcal{L}_x$ parametrized by the space $P_{x,y} \simeq K(H,1) = BH$.
+
+We can then use that integration procedure to get
+\begin{align*}
+    f_{x,y} = \int_{p \in P_{x,y}} p_!,
+\end{align*}
+which is a single morphism $\mathcal{L}_y \to \mathcal{L}_x$ (not necessarily an isomorphism anymore). So allowing $x$ and $y$ to vary, we get a single map
+\begin{align*}
+    \Nm_{K(H,2)} : \hocolim \mathcal{L} \to \holim \mathcal{L}.
+\end{align*}
+
+\begin{theorem} This map is also a homotopy equivalence.
+\end{theorem}
+
+We can now do this again --- suppose we are interested in representations of $K(H,2)$, then $K(H,3)$ and so on. This yields the following.
+
+\begin{theorem} Let $X$ be a space with finitely many homotopy groups, and all homotopy groups are assumed to be finite\footnote{For example $BH, B^2 H, \ldots $ where $H$ is finite abelian.} and let $\mathcal{L}$ be a local system of $K(n)$-modules on $X$. Then there is a canonical isomorphism
+\begin{align*}
+    \Nm_X : \hocolim \mathcal{L}_x \to \holim \mathcal{L}_x.
+\end{align*}
+That is, there is some natural map which induces isomorphisms $H_\ast \left( X, \mathcal{L} \right) \xto{\sim} H^\ast \left( X, \mathcal{L} \right)$.
+\end{theorem}
+
+This is an interesting statement even when $\mathcal{L}$ is a trivial local system. In particular if $X$ has finitely many homotopy groups, there is a canonical isomorphism
+\begin{align*}
+    K(n)_\ast (X) \xto{\sim} K(n)^\ast(X).
+\end{align*}
+
+We can think about this as a statement about $X$: if $X$ is a nice space it satisfis a Poincar\'e duality with respect to Morava $K$-theory. We could also think about it as a statement about the category of $K(n)$-local spectra --- it is not just an \textit{additive} category, but it has some kind of fancier additivity where we can take a collection of morphisms indexed over a space and ``add'' or integrate the maps together. This theorem is also addressing the question that we started with --- are there other constructions of Dijkgraaf--Witten theory? Yes, we can replace the height zero complex numbers by things of higher height, like Lubin--Tate spectra.
+
+\textbf{Question}: Why is this true (in an easy example)?
+
+If $X = K(H,2)$, the Hovey--Sadofsky theorem gives us a map
+\begin{align*}
+    K(n)_\ast(X) \to K(n)^\ast(X).
+\end{align*}
+There is an element $1\in K(n)^0(X)$, and suppose we could find something, call it $y\in K(n)_0(X)$, mapping to it under the norm. Then if we had such a $y$, we would have that multiplication by $y$ will induce a map from
+\begin{align*}
+    \Theta: \holim \mathcal{L} \to \hocolim \mathcal{L}.
+\end{align*}
+In classical ordinary homology this is called the cap product. The condition $\Nm(y) = 1$ is equivalent to the statement that $\Theta$ is inverse to the norm map.
+
+\begin{example} Let $X = BH$ for a finite $p$-group $H$, and $n=1$. Then we have a map
+\begin{align*}
+    K(n)_\ast(BH) \to K(n)^\ast(BH).
+\end{align*}
+In height one, we know what these mean --- these lift to characteristic zero, since $K(1) = \hat{\KU}/p$. Complex $K$-theory of $BH$ is described by the Atiyah--Segal completion theorem, so we have that
+\begin{align*}
+    \hat{\KU}^0(BH) &= \Rep(H)^{\wedge} \\
+    K(1)^0(BH) &= \Rep(H)/p.
+\end{align*}
+So our map would be
+\begin{align*}
+    \Rep(H)^\vee/p = K(1)_0(BH) \to K(1)^0(BH) = \Rep(H)/p.
+\end{align*}
+By character theory, $\Rep(H) \otimes \C$ is the conjugation-invariant functions $H \to \mathbb{C}$, by sending $V$ to its character $\chi_V$. If we $p$-adically complete, we are really getting a map
+\begin{align*}
+    \Rep(H)^\vee \to \Rep(H).
+\end{align*}
+Rationally, everything is computable, and we can compute that it is an isomorphism. We can study the inverse isomorphism then
+\begin{align*}
+    \mathbb{Q} \otimes \Rep(H)^\vee \from \mathbb{Q} \otimes \Rep(H).
+\end{align*}
+Over $\mathbb{C}$, this bilinear form is given by $V,W \mapsto \frac{1}{|H|} \sum_{h\in H} \chi_V(h) \chi_W(h)$. To know that this isomorphism exists integrally and not rationally, we need to check this value is an integer. But we can rewrite this as
+\begin{align*}
+    \frac{1}{|H|} \sum_{h\in H} \chi_V(h) \chi_W(h) &= \frac{1}{|H|} \sum_{h\in H} \chi_{V \otimes W}(h)  \\
+    &= \dim_\mathbb{C} \left( V \otimes W \right)^H.
+\end{align*}
+\end{example}
+So this is a sketch of the proof of the Hovey--Sadofsky theorem in height one.
+
+%%%
+% \subsection{Questions}
+
+% \textbf{Q}: Can we give an example of a manifold $M$ and group $G$ when $Z(M)$ is nonzero?
+
