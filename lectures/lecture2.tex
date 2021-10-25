@@ -1,0 +1,178 @@
+\renewcommand{\thespeaker}{Elizabeth Tatum}
+\renewcommand{\thetitle}{Review of chromatic homotopy theory}
+\section{\thetitle~(\thespeaker)}
+
+\subsection{Formal group laws}
+
+Let $R$ be a commutative ring, then we can consider formal group laws over that ring $F \in R[[x,y]]$. We say that $F$ is a \textit{formal group law} if
+\begin{enumerate}
+    \item $F(x,0) = x$
+    \item $F(x,y)= F(y,x)$
+    \item $F(x,F(y,z)) = F(F(x,y),z)$.
+\end{enumerate}
+Let $f\in R[[x]]$. We say that it is a \textit{homomorphism} from a formal group law $F$ to a formal group law $G$ if $f(F(x,y)) = G(f(x),f(y))$.
+
+We let the $n$\textit{-series} on a formal group law $F$ be given by
+\begin{align*}
+    [n]_F(x) := F(x,F(x, \ldots F(x,x))).
+\end{align*}
+That is, $F$ applied $n$ times. In particular when $n=p$ is a prime, we get that
+\begin{align*}
+    [p]_F(x) \equiv ax^{p^h} + \text{higher order terms}.
+\end{align*}
+
+We say that $F$ has height $\ge h$ if there are no higher order terms, and that $F$ has height exactly $h$ if $a$ is a unit.
+
+\begin{example} We have the \textit{additive formal group law} $F_a(x,y) = x+y$, with height $\infty$.
+\end{example}
+
+\begin{example} We have the \textit{multiplicative formal group law} $F_m(x,y) = x+y+xy$, which has height 1.
+\end{example}
+
+\begin{theorem} (Lazard) Over an algebraically closed field, $F$ and $G$ should have the same height if and only if $F$ is isomorphic to $G$.
+\end{theorem}
+
+\subsection{Complex oriented cohomology theories}
+
+We say that a ring spectrum $E$ is \textit{complex orientable} if the map $E^2 \left( \CP^\infty \right) \to E^2(S^2)$ is surjective. In particular in the reduced cohomology, an orientation is a choice of generator $x$ mapping to $1 \in \pi_0(E)$ under the composite
+\begin{align*}
+    \til{E}(\CP^\infty) \to \til{E}(S^2) \simeq \pi_0 E.
+\end{align*}
+
+We have that $\CP^\infty$ has a natural multiplication, so by applying $E^\ast$, we get
+\begin{align*}
+    E^\ast \CP^\infty &\to E^\ast(\CP^\infty \times\CP^\infty) \\
+    x &\mapsto F(x^L, x^R.
+\end{align*}
+So any choice of complex orientation yields a formal group law.
+\begin{itemize}
+    \item $H(\Z/p)$ carries $F_a$
+    \item $\KU$ carries $F_m$
+    \item $\MU$ carries the universal formal group law $F_\MU$.
+\end{itemize}
+
+This universal fgl is characterized by the property that for any formal group law $F$ over $R$, there is a $\theta: \MU_\ast \to R$ so that $\theta(F_\MU) = F$. Here $\MU_\ast \cong \Z[x_1,x_2, \ldots]$, where $|x_i| = 2i$.
+
+\subsection{Morava $K$-theories and related spectra}
+
+The \textit{Brown--Peterson spectrum}, for a fixed prime $p$, is a wedge summand in complex cobordism
+\begin{align*}
+    \MU_{(p)} \simeq \wedge \BP.
+\end{align*}
+We have that $\BP$ is a ring spectrum such that $\BP_\ast \cong \MU_{(p)} \big/ (x_i,\ i\ne p^k-1)$. Thus
+\begin{align*}
+    \BP_\ast \cong \Z_{(p)} \left[ v_1, v_2, \ldots \right].
+\end{align*}
+The $x_i$'s are \textit{not} living in powers of the form $2(p^k-1)$, and we are quotienting them out. So the $v_i$'s \textit{are} living in those powers --- $|v_i| = 2(p^i-1)$.
+
+Applying $[p]_{F_\MU} \to [p]_F$, we are getting that the height of $F$ was the coefficient $a$ appearing in $[p]_F = ax^{p^h}$. So where the $v_i$'s land after this map, $v_h$ is landing on $a$.
+
+\textbf{Morava $E$-theory}: The Johnson--Wilson spectrum has homology $v_n^{-1} \BP_\ast \big/ \left( v_{n+1}, v_{n+2}, \ldots \right) \cong \Z_{(p)} \left[ v_1, \ldots, v_{n-1}, v_n^{\pm} \right]$. Morava $E$-theory is the completion of this -- we delinate this from the Johnson--Wilson spectrum $E(n)$ by writing a subscript $E_n$:
+\begin{align*}
+    (E_n)_\ast \cong \mathbb{W}(k) \left[ [ u_1, \ldots, u_{n-1} ] \right] \left[ u_n^\pm \right].
+\end{align*}
+Morava $E$-theory tells you about the deformations of a formal group law of height $n$.
+
+\textbf{Deformations}: If $\phi : R \tto k$ is a nice ring homomorphism, then a formal group law $F$ over $R$ is a deformation of some formal group law $G$ over $k$ if $\phi(F) = G$. We think e.g. about $R$ being some infinitesimal thickening of the field $k$.
+
+\textbf{Morava $K$-theory}: We have a $K(n)$ so that $K(n)_\ast \cong \mathbb{F}_p \left[ v_n^{\pm} \right]$. This is a formal group law of height exactly $n$. At each prime we have Morava $K$-theories $K(1), K(2), \ldots$. The Morava $E$-theories $E(n)$ are telling you about the open sets containing the $K(i)$'s for $i<n$. Morava $K$-theories are like residue fields, and Morava $E$-theories are like complete local rings at these points.
+
+The $K(n)$'s are like fields in ring spectra. We would say that $E$ is a \textit{field} if $E_\ast(X)$ is a sum of free $E_\ast$-modules.
+
+\begin{theorem} $E$ is a field if and only if $E$ is a $K(n)$.
+\end{theorem}
+
+Furthermore, we have that $K(n) \smashprod X \simeq \wedge \Sigma^? K(n)$ is a wedge sum of suspensions of $K(n)$.
+
+\subsection{Bousfield localization}
+
+Fix a ring spectrum $E$. We say that $X$ is $E$\textit{-acyclic} if $E_\ast X = 0$. We say that $X$ is $E$\textit{-local} if for every $E$-acyclic $Y$, we have that $\left[ Y,X \right]\simeq \ast$. Finally we say that $f: X \to Y$ is an $E$\textit{-equivalence} if $E_\ast(f)$ is an isomorphism.
+
+A \textit{localization functor} is a functor of the form
+\begin{align*}
+    L : \Sp \to \Sp,
+\end{align*}
+together with a natural transformation $\eta : \id \to L$ so that
+\begin{enumerate}
+    \item $L\eta : L \to L^2$ is an equivalence (localizing twice doesn't do anything)
+    \item $L \eta \simeq \eta L$.
+\end{enumerate}
+
+\begin{theorem} (Bousfield) For every spectrum $E$, there exists a localization functor $L_E: \Sp \to \Sp$ with a natural transformation $\eta_E$ such that for every $X$, we have that $\eta_E : X \to L_E X$ is the initial $E$-equivalence.
+\end{theorem}
+
+That is,
+\begin{enumerate}
+    \item $E_\ast (\eta_X) : E_\ast X \to E_\ast L_E X$ is an isomorphism
+    \item If $f: X \to Y$ is an $E$-equivalence and $Y$ is $E$-local then there is a unique map making the diagram commute:
+\[ \begin{tikzcd}
+    X\rar\dar & Y\\
+    L_E X \ar[ur,dashed] & 
+\end{tikzcd} \]
+\end{enumerate}
+
+Let $\left\langle E \right\rangle$ denote the Bousfield class of $E$ --- that is, the ``collection of $E$-local spectra.'' We say that $\left\langle E \right\rangle \subseteq \left\langle F \right\rangle$ if $X$ is $E$-local implies that $X$ is $F$-local.
+
+\begin{proposition} We have that
+\begin{enumerate}
+    \item If $\left\langle E \right\rangle = \left\langle F \right\rangle$ then there is a natural isomorphism $L_E \simeq L_F$.
+    \item If $\left\langle E \right\rangle \subseteq \left\langle F \right\rangle$, then we have that $L_E L_F \simeq L_E$, and there is a natural transformation $\eta: L_F \to L_E$.
+\end{enumerate}
+\end{proposition}
+
+\begin{fact} We have that $L_{E_n}$ is smashing --- this means that $L_{E_n}(X) \simeq \left( L_{E_n}(S^0) \right) \smashprod X$, and the localization $L_E: \Sp \to \Sp$ preserves direct sums.\footnote{Localization always sends direct sums in $\Sp$ to direct sums in $E$-local spectra. What this condition means is that it preserves direct sums \textit{in spectra}. This is really telling you that the \textit{inclusion} of $E$-local spectra into spectra preserves direct sums (and actually arbitrary colimits).
+
+Generally a sum of local things won't be local (think about $p$-completion). However smashing localizations will have this property.
+
+Localization generally feels like the analogue of localization and then completion for rings. Smashing localizations are just localizations.}
+\end{fact}
+
+So we get an algebraic chromatic tower
+\begin{align*}
+    L_{E_0} X \from L_{E_1} X \from L_{E_2} X \from \cdots 
+\end{align*}
+These have monochromatic layers $M_i(X) = \ker \left( L_{E_i} X \to L_{E_{i-1}} X \right)$, which come with maps $M_i(X) \to L_{K(i)} X$. The monochromatic layers and the localization at $K$-theory are not the same as spectra, but they contain exactly the same information.
+
+\begin{customenvironment}{Chromatic convergence theorem} If $X$ is a $p$-local finite spectrum, then
+\begin{align*}
+    X \simeq \holim L_n(X)
+\end{align*}
+\end{customenvironment}
+
+\begin{fact} Let $\mathscr{C}_0$ denote the full subcategory of $p$-local finite spectra. Then denote by $\mathscr{C}_n$ the full subcategory of $K(n)$-acyclics, so we have a chain of inclusions
+\begin{align*}
+    \mathscr{C}_0 \supseteq \mathscr{C}_1 \supseteq \cdots \supseteq \mathscr{C}_\infty = \left\{ \ast \right\}.
+\end{align*}
+\end{fact}
+
+A full subcategory is called \textit{thick} if it is closed under 
+\begin{enumerate}
+    \item retracts
+    \item weak equivalences
+    \item cofiber sequences.
+\end{enumerate}
+
+\begin{example} We have that $E$-acyclics, $E$-local objects are thick subcategories.
+\end{example}
+
+\begin{customenvironment}{Thick subcategory theorem} If $\mathscr{C}$ is a thick subcategory $p$-local finite spectra, then $\mathscr{C}$ is one of the $\mathscr{C}_n$'s from the filtration above.
+\end{customenvironment}
+
+We say that a finite spectrum $F$ is \textit{type} $n$ if $K(i)_\ast(F) = 0$ for all $i<n$, and $K(n)_\ast(F) \ne 0$.
+
+Let $F$ be any type $n$ spectrum. Then a $v_n$\textit{-self map} is a map $f: \Sigma^i F \to F$ so that
+\begin{align*}
+    K(m)_\ast(f) = \begin{cases} \text{multiplication by a rational number} & m=n=0 \\ \text{an isomorphism} & m=n\ne 0 \\ \text{nilpotent} & m\ne n. \end{cases}
+\end{align*}
+
+\begin{customenvironment}{Periodicity theorem} Any finite type $n$ spectrum admits a $v_n$-self map. The telescope of this map is
+\begin{align*}
+    \Tel(F) = \hocolim \left( F \xto{v_n} F \xto{v_n} F \to \cdots \right),
+\end{align*}
+and this is independent of the choice of $v_n$-self map and the choice of finite type $n$ spectrum. So we can call this $T(n)$.
+\end{customenvironment}
+
+\begin{fact} $T(n)$ is $K(m)$-acyclic for all $m\ne n$. Applying $K(m)_\ast$ to the map above, we are taking a homotopy colimit along nilpotents, so this vanishes.
+\end{fact}
+
+There is a natural transformation $\lambda: L_{T(n)} \to L_{K(n)}$. For finite spectra, we know that $T(n)$-acyclics and $K(n)$-acyclics are the same. Knowing this for all spectra would imply the localizations are the same, which is the telescope conjecture.\footnote{The category of $T(n)$-local things contain all $K(n)$-local things. It might be larger. This implies that every $T(n)$-acyclic is always $K(n)$-acyclic. There are certain spectra for which $T(n)$ and $K(n)$-acyclic coincide --- we know this for finite spectra and for ring spectra (it follows from the nilpotence theorem).}
