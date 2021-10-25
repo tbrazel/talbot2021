@@ -1,0 +1,42 @@
+\documentclass[11pt]{amsart}
+\input{commands.tex}
+\usepackage{enumitem}[cleveref]
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{pgffor}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.5em}
+\newcommand{\theseminar}{Talbot 2021}
+\newcommand{\theday}{October 25th}
+\newcommand{\theyear}{2021}
+\newcommand{\thespeaker}{foo}
+\newcommand{\thetitle}{bar}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Talk~\thesection: \thespeaker}
+\fancyhead[R]{\small\itshape\theseminar}
+\fancyhead[C]{\small\itshape\thetitle}
+\let\smashprod\wedge
+\usepackage{hyperref}
+
+
+\title{MIT Talbot Workshop 2021: Ambidexterity in Chromatic Homotopy Theory}
+\author{Mentored by Jacob Lurie and Tomer Schlank}
+\begin{document}
+\maketitle
+
+\begin{abstract} Notes from the MIT Talbot Workshop 2021: Ambidexterity in Chromatic Homotopy Theory, mentored by Jacob Lurie and Tomer Schlank. Please fix any typos or errors by submitting a pull request at \href{https://github.com/tbrazel/talbot2021}{https://github.com/tbrazel/talbot2021}.
+\end{abstract}
+
+
+\setcounter{tocdepth}{1}
+\tableofcontents{}
+
+
+\foreach \n in {1,...,1}{%
+\include{lectures/lecture\n.tex}
+}
+
+\end{document}
