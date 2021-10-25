@@ -1,0 +1,249 @@
+\renewcommand{\thespeaker}{Thomas Brazelton}
+\renewcommand{\thetitle}{Ambidexterity}
+\section{\thetitle~(\thespeaker)}
+
+
+
+\subsection{Local systems}
+A local system is, very roughly speaking, anything you might want to take cohomology in. Classically speaking, a \textit{local system} of abelian groups on a space $X$ is a locally constant sheaf $\mathcal{L}$ on $X$. 
+
+\begin{example} Local systems subsume singular cohomology --- this is because for any abelian group $A$, we can take the constant sheaf $\underline{A}$ considered as a local system.
+\end{example}
+
+If $X$ is path-connected, and $\mathcal{L}$ is a local system on $X$, then we can take any two points $x$ and $y$, and a path $\gamma: [0,1] \to X$ between them (that is, $\gamma(0) = x$ and $\gamma(1) = y$). We see that $\gamma^\ast \mathcal{L}$ is constant, giving an isomorphism between the fibers $\mathcal{L}_x$ and $\mathcal{L}_y$. We can check that homotoping $\gamma$ will not affect the isomorphism $\mathcal{L}_x \xto{\sim} \mathcal{L}_y$. That is, we can restate $\mathcal{L}$ as the assignment of the data:
+\begin{itemize}
+    \item an abelian group $\mathcal{L}_x$ for every $x\in X$
+    \item an isomorphism $\mathcal{L}_x \xto{\sim} \mathcal{L}_y$ for every homotopy class of paths $x \to y$,
+\end{itemize}
+subject to some extra coherence data. From this we can get a new definition of a local system.
+
+\begin{definition} A \textit{local system} on $X$ valued in a 1-category $\mathscr{C}$ is a functor
+\begin{align*}
+    \mathcal{L} : \Pi_1(X) \to \mathscr{C}.
+\end{align*}
+\end{definition}
+
+Suppose now we want something a little stronger. If $\gamma,\gamma'$ are homotopic maps from $x$ to $y$ in $X$, they provide isomorphisms $\mathscr{C}_x \xto{\sim} \mathscr{C}_y$ in $\mathscr{C}$. If $\mathscr{C}$ is a 2-category, we might ask for a witness of the homotopy $\gamma \Rightarrow \gamma'$ to be witnessed by a 2-cell in $\mathscr{C}$, and for a different witness to be witnessed by a different 2-cell. Similarly if we have a 3-cell between these, we might ask for a 3-cell witnessing a higher homotopy in $\mathscr{C}$, provided $\mathscr{C}$ has this higher categorical structure.
+
+This leads us to a higher-categorical definition of local systems.
+
+\begin{definition} A \textit{local system} on $X$ valued in an $\infty$-category $\mathscr{C}$ is an $\infty$-functor
+\begin{align*}
+    \mathcal{L} : \Pi_\infty(X) \to \mathscr{C},
+\end{align*}
+where $\Pi_\infty(X)$ is the fundamental $\infty$-groupoid of $X$.
+\end{definition}
+
+Viewing $X$ as a Kan complex, we might just say a local system is an $\infty$-functor
+\begin{align*}
+    \mathcal{L} : X \to \mathscr{C}.
+\end{align*}
+
+% \begin{example} For any $C \in \mathscr{C}$, we always have a constant local system $\underline{C}_X$. This defines a functor $\delta: \mathscr{C} \to \mathscr{C}^X := \Fun(X, \mathscr{C})$.
+% \end{example}
+
+% Suppose that $\mathscr{C}$ admits all small limits and colimits. Then we may left or right Kan extend the identity of $\mathscr{C}$ along $\delta$, to define functors
+% \[ \begin{tikzcd}
+%     \mathscr{C}\rar["\id" above]\dar["\delta" left] & \mathscr{C}\\
+%     \mathscr{C}^X \ar[ur,dashed] &
+% \end{tikzcd} \]
+
+% This gives us a left adjoint, which we think about as ``chains''
+% \begin{align*}
+%     C_\ast(X ; -): \mathscr{C}^X &\to \mathscr{C} \\
+%     \mathcal{L} &\mapsto C_\ast(X ;\mathcal{L}) := \hocolim_{x\in X} \mathcal{L}_x,
+% \end{align*}
+% and a right adjoint, which we think about as ``cochains''
+% \begin{align*}
+%     C^\ast(X ; -): \mathscr{C}^X &\to \mathscr{C} \\
+%     \mathcal{L} &\mapsto C^\ast(X ;\mathcal{L}) := \holim_{x\in X} \mathcal{L}_x.
+% \end{align*}
+
+% We will introduce the idea of a $\mathscr{C}$-\textit{ambidextrous} space $X$, which is a space together with a ``norm'' equivalence:
+% \begin{align*}
+%     \Nm_X : C_\ast(X; \mathcal{L}) \to C^\ast(X; \mathcal{L}).
+% \end{align*}
+
+
+% {\color{red} motivate norm here somehow}
+
+\subsection{Pullback and adjoints}
+
+Let $f: X \to Y$ be any map of spaces. Then given a local system $\mathcal{L}: Y \to \mathscr{C}$ on $Y$, we can pull it back to a local system $f^\ast \mathcal{L}$ on $X$, by pre-composing with $f$. For any fixed $\infty$-category $\mathscr{C}$, this defines a functor
+\begin{align*}
+    f^\ast : \Fun(Y, \mathscr{C}) \to \Fun(X, \mathscr{C}).
+\end{align*}
+
+If $\mathscr{C}$ admits small colimits, then we may left Kan extend to define a left adjoint to $f^\ast$ (Higher Topos Theory, 4.3.3). We denote this by $f_!$:
+\begin{align*}
+    f_! : \Fun(X, \mathscr{C}) \leftrightarrows \Fun(Y, \mathscr{C}) : f^\ast.
+\end{align*}
+
+Dually when $\mathscr{C}$ admits small limits, we may right Kan extend to define a right adjoint to $f^\ast$, which we denote by $f_\ast$. This gives
+\begin{align*}
+    f_! \dashv f^\ast \dashv f_\ast.
+\end{align*}
+
+\begin{example} Let $S$ be a set, viewed as a discrete space, and consider the map $f: S \to \ast$. Pullback is then the diagonal map $f^\ast : \mathscr{C} \to \Fun(S, \mathscr{C})$. We see that any functor $S \to \mathscr{C}$ picks out a collection $\left\{ C_s \right\}$ of objects in $\mathscr{C}$ for each $s\in S$. Assume that $\mathscr{C}$ has all products and coproducts. Then we can see that
+\begin{align*}
+    f_!: \Fun(S, \mathscr{C}) &\to \mathscr{C} \\
+    \left\{ C_s \right\} &\mapsto \coprod_{s\in S} C_s,
+\end{align*}
+and that
+\begin{align*}
+    f_\ast : \Fun(S, \mathscr{C}) &\to \mathscr{C} \\
+    \left\{ C_s \right\} &\mapsto \prod_{s\in S} C_s.
+\end{align*}
+
+There is always a natural transformation from products to coproducts here, given by $f_! \to f_\ast$. In particular when products and coproducts agree, e.g. in $\Ab$, we will have that this is a natural isomorphism $f_! \simeq f_\ast$.
+\end{example}
+
+\begin{example} Consider $f: BG \to \ast$. In this case, since $\Fun(\ast, \mathscr{C}) \simeq \mathscr{C}$, we have that pullback is of the form
+\begin{align*}
+    f^\ast: \mathscr{C} \to \Fun(BG,\mathscr{C}),
+\end{align*}
+assigning to every object in $\mathscr{C}$ the trivial $G$-action.
+
+In this case, the adjoints yield, for every $G$-equivariant object $C \in \mathscr{C}$, the coinvariants $f_! C = C_G$ and the invariants $f_\ast C = C^G$. Denoting by $C^{tG} = \cofib \left( C_G \to C^G \right)$, we have that a canonical equivalence $f_! \simeq f_\ast$ would imply that the Tate construction vanishes for every $G$-equivariant object of $\mathscr{C}$.
+\end{example}
+
+
+
+% {\color{red} todo} Do example for $i_!$ where $i: Z \hookto X$ is an inclusion
+
+
+Associated to these types of adjunction we have the so-called ``calculus of mates,'' which allows us to take commutative squares of spaces and discuss how the induced functors relate to one another.
+
+Another example of where the calculus of mates appears is in the types of natural isomorphisms of restriction and extension of scalars for modules that come out of commutative diagrams of rings.
+
+\begin{proposition} If $f$ and $g$ are composable, then there is a canonical equivalence $(gf)^\ast \simeq f^\ast g^\ast$. This induces a canonical equivalence $(gf)! \simeq g_! f_!$ by the formalism of adjunctions.
+\end{proposition}
+
+
+\begin{definition} Consider a commutative diagram of spaces
+\[ \begin{tikzcd}
+    A\rar["j"]\dar["i" left] & X\dar["f" right]\\
+    B\rar["g" below] & Y.
+\end{tikzcd} \]
+Then there is a \textit{Beck--Chevalley exchange transformation} (think about this as top-left to bottom-right), denoted by
+\begin{align*}
+    \Ex_!^\ast : j_! i^\ast \to f^\ast g_!. 
+\end{align*}
+\end{definition}
+This is defined by first starting with $j_! i^\ast$, and tacking on the counit $\id_B \to g^\ast g_!$ on the end of it. We then get $j_! i^\ast g^\ast g_!$. Since the diagram commutes, there is a canonical equivalence $i^\ast g^\ast \simeq j^\ast f^\ast$, getting us to $j_! j^\ast f^\ast g_!$. Finally, we may apply the counit $j_! j^\ast \to \id$ to conclude. The entire composite gives us:
+\begin{align*}
+    j_! i^\ast \id_B \to j_! i^\ast g^\ast g_! \simeq j_! j^\ast f^\ast g_! \to f^\ast g_!.
+\end{align*}
+
+\begin{proposition} If we have a pullback square, the Beck--Chevalley exchange transformation is an equivalence.
+\end{proposition}
+
+\textbf{Q}: Let $f: X \to Y$, and consider the adjunction $f_! \dashv f^\ast$. When will $f_!$ also be a \textit{right adjoint} to $f^\ast$?
+
+Given a fixed category $\mathscr{C}$ admitting finite limits and colimits, we will define a class of $\mathscr{C}$\textit{-ambidextrous} maps $f: X \to Y$. These will have the property that if $f: X \to Y$ is $\mathscr{C}$-ambidextrous, then there is a canonical equivalence $f_! \simeq f_\ast$.
+
+
+\subsection{Ambidextrous morphisms}
+
+\begin{example} Suppose that $f: X \xto{\sim} Y$ is a homotopy equivalence. Then $f^\ast: \Fun(Y, \mathscr{C}) \to \Fun(X, \mathscr{C})$ is an equivalence of categories, and it can be easily promoted to an adjoint equivalence, so that $f_! \simeq f_\ast$ canonically. In particular, there is a unit map $\mu_f : \id \to f_! f^\ast$, exhibiting $f_!$ as a right adjoint to $f^\ast$.
+\end{example}
+
+Homotopy equivalences provide our first class of morphisms which we call \textit{ambidextrous}. Somehow these are the ``most'' ambidextrous, in the sense that they have the strongest structure. However as we might expect, there exist morphisms which are $\mathscr{C}$-ambidextrous without being homotopy equivalences.
+
+We will define ambidexterity inductively, with homotopy equivalences being the base case. For indexing reasons that will become clear later, we would like to start at $n=-2$. So we will define, for each $n \ge -2$:
+\begin{itemize}
+    \item A collection of $n$\textit{-ambidextrous morphisms} in $\Top$
+    \item For each $n$-ambidextrous morphism $f: X \to Y$, a natural transformation $\mu_f^{(n)}: \id \to f_! f^\ast$, well-defined up to homotopy, exhibiting $f_!$ as a right adjoint to $f^\ast$.
+\end{itemize}
+
+\textbf{Base case} $n=-2$: We say $f$ is $(-2)$-ambidextrous if and only if $f$ is an equivalence. In this case, we define $\mu_f^{(-2)}$ to be any homotopy inverse to the counit $f_! f^\ast \to \id$.
+
+\textbf{Inductive step}: Suppose that we have defined $n$-ambidextrous morphisms for some $n$. We will define $(n+1)$-ambidextrous maps in two steps: first we define \textit{weakly} $(n+1)$-ambidextrous maps, and then $(n+1)$-\textit{ambidextrous} maps.
+
+Let $f: X \to Y$ be arbitrary, and consider the diagram
+\[ \begin{tikzcd}
+    X\ar[dr,"\delta"]\ar[drr,bend left=10]\ar[ddr,bend right=10] &  & \\
+     & X \times_Y X\rar["\pi_1" above]\dar["\pi_2" left]\pb & X\dar["f" right]\\
+     & X\rar["f" below] & Y.
+\end{tikzcd} \]
+By Beck--Chevalley, there is an exchange isomorphism $(\pi_1)_! \pi_2^\ast \simeq f^\ast f_!$. We say that $f$ is \textit{weakly $(n+1)$-ambidextrous} if $\delta$ is $n$-ambidextrous. In this context, we define a counit $\nu_f^{(n+1)}$ to be the composite
+\begin{align*}
+    f^\ast f_! \xto{\left( \Ex_!^\ast \right)^{-1}} \left( \pi_1 \right)_! \pi_2^\ast \xto{\mu_\delta^{(n)}} \left( \pi_1 \right)_! \delta_! \delta^\ast \pi_2^\ast = \left( \id_X \right)_! \id_X^\ast = \id_{\Fun(X, \mathscr{C})}
+\end{align*}
+
+We say $f$ is $(n+1)$\textit{-ambidextrous} if the following conditions hold:
+\begin{enumerate}
+    \item The transformation $\nu_f^{(n+1)} : f^\ast f_! \to \id$ is the counit for an adjunction $f^\ast \dashv f_!$, with some unit $\mu_f^{(n+1)}$
+    \item Weak $(n+1)$-ambidexterity is closed under pullback along $f$. That is, for every pullback square
+\[ \begin{tikzcd}
+    A\rar["g"]\dar\pb & B\dar\\
+    X\rar["f" below] & Y,
+\end{tikzcd} \]
+we have that $g$ is weakly ambidextrous, with counit $\nu_g^{(n+1)}: g^\ast g_! \to \id$ defined in the Beck--Chevalley process above
+    \item Property (1) is closed under pullback along $f$. That is, for any pullback square as above, we have that $\nu_g^{(n+1)}$ is the counit of an adjunction $g^\ast \dashv g_!$.
+\end{enumerate}
+
+From this definition, the following are immediate.
+
+\begin{proposition} (Weak) $n$-ambidexterity is closed under pullback.
+\end{proposition}
+
+Moreover from our inductive definitions, we have the following:
+
+\begin{proposition} Let $-2 \le m \le n$. 
+\begin{enumerate}
+    \item If $f$ is weakly $m$-ambidextrous,\footnote{Weak ambidexterity isn't defined for $m=-2$ but that's ok} then $f$ is weakly $n$-ambidextrous, and $\nu_f^{(m)}$ and $\nu_f^{(n)}$ agree up to homotopy.
+    \item  If $f$ is $m$-ambidextrous, then $f$ is $n$-ambidextrous, and $\mu_f^{(m)}$ and $\mu_f^{(n)}$ agree up to homotopy.
+\end{enumerate}
+\end{proposition}
+\begin{proof}[Proof idea] It suffices to let $n=m+1$, and induct. The inductive step is basically immediate from definitions, and the base case is very direct.
+\end{proof}
+
+
+
+\begin{definition} We say that $f$ is \textit{weakly ambidextrous} if it is weakly ambidextrous for some $n\ge -1$, and we say that $f$ is \textit{ambidextrous} if it is ambidextrous for some $n$. We let $\nu_f : f^\ast f_! \to \id$ denote the counit and $\mu_f: \id \to f_! f^\ast$ denote the unit. This notation is well-defined up to homotopy by the previous proposition.
+\end{definition}
+
+\[ \begin{tikzcd}[column sep=small]
+    \cdots\rar[hook] & {\left\{ \substack{n\text{-ambidextrous} \\\text{maps} }\right\}}\rar[hook]\dar[hook] & {\left\{\substack{ (n+1)\text{-ambidextrous} \\ \text{maps}} \right\}}\rar[hook]\dar[hook] & \cdots\rar[hook] & {\left\{\text{ambidextrous maps} \right\}}\dar[hook]\\
+    \cdots\rar[hook] & {\left\{\substack{\text{weakly } \\ n\text{-ambidextrous} \\ \text{maps}} \right\}}\rar[hook] & {\left\{\substack{\text{weakly } \\ (n+1)\text{-ambidextrous} \\ \text{maps}} \right\}}\rar[hook] & \cdots\rar[hook] & {\left\{\substack{\text{weakly} \\ \text{ambidextrous maps}} \right\}}
+\end{tikzcd} \]
+
+\subsection{Norms}
+
+Suppose $\mathscr{C}$ is an $\infty$-category with small limits and colimits. Let $f: X \to Y$ be a continuous map of spaces, and let $f_! \dashv f^\ast \dashv f_\ast$ be the associated left and right adjoints to pullback provided by Kan extensions. Suppose that $f$ is \textit{weakly ambidextrous} but \textbf{not necessarily ambidextrous} (recall this means inductively that the diagonal is weakly ambidextrous of one degree lower, and crucially that there is a natural transformation $\nu_f : f^\ast f_! \to \id$). Then by adjunction we have a natural homotopy equivalence of mapping spaces
+\begin{align*}
+    \Map \left( f^\ast f_!, \id \right) \simeq \Map \left( f_!, f_\ast \right).
+\end{align*}
+In particular $\nu_f$ maps to a natural transformation, which by definition is the composite
+\begin{align*}
+    f_! \xto{\eta \cdot f_!} f_\ast f^\ast f_! \xto{f_\ast \cdot \nu_f} f_\ast.
+\end{align*}
+We call this the \textit{norm} of $f$ and denote it by $\Nm_f : f_! \to f_\ast$.
+
+\begin{proposition} Let $f$ be weakly ambidextrous as above. Then it is ambidextrous if and only if
+\begin{enumerate}
+    \item Weak ambidexterity is preserved under pullback along $f$
+    \item The norm map $\Nm: f_! \to f_\ast$ is an equivalence
+    \item The norm map for any map obtained by pullback along $f$ is an equivalence.
+\end{enumerate}
+\end{proposition}
+
+\begin{example} We can rephrase our example from earlier to say that the following are equivalent for $f: BG \to \ast$:
+\begin{enumerate}
+    \item $BG$ is $\mathscr{C}$-ambidextrous
+    \item The norm $\Nm_f$ is an equivalence
+    \item For every $G$-equivariant object of $\mathscr{C}$, the Tate construction vanishes.
+\end{enumerate}
+\end{example}
+
+\begin{proposition} Weak ambidexterity is closed under composition --- that is, if $f$ and $g$ are composable and weakly ambidextrous, we can take $\mu_{gf}$ to be the composite
+\begin{align*}
+    (gf)^\ast (gf)_! \simeq f^\ast g^\ast g_! f_! \xto{\mu_g} f^\ast f_! \xto{\mu_f} \id.
+\end{align*}
+\end{proposition}
+
+
+
+
+
