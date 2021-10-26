@@ -1,5 +1,191 @@
 \renewcommand{\thespeaker}{Shay Ben Moshe}
-\renewcommand{\thetitle}{}
+\renewcommand{\thetitle}{The $\delta$-power operation}
 \section{\thetitle~(\thespeaker)}
 
+This won't depend on much material previously, except a brief use of 1-semiadditivity.
+
+\subsection{Additive $p$-derivations}
+
+\begin{definition} Let $R$ be an honest commutative ring. An \textit{additive $p$-derivation} is a function of sets $\delta: R \to R$ such that
+\begin{enumerate}
+    \item (normalization) we have that $\delta(0) = 0$ and $\delta(1) = 0$
+    \item (additivity) we have that $\delta(x+y) = \delta(x) + \delta(y) + \frac{x^p + y^p - (x+y)^p}{p}$.\footnote{This last term is a polynomial, we are not actually dividing by $p$.}
+\end{enumerate}
+\end{definition}
+
+\begin{remark} If we have such a $\delta$, we can define another function
+\begin{align*}
+    \phi_\delta : R &\to R \\
+    x &\mapsto x^p + p \delta(x).
+\end{align*}
+This is an additive unital lift of the Frobenius, in that it takes sums to sums, and modulo $p$ it is literally Frobenius. This function $\phi_\delta$ does not determine $\delta$, but it does if $R$ is $p$-torsion free.
+\end{remark}
+
+We may be familiar with a $p$-derivation, which is an additive $p$-derivation satisfying an extra multiplicative axiom. That axiom is exactly making $\phi_\delta$ into a ring homomorphism.
+
+\begin{example} The \textit{Fermat quotient} on $\mathbb{Z}$ is the additive derivation $\widetilde{\delta}$, defined by
+\begin{align*}
+    \widetilde{\delta} : \mathbb{Z} &\to \mathbb{Z} \\
+    x &\mapsto \frac{x - x^p}{p}.
+\end{align*}
+It is pretty easy to show that this is the unique additive $p$-derivation on $\mathbb{Z}$.\footnote{In fact $\widetilde{\delta}$ extends to a function on the rationals.}
+\end{example}
+The crucial property that this satisfies is that it decreases the $p$-adic valuation by $1$. Suppose that $v_p(x) > 0$. Then we see
+\begin{align*}
+    v_p(x^p) = p v_p(x) > v_p(x),
+\end{align*}
+and hence
+\begin{align*}
+    v_p \left( \widetilde{\delta}(x) \right) &= v_p \left( \frac{x}{p} - \frac{x^p}{p} \right) = v_p \left( \frac{x^p}{p} \right) = v_p(x) -1.
+\end{align*}
+
+\begin{lemma} Let $\delta$ be an additive $p$-derivation on $R$, and let $x\in R$ and $n \in \mathbb{N}$. Then
+\begin{align*}
+    \delta(nx) &= n \delta(x) + \widetilde{\delta}(n)x^p.
+\end{align*}
+\end{lemma}
+\begin{proof} Induct on the additivity axiom.
+\end{proof}
+
+Having even one $\delta$-operation is a very restrictive condition on a ring.
+
+\begin{example} Suppose that $R$ is $p$-local and admits an additive $p$-derivation. Then every torsion element in $R$ is also nilpotent. In particular, if $R$ is torsion ($R \otimes \mathbb{Q} = 0$), then $R=0$.
+\end{example}
+\begin{proof} Let $x\in R$ be torsion. Since the ring $R$ is $p$-local, we may assume that $p^m x = 0$ for some $m$. Since $\delta(p^m x) = \delta(0) = 0$, we see that
+\begin{align*}
+    0 &= \delta(p^m x) = p^m \delta(x) + \widetilde{\delta}(p^m) x^p.
+\end{align*}
+Multiplying both sides by $x$ we get
+\begin{align*}
+    0 &= p^m x \delta(x) + \widetilde{\delta}(p^m) x^{p+1} \\
+    &= \widetilde{\delta}(p^m) x^{p+1}.
+\end{align*}
+But $v_p(\widetilde{\delta}(p^m)) = m-1$, since $\widetilde{\delta}$ decreases $p$-adic valuation. Therefore $p^{m-1} x^{p+1} = 0$. Repeating $m$ times, we have that $x^{p+1} = 0$.
+
+If the entire ring is torsion, 1 is torsion, so it is nilpotent, hence $1^n = 0$, so $1=0$.
+\end{proof}
+
+\begin{customenvironment}{Anti-example} We have that $\Z/p^n$ admits no additive $p$-derivations (since it is torsion).
+\end{customenvironment}
+
+\subsection{Construction of the $\delta$-power operation}
+
+We would like to generalize $\widetilde{\delta}$ from the rational case (height 0) to higher heights. Specifically, let $\mathscr{C}$ be a symmetric monoidal 1-semiadditive stable ($p$-local presentable) category (e.g. $\Sp_{K(n)}$ or $\Sp_{T(n)}$) and let $X \in \CAlg(\mathscr{C})$. Then
+\begin{align*}
+    R = \pi_0 X = \pi_0 \Hom \left( 1_\mathscr{C}, R \right).
+\end{align*}
+We will use that the mapping space between objects in a 1-semiadditive category is a 1-commutative monoid. We will endow $R$ with such a $\delta$. The plan is to define a family of other power operations, and in the rational case we can use those to define $\widetilde{\delta}$. We will make this into $\widetilde{\delta}$ in the higher case.
+
+Let $A$ be a finite set with a $G$-action, where $G$ is also finite. Consider $(x, \ldots, x) \in X^{|A|}$. This comes with an action of $\Aut(A)$. That is, thinking of $(x, \ldots, x) \in \Map(1, X)$, we can think of it not only as a map $1 \to \Map(1,X)$ but actually a map of the form
+\begin{align*}
+    B\Aut(A) \to \Map(1,X).
+\end{align*}
+So we have a family of maps indexed by $B\Aut(A)$. Since $G$ acts on $A$, we can precompose to get
+\begin{align*}
+    BG \to B\Aut(A) \to \Map(1,X).
+\end{align*}
+This gives a $G$-action on $X^{|A|}$. We define
+\begin{align*}
+    \alpha_{G,A}(x) = \int_{BG} X^{|A|} \in \pi_0 \Hom(1,X) = R.
+\end{align*}
+
+\begin{proposition} Let $\mathscr{C} = \Sp_\mathbb{Q}$, and let $X\in \CAlg(\mathscr{C})$. Then we have that
+\begin{align*}
+    \alpha_{G,A}(x) &= \frac{x^{|A|}}{|G|}.
+\end{align*}
+\end{proposition}
+\begin{proof} Recall that the integral is defined using the norm. In the rational case, $\Nm_{BG}$ is multiplication by the size of $BG$, and the integral is defined using the inverse to the norm, i.e. dividing out by $|G|$.
+\end{proof}
+
+\begin{example} Take $A= \left\{ \ast \right\}$, and $G = C_p$. Then
+\begin{align*}
+    \alpha_{C_p,\ast}(x) &= \frac{x}{p}.
+\end{align*}
+\end{example}
+
+\begin{example} Let $A = C_p$ and $G = C_p$ acting via left translation. Then
+\begin{align*}
+    \alpha_{C_p,C_p}(x) &= \frac{x^p}{p}.
+\end{align*}
+\end{example}
+
+\begin{corollary} We see that 
+\[\widetilde{\delta}(x) = \frac{x - x^p}{p} = \alpha_{C_p,\ast}(x) - \alpha_{C_p,C_p}(x).\]
+This holds in more generality.
+\end{corollary}
+
+\begin{definition} Let $\mathscr{C}$ be a 1-semiadditive stable category\footnote{Since we are $1$-semiadditive, we are also 0-semiadditive, so homs are commutative monoids. They don't have to have subtraction though. In the stable setting, however, all things are additive since the homs are abelian groups.} and $X\in \CAlg(\mathscr{C})$. Let $R = \pi_0 X$. Then we define
+\begin{align*}
+    \delta : R &\to R \\
+    \delta(x) &= \alpha_{C_p,\ast}(x) - \alpha_{C_p,C_p}(x).
+\end{align*}
+\end{definition}
+
+\begin{theorem} We have that $\delta$ is an additive $p$-derivation.
+\end{theorem}
+
+We will defer the proof to the end of the talk.
+
+\begin{corollary} Every torsion element of $R$ is also nilpotent. So if $R$ is torsion in that $R \otimes \mathbb{Q} = 0$, then $X = 0$.
+\end{corollary}
+
+This treatment of semiadditivity is able to prove May's conjecture.
+
+\subsection{May's conjecture}
+
+
+\begin{definition} We say that a ring spectrum $E$ \textit{detects nilpotents} if for any ring spectrum $X$, and $x \in \pi_\ast X$, we have that the image of $x$ under the Hurewicz map $\pi_\ast X \to E_\ast X$ is nilpotent, then $x$ is nilpotent.
+\end{definition}
+
+\begin{remark} This definition is \textit{equivalent} to the condition that $E \otimes X = 0$ implying that $X = 0$. To see this, plug in $x^{-1}X$.
+\end{remark}
+
+\begin{corollary} Let $X \in \CAlg(\Sp)$ such that $X \otimes \mathbb{Q} = 0$. Then $L_{T(n)} X = 0$ for all $0\le n < \infty$. This implies that $L_{K(n)} X = 0$.
+\end{corollary}
+\begin{proof} We know by assumption that $1\in X$ is torsion. Therefore this is also true in $L_{T(n)}X$ (since the unit in $\Sp_{T(n)}$ is just the localization of the unit in $\Sp$). Then $L_{T(n)}X$ is a ring in a 1-semiadditive category, so we can apply the previous corollary to see that $L_{T(n)} X = 0$.
+\end{proof}
+
+Using this we can prove May's conjecture.
+
+\begin{corollary} (May's conjecture) Let $X\in \CAlg(\Sp)$. If $X \otimes \mathbb{Z} = 0$, then $X = 0$. This tells us that $ \mathbb{Z}$ detects nilpotents for commutative algebras in spectra.
+\end{corollary}
+\begin{proof} We have that $X \otimes \mathbb{Q} = \left( X \otimes \mathbb{Z} \right) \otimes_{\mathbb{Z}} \mathbb{Q} = 0$, and similarly $X \otimes \mathbb{F}_p = 0$, which implies that $L_{K(n)} X = 0$ for all $0\le n\le \infty$. Then the nilpotence theorem says $X=0$.
+\end{proof}
+
+\subsection{Proof of the main theorem}
+
+\begin{theorem} We have that
+\begin{align*}
+    \delta(x) &= \int_{BC_p} x - \int_{BC_p} x^p \\
+    &= \int_{BC_p} \alpha_{C_p,\ast}(x) - \int_{BC_p} \alpha_{C_p,C_p}(x)
+\end{align*}
+is an additive $p$-derivation on $R = \pi_0 X$.
+\end{theorem}
+\begin{proof} We have that $\delta(0) = \int 0 - \int 0 = 0$, and that $\delta(1) = \int 1 - \int 1 = 0$.
+
+For additivity, we want to show that
+\begin{align*}
+    \delta(x+y) = \delta(x) + \delta(y) + \frac{x^p + y^p - (x+y)^p}{p}.
+\end{align*}
+Since
+\begin{align*}
+    \int_{BC_p} x+y = \int_{BC_p} x + \int_{BC_p} y,
+\end{align*}
+it is enough to show that 
+\begin{align*}
+    \int_{BC_p}(x+y)^p &= \int_{BC_p} x^p + \int_{BC_p} y + \frac{(x+y)^p - x^p - y^p}{p}.
+\end{align*}
+We can expand
+\begin{align*}
+    (x+y)^p &= x^p + y^p + \sum_{w\in S} w(x,y),
+\end{align*}
+where we are summing over all words in $x$ and $y$ of length $p$ which are not just constant letters. On any such word, $C_p$ acts by cycling letters around, so we can rewrite this as
+\begin{align*}
+    (x+y)^p &= x^p + y^p + \sum_{[w]\in X/C_p} \sum_{g\in C_p} g\cdot w(x,y).
+\end{align*}
+The term $\sum_{g\in C_p} g\cdot w(x,y)$ is a map $BC_p \to \Hom(1,X)$ which is induced by the map $\ast \to BC_p$, which is always ambidextrous. We get a map $BC_p \to \Hom(1,X)$ by summing along the fibers of $\ast \to BC_p \to \Hom(1,X)$. That is, our map $BC_p \to \Hom(1,X)$ is integrated from a map $\ast \to \Hom(1,X)$. In particular this tells us that
+\begin{align*}
+    \int_{BC_p} \sum g w(x,y) = w(x,y) = \frac{px^{w_x} y^{w_y}}{p}.
+\end{align*}
+\end{proof}
 
