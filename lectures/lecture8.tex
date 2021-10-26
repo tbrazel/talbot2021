@@ -1,5 +1,149 @@
 \renewcommand{\thespeaker}{David Chan}
-\renewcommand{\thetitle}{}
+\renewcommand{\thetitle}{Amenability and the bootstrap machine}
 \section{\thetitle~(\thespeaker)}
 
+\textbf{Goal}: Describe a detection principle for $m$-semiadditivity in $\infty$-categories.
+
+Throughout, we will let $\mathscr{C}$ and $\mathscr{D}$ be stable presentably symmetric monoidal $p$-local $\infty$-categories. From $p$-locality we get that $R_\mathscr{C} := \Hom_\mathscr{C}(1,1)$ is a $p$-local ring.
+
+\subsection{Amenability}
+
+We might have some functor $q^\ast : \mathscr{C} \to \mathscr{D}$. We say that this is \textit{iso-normed}\footnote{Normed = weakly ambidextrous, and iso-normed = ambidextrous.} if the associated norm map $\Nm_q : q_! \to q_\ast$ is an isomorphism. With this construction, we can define the integral over $q$:
+\begin{align*}
+    \int_q : \Map_{h \mathscr{D}} (q^\ast X, q^\ast Y) \to \Map_{h\mathscr{C}}(X,Y).
+\end{align*}
+
+We can define the \textit{cardinality} of $q$ at $X\in \mathscr{C}$ to be
+\begin{align*}
+    |q|_X := \int_q \id_{q^\ast X}.
+\end{align*}
+
+When $q: A \to \ast$, we write $|A|_X := |q|_X$, and we say that $A$ is \textit{amenable} if
+\begin{align*}
+    |A| : \id_\mathscr{C} \Rightarrow \id_\mathscr{C}
+\end{align*}
+is a natural isomorphism.
+
+\begin{example} Let $A$ be a finite set, and let $x\in \mathscr{C}$ be arbitrary. Then $|A|_X = \int_A \id_{q^\ast X} : X \to X$ is multiplication by $|A|$. So in this context, amenability allows us to average maps. Given $\left\{ f_a : X \to X \right\}_{a\in A}$, we have that dividing by $|A|$ is well-defined, so we can take
+\begin{align*}
+    \frac{1}{|A|} \sum_{a\in A} f_a.
+\end{align*}
+\end{example}
+
+Amenability is a stronger condition than being ambidextrous with respect to $\mathscr{C}$, so we get some strong properties.
+
+\subsection{Properties of amenable maps}
+
+\begin{customenvironment}{Maschke theorem} Suppose that a functor $q^\ast : \mathscr{C} \to \mathscr{D}$ is amenable. Then the counit $\epsilon: q_! q^\ast \to \id_\mathscr{C}$ admits a section. In particular everything in $\mathscr{C}$ is a retract of something in the image of $q_!$.
+\end{customenvironment}
+\begin{proof} We decompose the identity on $q^\ast X$ using the triangle identity as
+\begin{align*}
+    q^\ast X \xto{\eta} q^\ast q_! q^\ast X \xto{\epsilon} q^\ast X.
+\end{align*}
+Integrating both sides, we get, using some integration laws
+\begin{align*}
+    |q|_X = \int_q q^\ast \epsilon \circ \eta &= \epsilon \circ \int_q \eta.
+\end{align*}
+Thus
+\begin{align*}
+    \id_X = \epsilon \circ \left( \int_q \eta \circ |q|_X^{-1} \right).
+\end{align*}
+So this thing on the right is our section.
+\end{proof}
+To recover the regular Maschke theorem, we think about $q: \ast \to BG$, and $\mathscr{C} = \Vect_K$ so that $q^\ast: \Rep_{K[G]} \to \Vect_k$ is the forgetful functor. We have that
+\begin{align*}
+    q_!(V) &= K[G] \otimes V.
+\end{align*}
+So we have a counit map $K[G] \otimes V \to V$, which admits a section. This section is one way to phrase the classical Maschke theorem.
+
+\begin{customenvironment}{Cancellation theorem} If we have two functors $\mathscr{C} \xto{q^\ast} \mathscr{D} \xto{p^\ast} \mathscr{E}$. Suppose we know that
+\begin{enumerate}
+    \item $p^\ast$ is amenable
+    \item $q^\ast$ is weakly ambidextrous
+    \item $p^\ast q^\ast$ is iso-normed.
+\end{enumerate}
+Then $q^\ast$ is iso-normed.
+\end{customenvironment}
+\begin{proof} The norm $\Nm_{qp}$ is the composition
+\begin{align*}
+    q_! p_! \xto{\Nm_q p_!} q_\ast p_! \xto{q_\ast \Nm_p} q_\ast p_\ast.
+\end{align*}
+This is an isomorphism since $p^\ast q^\ast$ is iso-normed, and this last map is an isomorphism since $p^\ast$ is amenable. Then $\Nm_q p_!$ is an isomorphism by 2-out-of-3. But everything in $\mathscr{D}$ is a retract of something in $\im(p_!)$, so $\Nm_q$ is an isomorphism.
+\end{proof}
+
+\begin{proposition} Let $A \to E \xto{p} B$ be a fibration with $B$ connected and weakly ambidextrous, $A$ is $\mathscr{C}$-amenable, and suppose $E$ is $\mathscr{C}$-ambidextrous. Then $B$ is $\mathscr{C}$-ambidextrous.
+\end{proposition}
+\begin{proof} We have a pullback square
+\[ \begin{tikzcd}
+    A\rar\dar["h" left]\pb & E\dar["p" right]\\
+    \ast\rar & B.
+\end{tikzcd} \]
+By assumption, $h$ is amenable. It would suffice to show that $p$ is amenable, since we could take the following:
+\[ \begin{tikzcd}
+    A\rar\dar["h" left]\pb & E\dar["p" right]\ar[dr,"qp" above right]\\
+    \ast\rar["b" below] & B\rar["q" below] & \ast
+\end{tikzcd} \]
+Since $E$ is ambidextrous, we can apply the cancellation theorem to conclude that $B$ is $\mathscr{C}$-ambidextrous.
+
+We have that \[b^\ast |h|_X = |p|_{f^\ast X}.\] We know that $|h|_X$ is an isomorphism. Since $\pi_0(b)$ is surjective, we have that $b^\ast$ is conservative on local systems, in particular it reflects isomorphisms. Therefore $b^\ast |h|_X$ is an isomorphism.\footnote{The intuition for this proposition is that the norm map of $p$ is doing the norm map at each fiber separately. The fibers don't mix at all.}
+\end{proof}
+
+So we want to reduce to situations in which $E$ is $\mathscr{C}$-ambidextrous, and find fibers which we can compute are amenable, in order to conclude that the base $B$ is $\mathscr{C}$-ambidextrous.
+
+\subsection{Amenability in symmetric monoidal $\infty$-categories}
+
+It is a lot to check that the natural transformation $|A|$ is a natural isomorphism. In the symmetric monoidal setting, we can reduce this to a single thing, namely we only have to check it at the unit.
+
+\begin{lemma} If $\mathscr{C}$ is $m$-semiadditive and presentably symmetric monoidal, then an $m$-finite space $A$\footnote{Which is already $m$-ambidextrous since $\mathscr{C}$ is $m$-semiadditive.} is amenable if and only if $|A|_{1_\mathscr{C}} : 1_{\mathscr{C}} \to 1_{\mathscr{C}}$ is an isomorphism.
+\end{lemma}
+\begin{proof}[Proof sketch] We just show that $|A|_X \cong \id_X \otimes |A|_{1_\mathscr{C}}$, since $X \cong X \otimes 1$.
+\end{proof}
+
+What is the least work we can do to show that $A$ is amenable? We have to check that $|A|_{1_\mathscr{C}} \in R_\mathscr{C} = \Hom_\mathscr{C}(1_\mathscr{C}, 1_\mathscr{C})$ is invertible. Since $R_\mathscr{C}$ is $p$-local, then if $|A|_{1_\mathscr{C}}$ is rational in $R_\mathscr{C}$, it suffices to show that $v_p \left( |A| \right) = 0$. By repeatedly using $\delta$, we are going to lower the $p$-valuation until we reach a point where $v_p = 0$, so we get a unit and hence we have amenability.
+
+\begin{lemma} Suppose $\mathscr{C}$ is $m$-semiadditive, and it has all the restrictions from before. Suppose further that there exists some $A$ so that
+\begin{enumerate}
+    \item $A$ is $\mathscr{C}$-amenable
+    \item $\pi_m(A) \ne 0$
+    \item $A$ is $m$-finite.
+\end{enumerate}
+Then $\mathscr{C}$ is $(m+1)$-semiadditive.
+\end{lemma}
+\begin{proof} Songqi reduced to checking that $B^{m+1}C_p$ is $\mathscr{C}$-ambidextrous. Since $\pi_m(A) \ne 0$ and $A$ is a $p$-space, there exists a fibration
+\begin{align*}
+    B^m C_p \to A \tto E.
+\end{align*}
+So $E$ is like $A$ but we killed some copy of $C_p$ in $\pi_m(A)$. Since $A$ is a $p$-space, it is nilpotent, so we can change this to a new fibration of the form
+\begin{align*}
+    A \to E \xtto{p} B^{m+1}C_p.
+\end{align*}
+Since $A$ was $m$-finite, $E$ is still $m$-finite, and in particular it is $\mathscr{C}$-ambidextrous. In this fibration $A$ is amenable, $E$ is ambidextrous, and $B^{m+1}C_p$ is $(m+1)$-finite in an $m$-semiadditive category, and hence weakly ambidextrous. Therefore we can conclude that $B^{m+1} C_p$ is ambidextrous by the cancellation theorem. 
+\end{proof}
+
+\begin{proposition} Suppose that $\mathscr{C}$ is $m$-semiadditive for $m\ge 1$, and $h: R_\mathscr{C} \to S$ is a map of semi $\delta$-rings\footnote{Rings equipped with additive $p$-derivations.} that detects invertibility. If $h(|BC_p|)$ and $h(|B^mC_p|)$ are rational and nonzero, then $\mathscr{C}$ is $(m+1)$-semiadditive.\footnote{To relate this back to Songqi's talk, $\mathscr{C} = \Sp_{T(n)}$, and we have a map to $\mathscr{D} = \hat{\Mod}_{E_n}$, inducing $R_\mathscr{C} \to R_\mathscr{D}$. This functor factors as $\Sp_{T(n)} \to \Sp_{K(n)} \xto{(E_n \otimes -)^\wedge} \hat{\Mod}_{E_n}$.}
+\end{proposition}
+\begin{proof} Let $A$ be an $m$-finite space. We say it is $h$\textit{-good} if
+\begin{enumerate}
+    \item $h(|A|)$ is rational and nonzero
+    \item $\pi_m(A) \ne 0$.
+\end{enumerate}
+So in order to show that $\mathscr{C}$ is $(m+1)$-semiadditive, it suffices by the last lemma to find an $h$-good $A$ with $v(A) = v_p(h(|A|)) = 0$. Assume that $p$ is not invertible in $S$.
+
+\textbf{Claim}: If $A$ is $h$-good and $v(A) > 0$, then $A \wr C_p = \left( A^p \right)_{hC_p}$ is $h$-good and has the property that $h \left( A \wr C_p \right) = v(A) - 1$.
+
+To prove the claim, we compute\footnote{$|A|$ has no $C_p$ action, so we pull it out, and we are taking $|A|$ times $\int_{BC_p}1$. For the second term, there is a $C_p$-action, and the integration is exactly the wr product.}
+\begin{align*}
+    \delta \left( |A| \right) &= \int_{BC_p} |A| - \int_{BC_p} |A|^p \\
+    &= |A|\cdot|BC_p| - |A \wr C_p|.
+\end{align*}
+Therefore we have
+\begin{align*}
+    |A \wr C_p| = |A| \cdot |BC_p| - \delta \left( |A| \right).
+\end{align*}
+Taking valuations everywhere, we have that
+\begin{align*}
+    v \left( |A||BC_p| \right) \ge v(|A|),
+\end{align*}
+while $v(\delta(|A|)) = v(|A|) - 1$. This is because $|A|$ is rational and there is a unique $\delta$-valuation on the rationals, which drops the valuation by 1.
+\end{proof}
 
