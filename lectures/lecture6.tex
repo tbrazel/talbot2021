@@ -1,0 +1,185 @@
+\renewcommand{\thespeaker}{Songqi Han}
+\renewcommand{\thetitle}{The main theorem of ambidexterity}
+
+\section{\thetitle~(\thespeaker)}
+
+Tomer: $m$-good means $A$ is connected, $m$-truncated, $p$-finite, and $\pi_m(A) \ne 0$.
+
+
+\begin{theorem} The $T(n)$-local stable homotopy theory is $\infty$-semiadditive.
+\end{theorem}
+
+We will prove by induction that $\Sp_{T(n)}$ is $m$-semiadditive.
+
+The base case: $\Sp_{T(n)}$ is 1-semiadditive, proven by Kuhn.
+
+\begin{remark} We cannot start from $m=-2$ because some constructions are valid only for $m\ge -1$.
+\end{remark}
+
+For the inductive step, assume that $\Sp_{T(n)}$ is $m$-semiadditive. The goal is to show that for every $(m+1)$-finite space $B$, and diagram $F: B \to \Sp_{T(n)}$, we have that the norm map
+\begin{align*}
+    \Nm_B : \colim(F) \to \lim(F)
+\end{align*}
+exists and is invertible.
+
+\textbf{Step 1}: Reduction.
+
+For a fibration $Z \to Y \to X$ of truncated spaces, if both the fiber $Z$ and the base $X$ are $\mathscr{C}$-ambidextrous then $Y$ is $\mathscr{C}$-ambidextrous. This implies that we can apply the Postnikov decomposition of a space, and reduce to the case where $B$ is an Eilenberg--Maclane space $B = K(A,m+1)$.
+
+For every such $A\in \Ab$, we can fit it into a short exact sequence
+\begin{align*}
+    0 \to A' \to A \to A'' \to 0,
+\end{align*}
+so we can induct on the size of the group $A$. In particular we can decompose $A$ into cyclic groups, and reduce to the case $K(\Z/q, m+1)$. Since $\Sp_{T(n)}$ is $p$-local, we have that $q$ is invertible for $q\ne p$, so we can reduce to $K(\Z/p, m+1)$.
+
+\textbf{Step 2}: Resolve $B^{m+1} C_p$ with a fibration. The prototype is the natural one:
+\begin{align*}
+    B^m C_p \to \ast \to B^{m+1} C_p.
+\end{align*}
+This doesn't work completely, so some modification is needed.
+
+\begin{lemma} Let $A \to E \to B$ with $A$ and $E$ both $m$-finite spaces, and $B$ is $(m+1)$-finite. Suppose that multiplication by $|A|$ is a unit in $\pi_0 \mathbb{S}_{T(n)} ^\times$. Then $B$ is $\Sp_{T(n)}$-ambidextrous.
+\end{lemma}
+$|A| = \int_A 1$, the $A$-fold sum of 1.
+
+It suffices to find a fibration $A \to E \to B^{m+1} C_p$ where $A$ and $E$ are $m$-finite and $|A| \in \pi_0 \mathbb{S}_{T(n)} ^\times$. We want to take $E = BG_p$ to be the classifying space of the $p$-Sylow subgroup, and $B = BG$, so that $A$ is the classifying space of a group of order prime to $p$.
+
+\textbf{Step 3}: Drop $E$ and the fibration and only focus on $A$.
+
+\textbf{Observation}: Every $m$-good $A$ fits into a fibration $A \to E \to B$ with $E \in \mathbb{S}^{m-fin}$ an $m$-finite space.
+
+Reduces to finding an $m$-good $A$.
+
+\textbf{Step 4}: Linearization: transfer from $\Sp_{T(n)}$ to Morava $E$-theory. Let $E_n$ be the ring spectrum of the Morava $E$-theory of height $n$, and let $\hat{\Mod}_{E_n}$ be the $\infty$-category of $K(n)$-local $E_n$-modules. Then the functor
+\begin{align*}
+    L_{K(n)} \left( E_n \otimes - \right) : \Sp_{T(n)} \to \hat{\Mod}_{E_n}
+\end{align*}
+is symmetric monoidal, so it induces a $\CRing$ morphism of the unit
+\begin{align*}
+    f: \pi_0 \mathbb{S}_{T(n)} \to \pi_0 E_n \cong \Z_p [[u_1, \ldots, u_n]].
+\end{align*}
+With the nilpotence theorem and some chromatic techniques, we have that an element is invertible on the left hand side if and only if its image is invertible on the right hand side.
+
+So multiplication by $|A|$ lands in the units $\pi_0 \mathbb{S}_{T(n)} ^\times$ if and only if $f(|A|)$ lands in the units $\pi_0 E_n^\times$.
+
+Since $\hat{\Mod}_{E_n}$ is $m$-semiadditive, we have that $f(|A|) = f \int_A 1 = \int_A 1 = |A|$. So the problem reduces to finding $m$-good $A$ with $|A|$ invertible in $\pi_0 E_n$. We will see later why you can interchange $f$ with the integral.
+
+We also have that $\im(f)$ lands inside $\mathbb{Z}_p$, so for all $g\in \mathbb{Z}_p$ its invertibility can be detected b ythe evaluation map:
+\begin{align*}
+    y\in \mathbb{Z}_p^\times \iff v_p(y) = 0.
+\end{align*}
+
+So the condition that multiplication by $|A|$ is a unit can be rephrased to $v_p(|A|) = 0$.
+
+\textbf{Step 5}: Recall the Fermat quotient on $\mathbb{Z}_p$, of the form
+\begin{align*}
+    \widetilde{\delta}: x &\mapsto \frac{x - x^p}{p}.
+\end{align*}
+A lifting $\delta$ of $\widetilde{\delta}$ is constructed, so that $\left. \delta \right|_{ \mathbb{Z}_p } = \widetilde{\delta}$, so that $\delta$ is a map $\delta: \pi_0 E_n \to \pi_0 E_n$ satisfying the following property: for $m$-good $A$, we have that $\delta \left( |A| \right) = |A'| - |A''|$, where both $A'$ and $A''$ are $m$-good. Moreover, $\delta$ satisfies the property that $v_p(\delta(|A|)) < v_p(|A|)$ unless $|A| = 0 \in \mathbb{Z}_p$ or $|A| \in \mathbb{Z}_p^\times$. We also know that
+\begin{align*}
+    v_p \left( |A'| - |A''| \right) \ge \min \left\{ v_p |A'|, v_p |A''| \right\}.
+\end{align*}
+
+As long as there exists an $A$ which is $m$-good with $|A| \ne 0$, then $\min \left\{ v_p(|A|) \colon A\ m-\text{good} \right\} = 0$.
+
+It suffices to find any $A$ which is $m$-good with $|A| \ne 0$ in $\pi_0 \mathbb{E}_n$.
+
+\textbf{Step 6}: $A = B^m C_p$, but we don't yet know that $|B^m C_p| \ne 0$ in $\pi_0 E_n$. We know that $B^{m-1} C_p$ is a loop space, so we have that
+\begin{align*}
+    \left|B^m C_p \right|\left| B^{m-1} C_p \right| &=  \left| \Map(S^1, B^m C_p) \right| \\
+    &= \dim \left( E_n \otimes B^m C_p \right),
+\end{align*}
+where $E_n \otimes B^m C_p$ is the module defined by the constant map $\colim_{B^m C_p} \underline{E_n}$. We know that this dimensino is equal to the mod-2 Euler characteristic $\chi_n \left( B^m C_p \right)$. This can be computed as
+\begin{align*}
+    \dim_{\mathbb{F}_p} K(n)_0 \left( B^m C_p \right) - \dim_{\mathbb{F}_p} K(n)_1 \left( B^m C_p \right).
+\end{align*}
+We know this latter term is zero, and the first term is nonzero, so we have that $|B^m C_p| \ne 0$.
+
+\subsection{Properties of integrations}
+
+\begin{definition} Let $q^\ast: \mathscr{C} \to \mathscr{D}$ be a functor. We say it is a \textit{normed functor} if both $q_!$, and $q_\ast$ exist, and we have $\Nm_q : q_! \to q_\ast$. We say it is \textit{iso-normed} if $\Nm_q$ is an isomorphism
+\end{definition}
+
+
+\begin{definition} Let $q$ be a normed functor. Then we define \textit{integration} as follows: for every $X,Y \in \mathscr{C}$, we have
+\begin{align*}
+    \int_q : \Map \left( q^\ast X, q^\ast Y \right) &\to \Map(X,Y),
+\end{align*}
+defined as the composition
+\begin{align*}
+    \Map \left( q^\ast X, q^\ast Y \right) \xto{q_\ast} \Map \left( q_\ast q^\ast X, q_\ast q^\ast Y \right) \xfrom{\Nm_q} \Map \left( q_\ast q^\ast X, q_! q^\ast Y \right) \xto{c\circ - \circ u} \Map (X,Y).
+\end{align*}
+\end{definition}
+
+We will study a pair of normed functors $q^\ast$ and $\til{q}^\ast$ that behave well with respect to integration.
+
+\textbf{Question}:Given a commutative diagram up to homotopy
+\[ \begin{tikzcd}
+    \mathscr{C}\rar["F"]\dar["q^\ast" left] & \widetilde{\mathscr{C}}\dar["\til{q}^\ast" right]\\
+    \mathscr{D}\rar["G"] & \widetilde{\mathscr{D}},
+\end{tikzcd} \]
+when are $\int_q$ and $\int_{\til{q}}$ related with respect to $F,G$?
+
+We can use Beck--Chevalley to get
+\[ \begin{tikzcd}
+    {\til{q}_! G} \rar\dar["{\Nm_{\til{q}}}"] & {F q_!}\dar["{\Nm_q}"]\\
+    {\til{q}_\ast G} & {Fq_\ast}\lar \\
+\end{tikzcd} \]
+The diagram commutes if and only if AmbSq ??
+
+\begin{theorem} AmbSq and BC and $BC_\ast$ implies that
+\begin{align*}
+    F \left( \int_q f \right) = \int_{\til{q}} Gf
+\end{align*}
+for $X,Y \in \mathscr{C}$ and $f: q^\ast X \to q^\ast Y$.
+\end{theorem}
+
+\begin{example}\label{ex:labelname} A pullback diagram of spaces
+\[ \begin{tikzcd}
+    \til{A}\rar\dar\pb & A\dar\\
+    \til{B}\rar & B\\
+\end{tikzcd} \]
+induces a base change square
+\[ \begin{tikzcd}
+    \mathscr{C}^B\rar\dar["{q^\ast}" left] & \mathscr{C}^{\til{B}}\dar["{\til{q}^\ast}"]\\
+    \mathscr{C}^A\rar & \mathscr{C}^{\til{A}}.
+\end{tikzcd} \]
+\begin{enumerate}
+    \item If $q,\til{q}$ are $\mathscr{C}$-ambidextrous, then $q^\ast$ and $\til{q}^\ast$ are isonormed
+    \item ???
+\end{enumerate}
+\end{example}
+
+\begin{corollary} (Distributivity) Assume that we have two maps $q_1 : A_1 \to B$ and $q_2 : A_2 \to B$ which ar eboth $\mathscr{C}$-ambidextrous. Then $q: A_1 \times_B A_2 \to B$ is $\mathscr{C}$-ambidextrous, and
+\begin{align*}
+    \int_q \pi_2^\ast f_2 \circ \pi_1^\ast f_1 = \int_{q_2} f_2 \circ \int_{q_1} f_1,
+\end{align*}
+for any $f_i : q_i^\ast X \to q_i^\ast Y$.
+\end{corollary}
+
+\begin{corollary} (Additivity) Let $\mathscr{C}$ be 0-semiadditive, and we have finitely many $q_i : A_i \to B$. Then if all the $q_i$'s are $\mathscr{C}$-ambidextrous, then the induced map
+\begin{align*}
+    q = \amalg q_i: \amalg_i A_i \to B
+\end{align*}
+is also $\mathscr{C}$-ambidextrous, and
+\begin{align*}
+    \int_q \amalg_i f_i = \sum_i \int_{q_i} f_i.
+\end{align*}
+\end{corollary}
+\begin{proof} We can reduce to $k=2$, and 0-semiadditivity is used to imply that the fold map $\nabla: B \amalg B \to B$ is $\mathscr{C}$-ambidextrous.
+\end{proof}
+
+Let $F: \mathscr{C} \to \mathscr{D}$, and $q: A \to B$. Then
+\[ \begin{tikzcd}
+    \mathscr{C}^A\rar["F_\ast"]\dar["q^\ast"] & \mathscr{D}^B\dar["q^\ast"]\\
+    \mathscr{C}^A\rar["F_\ast"] & \mathscr{D}^A. 
+\end{tikzcd} \]
+\begin{enumerate}
+    \item If $q$ is $\mathscr{C}$- and $\mathscr{D}$-ambidextrous then $q^\ast$ is iso-normed
+    \item If $\mathscr{C},\mathscr{D},F$ compatible with $q$-(co)limits, then $BC_!$ and $BC_\ast$
+    \item If $q$ is both $\mathscr{C}$-amb and $\mathscr{D}-$amb and $F$ preserves $(m+1)$-colimits, then AmbSq
+    \item If both 2 and 3 then $F \int_q f = \int_q Ff$.
+    \item If $\mathscr{C}, \mathscr{D}$ are $m$-semiadditive, and $q$ is $m$-finite, then $F$ preserves $m$-finite colimits. Then for such an $f$ we will call it $m$-semiadditive.
+\end{enumerate}
+
+

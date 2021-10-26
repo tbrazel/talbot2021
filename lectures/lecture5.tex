@@ -1,0 +1,738 @@
+\renewcommand{\thespeaker}{Kaif Hilman}
+\renewcommand{\thetitle}{Higher semiadditivity as span-modules}
+
+\section{\thetitle~(\thespeaker)}
+
+
+
+\providecommand{\verticalPullback}{\mathbin{\rotatebox[origin=c]{-45}{$\lrcorner$}}}
+\providecommand{\semiadditivites}{\text{SAdd}}
+\providecommand{\removeTop}{_{\text{p}}}
+\providecommand{\starCategory}{\text{St}}
+\providecommand{\Qcons}{\text{Q}}
+\providecommand{\fibfunc}{\underline{\text{fun}}}
+\providecommand{\Tlexact}{^{\underline{\text{lex}}}}
+\providecommand{\Trexact}{^{\underline{\text{rex}}}}
+\providecommand{\vop}{^{\text{vop}}}
+\providecommand{\Tperfect}{^{\underline{\text{perf}}}}
+\providecommand{\Tstable}{\text{T-st}}
+\providecommand{\stable}{\text{st}}
+\providecommand{\kapColim}{^{(\kappa)}}
+\providecommand{\filtered}{^{\text{filt}}}
+\providecommand{\fibrewise}{^{\text{fb-}}}
+\providecommand{\lexact}{^{\text{lex}}}
+\providecommand{\rexact}{^{\text{rex}}}
+\providecommand{\opds}{\text{Opds}}
+\providecommand{\operad}{\mathcal{O}}
+\providecommand{\Nil}{\text{Nil}}
+\providecommand{\covar}{_{\star}}
+\providecommand{\semiadd}{^{\text{sadd}}}
+\providecommand{\linear}{\text{Lin}}
+\providecommand{\inert}{^{\text{inert}}}
+\providecommand{\dayconv}{\text{Day}}
+\providecommand{\finstar}{\text{Fin}_*}
+\providecommand{\GW}{\operatorname{GW}}
+\providecommand{\free}{^{\text{free}}}
+\providecommand{\accessible}{{\text{Acc}}}
+\providecommand{\leftfib}{^{\text{left}}}
+\providecommand{\primeIdeal}{\mathfrak{p}}
+\providecommand{\localising}{\operatorname{Loc}}
+\providecommand{\bord}{\operatorname{bord}}
+\providecommand{\orbital}{\text{Orbit}}
+\providecommand{\LTheory}{\mathcal{L}}
+\providecommand{\hyperbolise}{^{\text{hyp}}}
+\providecommand{\bordify}{^{\text{bord}}}
+\providecommand{\cobspectrum}{\mathbb{C}\operatorname{ob}}
+\providecommand{\cgroup}{\text{CGrp}}
+\providecommand{\cmonoid}{\text{CMon}}
+\providecommand{\surgery}{\operatorname{Surg}}
+\providecommand{\completeSegalAnima}{\operatorname{CSAn}}
+\providecommand{\asscat}{\operatorname{asscat}}
+\providecommand{\posets}{\operatorname{Posets}}
+\providecommand{\bcyl}{\operatorname{bcyl}}
+\providecommand{\sequence}{\operatorname{Seq}}
+\providecommand{\pair}{\operatorname{Pair}}
+\providecommand{\grothWitt}{\mathcal{GW}}
+\providecommand{\biadjoint}{^{\text{bi}}}
+\providecommand{\GW}{\operatorname{GW}}
+\providecommand{\canonical}{\text{can}}
+\providecommand{\semiMackey}{\operatorname{sMack}}
+\providecommand{\forget}{\text{fgt}}
+\providecommand{\genuineHyperbolic}{\operatorname{gHyp}}
+\providecommand{\polynomial}{\text{poly}}
+\providecommand{\operads}{\text{Opds}}
+\providecommand{\forms}{\operatorname{Fm}}
+\providecommand{\lax}{^{\text{lax}}}
+\providecommand{\poincare}{\operatorname{Pn}}
+\providecommand{\hermitian}{\operatorname{He}}
+\providecommand{\hyperbolic}{\operatorname{hyp}}
+\providecommand{\metabolic}{\operatorname{met}}
+\providecommand{\bighyperbolic}{\operatorname{Hyp}}
+\providecommand{\bigmetabolic}{\operatorname{Met}}
+\providecommand{\lagrangian}{\operatorname{lag}}
+\providecommand{\rfunc}{\operatorname{RFun}}
+\providecommand{\lfunc}{\operatorname{LFun}}
+\providecommand{\core}{\operatorname{Cr}}
+\providecommand{\simplex}{\mathbb{\Delta}}
+\providecommand{\inclusion}{\text{incl}}
+\providecommand{\eval}{\text{ev}}
+\providecommand{\norm}{\operatorname{Nm}}
+\providecommand{\Coppa}{\text{\Qoppa}}
+\providecommand{\reduce}{^{\text{red}}}
+\providecommand{\bireduced}{\operatorname{BiFun}}
+\providecommand{\injective}{\operatorname{ inj}}
+\providecommand{\allmaps}{\operatorname{ all}}
+\providecommand{\fingpd}{\operatorname{ FinGpd}}
+\providecommand{\ingressive}{_{\text{in}}}
+\providecommand{\R}{\mathcal{R}}
+\providecommand{\egressive}{^{\text{eg}}}
+\providecommand{\adtrip}{\operatorname{AdTrip}}
+\providecommand{\thh}{\text{THH}}
+\providecommand{\decalage}{\text{dec}}
+\providecommand{\stab}{\text{Stab}}
+\providecommand{\perfect}{^{\text{perf}}}
+\providecommand{\retract}{\text{Ret}}
+\providecommand{\E}{\mathcal{E}}
+\providecommand{\grp}{\text{Grp}}
+\providecommand{\idem}{\text{Idem}}
+\providecommand{\constant}{\operatorname{const}}
+\providecommand{\cat}{\text{Cat}}
+\providecommand{\monoid}{\text{Mon}}
+\providecommand{\Einf}{\mathbb{E}_{\infty}}
+\providecommand{\presentable}{\text{Pr}}
+\providecommand{\motive}{\text{Mot}}
+\providecommand{\motives}{\text{Mot}}
+\providecommand{\J}{\mathcal{J}}
+\providecommand{\I}{\mathcal{I}}
+\providecommand{\pro}{\text{Pro}}
+\providecommand{\redReg}{\widetilde{\rho}}
+\providecommand{\orbitFam}{O_{\family}(G)}
+\providecommand{\nilp}{\text{Nil}}
+\providecommand{\maxideal}{\mathfrak{m}}
+\providecommand{\L}{\mathcal{L}}
+\providecommand{\A}{\mathcal{A}}
+\providecommand{\nullCat}{\text{Null}}
+\providecommand{\B}{\mathcal{B}}
+\providecommand{\testcohom}{\mathcal{K}}
+\providecommand{\op}{^{\operatorname{op}}}
+\providecommand{\arrowcat}{\text{Ar}}
+\providecommand{\cohom}{\mathcal{E}}
+\providecommand{\abel}{\mathcal{A}}
+\providecommand{\proper}{\mathcal{P}}
+\providecommand{\mapsp}{\text{map}}
+\providecommand{\sphere}{\mathbb{S}}
+\providecommand{\thom}{\text{Th}}
+\providecommand{\sets}{\text{Set}}
+\providecommand{\picG}{\underline{\frak{pic}}}
+\providecommand{\homology}{\operatorname{Hlgy}}
+\providecommand{\straighten}{\text{Str}}
+\providecommand{\invertMotive}{\mathcal{M}}
+\providecommand{\unstraighten}{\text{UnStr}}
+\providecommand{\cartesian}{^{\text{cart}}}
+\providecommand{\cocartesian}{^{\text{cocart}}}
+\providecommand{\isotropic}{\mathcal{L}}
+\providecommand{\perf}{\text{perf}}
+\providecommand{\test}{\text{Test}}
+\providecommand{\sph}{\text{Sph}}
+\providecommand{\power}{\mathbb{P}}
+\providecommand{\G}{\mathcal{G}}
+\providecommand{\N}{\mathcal{N}}
+\providecommand{\trivialFamily}{\mathcal{T}}
+\providecommand{\T}{\mathcal{T}}
+\providecommand{\M}{\mathcal{M}}
+\providecommand{\strat}{\frak{S}}
+\providecommand{\Z}{\mathcal{Z}}
+\providecommand{\U}{\mathcal{U}}
+\providecommand{\slice}{\text{Slice}}
+\providecommand{\heart}{\text{\Heart}}
+\providecommand{\tfamily}{\tilde{\family}}
+\providecommand{\K}{\mathcal{K}}
+\providecommand{\coind}{\text{Coind}}
+\providecommand{\mackey}{\text{Mack}}
+\providecommand{\presheaf}{\mathcal{P}}
+\providecommand{\orbit}{\mathcal{O}}
+\providecommand{\trivial}{\text{triv}}
+\providecommand{\poset}{\mathcal{P}}
+\providecommand{\annihilate}{\text{Ann}}
+\providecommand{\sdot}{\text{\textit{S}}_{\bullet}}
+\providecommand{\nattrans}{\text{Nat}}
+\providecommand{\galois}{\mathcal{G}al}
+\providecommand{\gap}{\text{Gap}}
+\providecommand{\trace}{\text{tr}}
+\providecommand{\add}{^{\text{add}}}
+\providecommand{\loc}{_{\text{loc}}}
+\providecommand{\chern}{\text{ch}}
+\providecommand{\cring}{\text{CRing}}
+\providecommand{\vect}{\mbox{Vect}}
+\providecommand{\spectra}{\text{Sp}}
+\providecommand{\all}{\text{all}}
+\providecommand{\fcov}{\mbox{fcov}}
+\providecommand{\finite}{\text{Fin}}
+\providecommand{\effBurn}{\text{Span}}
+\providecommand{\projective}{\operatorname{Proj}}
+\providecommand{\aut}{\mbox{Aut}}
+\providecommand\redsout{\bgroup\markoverwith{\textcolor{red}{\rule[0.5ex]{2pt}{0.4pt}}}\ULon}
+\providecommand{\cobordism}{\operatorname{Cob}}
+\providecommand{\M}{\mathcal{M}}
+\providecommand{\ind}{\text{Ind}}
+\providecommand{\res}{\text{Res}}
+\providecommand{\Pk}{P^{\infty}_k}
+\providecommand{\mod}{\text{mod }\:}
+\providecommand{\triv}{\text{triv}}
+\providecommand{\ex}{\mbox{Ext}}
+\providecommand{\tor}{\mbox{Tor}}
+\providecommand{\ext}{\mbox{Ext}}
+\providecommand{\ger}{\mathbb{F}_p}
+\providecommand{\zp}{\mathbb{Z}_p}
+\providecommand{\im}{\mbox{Im}}
+\providecommand{\id}{\text{id}}
+\providecommand{\s}{\Sigma}
+\providecommand{\fp}{\mathbb{F}_p^{\bullet} }
+\providecommand{\map}{\text{Map}}
+\providecommand{\rpi}{\mathbb{R}\mathbb{P}^{\infty}}
+\providecommand{\cofib}{\operatorname{cof}}
+\providecommand{\rp}{\mathbb{R}\mathbb{P}}
+\providecommand{\hhom}{\mbox{Hom}}
+\providecommand{\K}{_{\mathcal{K}}}
+\providecommand{\U}{_{\mathcal{U}}}
+\providecommand{\gp}{^{\text{gp}}}
+\providecommand{\alg}{\mathscr{G}}
+\providecommand{\ali}{I\mathscr{G}}
+\providecommand{\F}{\mathcal{F}}
+\providecommand{\P}{\mathscr{P}}
+\providecommand{\tE}{\tilde{E}}
+\providecommand{\augCompl}{{}^{\wedge}_{I}}
+\providecommand{\dual}{^{\vee}}
+\providecommand{\borel}{\text{Bor}}
+\providecommand{\coborel}{\text{coBor}}
+\providecommand{\x}{\mathcal{X}}
+\providecommand{\fgmod}{\mathfrak{mod}}
+\providecommand{\stmod}{\text{StMod}}
+\providecommand{\exact}{^{\text{ex}}}
+\providecommand{\nmot}{\text{NMot}}
+\providecommand{\Z}{\mathcal{Z}}
+
+\providecommand{\LL}{\mathcal{L}}
+\providecommand{\M}{\mathcal{M}}
+\providecommand{\N}{\mathcal{N}}
+\providecommand{\rad}{\mbox{rad}}
+\providecommand{\End}{\mbox{End}}
+\providecommand{\c}{\mathcal{C}}
+\providecommand{\coker}{\mbox{coker}}
+\providecommand{\proj}{\mbox{proj}}
+\providecommand{\lhom}{\underline{\hhom}}
+\providecommand{\C}{\mathcal{C}}
+\providecommand{\class}{\mbox{class}}
+\providecommand{\charac}{\mbox{char}}
+\providecommand{\triang}{\mathscr{K}}
+\providecommand{\cent}{\mathcal{C}}
+\providecommand{\pic}{\frak{pic}}
+\providecommand{\PIC}{\mbox{Pic}}
+\providecommand{\Pic}{\mathcal{P}ic}
+\providecommand{\func}{\text{Fun}}
+\providecommand{\family}{\mathcal{F}}
+\providecommand{\module}{\text{Mod}}
+\providecommand{\unit}{\mathbb{1}}
+\providecommand{\Alg}{\mbox{Alg}}
+\providecommand{\fib}{\mbox{fib}}
+\providecommand{\dual}{\mathbb{D}}
+\providecommand{\calg}{\text{CAlg}}
+\providecommand{\catinf}{\text{Cat}_{\infty}}
+\providecommand{\bigcatinf}{\widehat{\text{Cat}}_{\infty}}
+\providecommand{\fin}{\text{fin}}
+\providecommand{\sset}{\text{Set}_{\Delta}}
+
+\providecommand{\Endo}{\text{End}}
+\providecommand{\aug}{\hat{_I}}
+\providecommand{\hookdoubleheadrightarrow}{%
+  \hookrightarrow\mathrel{\mspace{-15mu}}\rightarrow
+}
+\providecommand{\sym}{\text{Sym}}
+\providecommand{\linf}{_{\infty}}
+\providecommand{\tot}{\mbox{Tot}}
+\providecommand{\rep}{\mbox{Rep}}
+\providecommand{\hcp}{_{hC_p}}
+\providecommand{\unstable}{^{\text{Un}}}
+\providecommand{\twistedArrow}{\operatorname{TwAr}}
+
+\providecommand{\span}{\operatorname{Span}}
+\providecommand{\pcompl}{{}^{\wedge}_p}
+\providecommand{\lam}{\Lambda}
+\providecommand{\spc}{\mathcal{S}}
+\providecommand{\F}{\mathcal{F}}
+\providecommand{\tk}{\tilde{k}}
+\providecommand{\hk}{\widehat{\cohom}}
+\providecommand{\compl}{\mathbb{L}_p}
+\providecommand{\locp}{\mathbb{L}_{(p)}}
+\providecommand{\loops}{\Omega^{\infty}}
+\providecommand{\susps}{\Sigma^{\infty}}
+\providecommand{\T}{\tilde{\theta}}
+\providecommand{\cco}{\hat{C}_0}
+\providecommand{\co}{C_0}
+\providecommand{\cone}{\text{Cone}}
+\providecommand{\tA}{\widetilde{A}}
+\providecommand{\D}{\mathcal{D}}
+\providecommand{\cyl}{\operatorname{cyl}}
+
+
+\def\colim{\qopname\relax m{colim}}
+\def\rlim{\qopname\relax m{R^1lim}}
+\def\holim{\qopname\relax m{holim}}
+\def\hocolim{\qopname\relax m{hocolim}}
+
+
+
+
+\subsection{Introduction}
+In \cite{segalCatCohom} Segal showed that the structure of commutative monoids in an arbitrary category $\C$ with finite products can be cleanly encoded as product-preserving functors $\finite_*\rightarrow \C$ where $\finite_*$ is the 1-category of finite pointed sets. Moreover, if we write $\cmonoid(\C) := \func^{\times}(\finite_*, \C)$ for the category of commutative monoids, it turns out that if $\C$ were presentable, then $\cmonoid(\C)$ is the free semiadditive category generated by $\C$. It would be desirable to show that something similar holds for \textit{higher semiadditivity}.\\
+
+
+To this end, observe that $\finite_*$ can also be thought of as a category of \textit{spans} whose objects are finite sets and a morphism from $X$ to $Y$ is a span
+\[X \leftarrowtail Z \rightarrow Y\] where $X\leftarrowtail Z$ is injective. Hence, it is natural to expect that the span construction might be fruitful in encoding the notion of higher semiadditivity. And indeed, this was what was worked out in \cite{harpazAmbidex} and we will try to explain some of the highlights from the paper in this note. As a guide to the reader, in \hyperref[sec:Spans]{$\S2$} we will introduce the basic notion of spans of finite spaces; \hyperref[sec:Semiadditivity]{$\S3$} will define the notion of higher semiadditivity and formulate the universal property of these spans; finally, the punchlines of this note will appear in \hyperref[sec:FormalConsequences]{$\S4$}, where we will see that formal consequences of the results in \hyperref[sec:Semiadditivity]{$\S3$} include: (1) the fact that we can view the property of being higher semiadditive equivalently as being a module over the spans introduced in \hyperref[sec:Spans]{$\S2$}, and (2) that for presentable categories, we have a Segal-style method of producing higher semiadditive categories.
+
+
+
+\subsection{Spans of $\pi$-finite spaces}\label{sec:Spans}
+\subsubsection{Basic definitions}
+\begin{definition}[Truncatedness and $\pi$-finiteness, \cite{harpazAmbidex} 2.5-2.6]
+Let $X, Y$ be spaces and $n \geq -2$. Then we say that:
+\begin{itemize}
+    \item If $n\geq 0$, $X$ is $n$\textit{-truncated} if $\pi_i(X,x) =0$ for every $i >n$ and every $x\in X$.
+    \item If $n = -1$, then $X$ is $(-1)$\textit{-truncated} if it is either empty or contractible.
+    \item If $n= -2$, then $X$ is $(-2)$\textit{-truncated} if it is contractible.
+    \item A map $f : X \rightarrow Y$ is $n$\textit{-truncated} if $\fib(f, y)$ is $n$-truncated for all $y \in Y$.
+\end{itemize}
+We say that $X$ is $\pi$\textit{-finite} if it is $n$-truncated for some $n$ and all its homotopy groups/sets are finite. If we want to specify the $n$-truncatedness, we will also say that a space is $\pi$-$n$\textit{-finite}.
+\end{definition}
+
+\begin{observation}
+A map is $(-1)$-truncated if it is an inclusion of path components, and it is $(-2)$-truncated if it is an equivalence.
+\end{observation}
+
+\begin{notation}
+Let $\K_n = \text{Ho}({\mathcal{S}_n}^{\simeq})$ be the set of representatives of all $\pi$-finite $n$-truncated spaces. We will be thinking of this as the set of indexing diagrams whose colimits we will be interested in.
+\end{notation}
+
+\begin{construction}[Spans, \cite{harpazAmbidex} $\S2.1$, \cite{barwick1}]
+Let $\C^{\dagger} \subset \C$ be a wide subcategory whose morphisms are closed under pullbacks. Then we can construct a new $(\infty, 1)$-category $\effBurn(\C, \C^{\dagger})$ called \textit{the category of spans} whose objects are objects of $\C$ and for $X, Y \in \C$, morphisms $X \rightarrow Y$ in $\effBurn(\C, \C^{\dagger})$ are spans $X \leftarrow Z \rightarrow Y$ where $X \leftarrow Z$ is in $\C^{\dagger}$ and compositions of morphisms are given by taking pullbacks.
+\end{construction}
+
+\begin{fact}[Mapping spaces of spans, \cite{harpazAmbidex} 2.4]\label{mappingSpacesOfSpans}
+For $X, Y \in \C$, we have that $\map_{\effBurn(\C,\C^{\dagger})}(X, Y)$ is given by the subspace of $(\C_{/X\times Y})^{\simeq}$ on those spans $X \leftarrow Z \rightarrow Y$ such that $X\leftarrow Z$ is in $\C^{\dagger}$.
+\end{fact}
+
+The following will be the main object of study in this notes.
+\begin{definition}
+Let $n \geq -2$ and $m\leq n$. Then we write:
+\begin{itemize}
+    \item ${\mathcal{S}_n} \subseteq \spc$ be the full subcategory of $\pi$-finite $n$-truncated spaces.
+    \item $\spc_{n,m} \subseteq {\mathcal{S}_n}$ be the non-full wide subcategory whose mapping spaces are spanned by $m$-truncated maps. 
+\end{itemize}
+Given these notations, we define
+$\spc^m_n := \effBurn({\mathcal{S}_n}, \spc_{n,m})$.
+\end{definition}
+
+\begin{observation}\label{basicObservations}
+Since $(-2)$-truncatedness of a map is the same as being an equivalence, we see that $\spc_{n,-2} \simeq {\mathcal{S}_n}^{\simeq}$ so that $\spc^{-2}_n \simeq {\mathcal{S}_n}$.
+\end{observation}
+
+\begin{observation}
+The inclusion $\spc^m_{n-1}\hookrightarrow \spc^m_n$ is fully faithful. This is because $m\leq n$, and so if $f : Z \rightarrow X$ is $m$-truncated and $X$ was $(n-1)$-truncated, then $Z$ is $(n-1)$-truncated as well. 
+\end{observation}
+
+\begin{observation}
+$(\spc^m_n)^{\simeq} \subseteq ({\mathcal{S}_n})^{\simeq} \subseteq {\mathcal{S}_n}$.
+\end{observation}
+
+
+
+
+\subsubsection{Colimits in spans}
+
+Here is an important lemma to check preservation of $\K_n$-colimits out of ${\mathcal{S}_n}$: the upshot is that in this special case it can be checked just on the constant diagrams.
+
+\begin{lemma}[\cite{harpazAmbidex} 2.11]\label{harpaz2.11}
+Let $\D$ admit $\K_n$-colimits and $F : {\mathcal{S}_n} \rightarrow \D$ be a functor. Then $F$ preserves $\K_n$-colimits iff it preserves those which are constant at $\ast\in {\mathcal{S}_n}$.
+\end{lemma}
+\begin{proof}
+The only if direction is immediate. To see the reverse, we use the satisfying classical trick of using the Grothendieck construction to compute colimits in spaces. Let $Y \in \K_n$ and $\G : Y \rightarrow {\mathcal{S}_n}$ be a $Y$-indexed diagram. Unstraightening we obtain a left fibration $p_{\G} : Z \rightarrow Y$ which in particular implies that $Z$ is also a space so that we obtain a fibre sequence of spaces
+$W \rightarrow Z \rightarrow Y$ where by construction $W$ was $\pi$-$n$-finite. The upshot of this paragraph is that since $Y$ was $\pi$-$n$-finite also by hypothesis, we see that $Z$ must be too so we can consider $Z$ as living in ${\mathcal{S}_n}$.\\
+
+Here's the fun part: for each $y \in Y$, the space $\G(y)\in{\mathcal{S}_n}$ is the colimit of the $\G(y)$-indexed constant diagram with value $\ast$ so that by the pointwise left Kan extension formula we see that $\G \simeq p_!\constant_{\ast}$. In particular, this means that 
+\begin{equation}\label{colimitReplacement}
+    \colim(Z \xrightarrow{\constant_{\ast}} {\mathcal{S}_n}) \simeq \colim(Y \xrightarrow{\G} {\mathcal{S}_n})
+\end{equation}
+To summarise, we now have the diagram
+\begin{center}
+    \begin{tikzcd}
+     Z \dar["p"'] \ar[drr, "\constant_{\ast}"]\\
+     Y \ar[rr, "\G \simeq p_!\constant_{\ast}"'] && {\mathcal{S}_n} \rar["F"'] & \D
+    \end{tikzcd}
+\end{center}
+Again, by the pointwise left Kan extension formula, we see that $\G \simeq p_!\ast$ was computed pointwise as $\K_n$-space-indexed diagrams with constant value $\ast$. Hence, since $F$ preserved these by hypothesis, we see that $F\circ \G \simeq p_!(F\constant_{\ast})$. Therefore we obtain 
+\begin{equation*}
+    \begin{split}
+        \colim_YF\circ\G &:= \colim(Y \xrightarrow{F\circ \G} \D)\\
+        &\simeq \colim(Z \xrightarrow{F \constant_{\ast}} \D)\\
+        &\simeq F\colim(Z \xrightarrow{\constant_{\ast}} \D)\\
+        & \simeq F\colim_Y\G
+    \end{split}
+\end{equation*}
+where the penultimate line is by our assumption on $F$ and the last line is by (\ref{colimitReplacement}).
+\end{proof}
+
+
+\begin{lemma}[\cite{harpazAmbidex} 2.12]\label{harpaz2.12}
+For every $-2\leq m\leq n$ the inclusion $j : {\mathcal{S}_n} \hookrightarrow \spc^m_n$ preserves $\K_n$-colimits.
+\end{lemma}
+\begin{proof}
+By the criterion (\ref{harpaz2.11}) we need to show that for each $X \in {\mathcal{S}_n}$, $$X \simeq \colim(X \xrightarrow{\constant_{\ast}}\spc^m_n) \in \spc^m_n$$ In other words, by Yoneda we need to show that for all $Y\in \spc^m_n$, the map
+\[\map_{\spc^m_n}(X, Y) \longrightarrow \lim_X\map_{\spc^m_n}(\constant_{\ast}, Y) \simeq \map_{\spc}(X, \map_{\spc^m_n}\big(\ast, Y)\big)\] is an equivalence. Here the second equivalence is by the usual formula for limits of constant diagrams in spaces (in our case, with value $\map_{\spc^m_n}\big(\ast, Y)$). Now by (\ref{mappingSpacesOfSpans}) we know that 
+\[\map_{\spc^m_n}(X, Y) \simeq ({\mathcal{S}_n}_{/X_m\times Y})^{\simeq}\quad \text{  and  } \quad \map_{\spc^m_n}(\ast, Y) \simeq ({\mathcal{S}_n}_{/\ast_m\times Y})^{\simeq}\] where the subscript $m$ in ${\mathcal{S}_n}_{/X_m\times Y}$ for example denotes the full subcategory of ${\mathcal{S}_n}_{/X\times Y}$ spanned by those maps $Z \rightarrow X\times Y$ such that $Z\rightarrow X\times Y \xrightarrow{\pi_X} X$ is $m$-truncated. But then since $X$ was already $n$-truncated and $m\leq n$, any space with an $m$-truncated map to $X$ must itself have been $n$-truncated, and so in fact $${\mathcal{S}_n}_{/X_m\times Y} \simeq \spc_{/X_m\times Y}$$ By a similar reasoning, we see that 
+\[{\mathcal{S}_n}_{/\ast_m\times Y} \simeq {\mathcal{S}_m}_{/Y}\] Now the straightening-unstraightening equivalence gives
+\[\spc_{/X\times Y} \xrightarrow{\simeq} \func(X\times Y, \spc) \xrightarrow{\simeq} \func(X, \func(Y,\spc))\] which on objects is given by
+$\big(q : Z \rightarrow X\times Y\big)\mapsto \big( x \mapsto (y \mapsto q^{-1}(x,y))\big)$. Applying core groupoid everywhere we obtain an equivalence
+\[(\spc_{/X\times Y})^{\simeq} \xrightarrow{\simeq} \map(X, \map(Y ,\spc^{\simeq}))\]
+Writing $\map_m(Y, \spc^{\simeq})$ for the components of $\map(Y, \spc^{\simeq})$ such that taking colimits produce $m$-$\pi$-finite spaces, we see clearly that the preceding equivalence restricts to an equivalence
+\[(\spc_{/X_m\times Y})^{\simeq} \xrightarrow{\simeq} \map(X, \map_m(Y, \spc^{\simeq}))\]
+On the other hand, $\map_m(Y, \spc^{\simeq}) \simeq ({\mathcal{S}_m}_{/Y})^{\simeq}$, and so we're done.
+\end{proof}
+
+\begin{corollary}[\cite{harpazAmbidex} 2.16]\label{harpaz2.16}
+A functor $F : \spc^m_n \rightarrow \D $ preserves $\K_n$-colimits iff the restriction $F : {\mathcal{S}_n} \hookrightarrow \spc^m_n \rightarrow \D$ preserves $\K_n$-colimits.
+\end{corollary}
+\begin{proof}
+By (\ref{harpaz2.12}) the only if direction is clear. To obtain the reverse direction, note that since objects of $\K_n$ are groupoids, by the observation (\ref{basicObservations})(3) we see that $\K_n$-diagrams in $\spc^m_n$ in fact land in ${\mathcal{S}_n}$, and the hypothesis implies the desired statement.
+\end{proof}
+
+\subsubsection{Spans as commutative algebras}
+
+\begin{construction}[Symmetric monoidality of $\spc^m_n$] 
+It is standard that span categories inherit the symmetric monoidal structure on the original category, and so the cartesian symmetric monoidal structure on ${\mathcal{S}_n}$ induces a symmetric monoidal structure on $\spc^m_n$ given by taking products of spaces. Note however that this is \textit{no longer} a cartesian symmetric monoidal structure on $\spc^m_n$.
+\end{construction}
+
+\begin{proposition}[\cite{harpazAmbidex}, 2.17]\label{harpaz2.17}
+The symmetric monoidal product $\spc^m_n\times \spc^m_n\rightarrow \spc^m_n$ preserves $\K_n$-colimits in each variable.
+\end{proposition}
+\begin{proof}
+Consider the diagram 
+\begin{center}
+    \begin{tikzcd}
+     {\mathcal{S}_n}\times {\mathcal{S}_n} \dar["\times"'] \rar[hook] & \spc^m_n\times \spc^m_n \dar["\times"]\\
+     {\mathcal{S}_n} \rar[hook] & \spc^m_n
+    \end{tikzcd}
+\end{center}
+where we know that the left vertical multiplication preserves colimits in each variable separately and the horizonal maps preserve $\K_n$-colimits by (\ref{harpaz2.12}). The point is that since if $X \in \K_n$, then it's a groupoid, and so any diagram $d : X \rightarrow \spc^m_n$ factors through ${\mathcal{S}_n}\subseteq \spc^m_n$. Together with (\ref{harpaz2.12}) this says that $X$-colimits in $\spc^m_n$ are computed in ${\mathcal{S}_n}\subseteq \spc^m_n$ and so the desired conclusion, which is true for the left vertical, transfers to that on the right vertical. 
+\end{proof}
+
+
+
+\begin{construction}[Spans as a commutative algebra object]
+By \cite{lurieHA} $\S4.8.1$ we know that $\cat_{\K_n}$ has a symmetric monoidal structure $\otimes_{\K_n}$ where for $\C, \D, \E \in \cat_{\K_n}$, the tensor product $\C\otimes_{\K_n}\D$ has the universal property 
+\[\func_{\K_n}(\C\otimes_{\K_n}\D, \E) \simeq \func_{\K_n,\K_n}(\C\times \D, \E)\]
+where the right hand side consists of functors which preserve $\K_n$-colimits in each variable. Hence we can get from (\ref{harpaz2.17}) that $\spc^m_n$ is a commutative algebra object in $\cat_{\K_n}$.
+\end{construction}
+
+
+\subsubsection{Duality in spans}
+\begin{construction}[Trace and diagonals]
+Let $\C$ be a category with final object $\ast$ and admitting finite limits. Then for $X\in \effBurn(\C)$, we define the \textit{trace map} in $\effBurn(\C)$ to be the span 
+\[\Big(X\times X \xrightarrow{\trace_X} \ast\Big) := \Big(X\times X \xleftarrow{\Delta} X \rightarrow \ast\Big)\] and the \textit{diagonal} in $\effBurn(\C)$ to be the span
+\[\Big(\ast \xrightarrow{\Delta_X} X\times X\Big) := \Big(\ast \leftarrow X \xrightarrow{\Delta}X\times X\Big)\]
+\end{construction}
+
+
+\begin{proposition}[Self-duality in spans]\label{selfDualityOrbits}
+Let $\C$ be a category with final object $\ast$ and admitting finite limits. Then the trace map and diagonal constructed above exhibits every object as self-dual in $\effBurn(\C)$. 
+\end{proposition}
+\begin{proof}
+Let $X\in \effBurn(\C)$. Note that being dualisable can be checked at the level of homotopy categories, and so it \textit{really is} enough to check that the composites 
+\[X \xrightarrow{1\times \Delta_X} X\times X\times X \xrightarrow{\trace_X\times 1} X\quad\text{    and    }\quad X \xrightarrow{\Delta_X\times 1} X\times X\times X \xrightarrow{1\times \trace_X} X\]
+are homotopic to the identity. We will only show the first. Since composition in span categories are given by pullbacks, we get that the first composite is given by the span
+\begin{center}
+    \begin{tikzcd}
+     && X\ar[dr, "\Delta"]\ar[dl, "\Delta"'] \ar[dd, phantom , "\scalebox{2}{$\verticalPullback$}"]  \ar[ddll, bend right = 40, equal]\ar[ddrr, bend left = 40, equal] &&\\
+     & X\times X\ar[dl, "\pi_1"']\ar[dr, "1\times \Delta"'] && X\times X\ar[dr, "\pi_2"]\ar[dl,"\Delta\times 1"]\\
+     X & & X\times X\times X & &X
+    \end{tikzcd}
+\end{center}
+which is the identity span, as required.
+\end{proof}
+
+\subsection{Higher semiadditivity}\label{sec:Semiadditivity}
+\subsubsection{Basic notions}
+
+
+\begin{definition}[\cite{harpazAmbidex} 3.1]
+Let $m\geq -2$ and $\D$ a category. We say that $\D$ is $m$\textit{-semiadditive} if $\D$ admits $\K_m$-colimits and every $m$-truncated $\pi$-finite space is $\D$-ambidextrous.
+\end{definition}
+
+\begin{remark}
+Two consequences which we will not prove here but which are intuitively clear, namely:
+\begin{itemize}
+    \item That an $m$-semiadditive $\D$ automatically admits $\K_m$-limits, essentially because the $\D$-ambidextrousness of any $X\in \K_m$ already gives that the colimit also computes the limit. Given this, the intuition of $m$-semiadditivity is just that the canonically constructed norm map 
+\[\colim_X \Longrightarrow \lim_X\] is an equivalence in $\func(\D^X,\D)$ for all $X \in \K_m$.
+    \item The opposite of an $m$-semiadditive category is again $m$-semiadditive.
+\end{itemize}
+\end{remark}
+
+\begin{observation}
+For $m \leq n$, $n$-semiadditivity implies $m$-semiadditivity since $\K_m \subseteq \K_n$.
+\end{observation}
+
+\begin{example}
+Here are some important first examples, the second of which justifies the terminology of semiadditivity.
+\begin{enumerate}
+    \item $\D$ is $(-1)$-semiadditive iff it is pointed. This is because the only nontrivial $\pi$-finite space that is $(-1)$-$\D$-ambidextrous is given by the map $\emptyset \rightarrow\ast$, and $\colim_{\emptyset}$ is the initial object and $\lim_{\emptyset}$ is the final object.
+    \item $\D$ is $0$-semiadditive iff it is semiadditive in the usual sense. To see this, recall that $0$-semiadditivity implies $(-1)$-semiadditivity and so by the point above, $\D$ is pointed. Now observe that $0$-truncated maps to the point $\ast$ in $\spc_0$ consist precisely of maps of form $\coprod^k\ast \rightarrow \ast$ for $k<\infty$. Then pointedness allows us to construct the canonical norm map
+    \[\coprod^k \simeq \colim_{\coprod^k\ast} \Longrightarrow \lim_{\coprod^k\ast} \simeq \prod^k\] and being $0$-semiadditive exactly requires these to be equivalences.
+    
+    \item An important class of examples for 1-semiadditivity was furnished by Lecture 3 by the Tate-vanishing of $\spectra_{T(n)}$. To see this, note that a map $X \rightarrow \ast$ where $X$ is a $\pi$-finite space is $1$-truncated iff $X = \coprod^k_{i=1}BG_i$ is a finite coproduct of Eilenberg-MacLane spaces of finite groups, and so the norm map will become the usual one
+    \[\bigoplus^k_{i=1}(-)_{hG_i} \Longrightarrow \bigoplus^k_{i=1}(-)^{hG_i} \]
+    whose cofibre $\bigoplus^k_i(-)^{tG_i}$ vanishes as we saw in Lecture 3.
+\end{enumerate}
+\end{example}
+
+\subsubsection{Modules over spans are semiadditive}
+The goal of this subsubsection is to obtain an obstruction for $\D$ satisfying the following assumptions moreover to be $m$-semiadditive.
+
+\begin{assumption}\label{traceObstructionAssumptions}
+$\D$ is $(m-1)$-semiadditive which furthermore:
+\begin{enumerate}
+    \item admits $\K_m$-colimits.
+    \item admits a structure of an $\spc^{m-1}_m$-module in $\cat_{\K_m}$. This in particular means that there is an action map $\spc^{m-1}_m\times \D \rightarrow \D$ which preserves $\K_m$-colimits in each variable.
+\end{enumerate}
+\end{assumption}
+
+\begin{notation}
+For $\D$ satisfying the assumptions (\ref{traceObstructionAssumptions}) and $X \in \spc^{m-1}_m$, we write 
+\[[X] : \D \longrightarrow \D\] for $X\otimes(-)$ afforded by the action map.
+\end{notation}
+
+
+
+\begin{proposition}[Trace obstruction, \cite{harpazAmbidex} 3.17, compare with \cite{hopkinsLurieAmbidex} 5.1.8]\label{traceObstructionTheorem}
+Let $\D$ be as in assumptions (\ref{traceObstructionAssumptions}). Then $\D$ is $m$-semiadditive iff for all $X\in \spc^{m-1}_m$ the transformation 
+\[[\trace_X] : [X]\circ [X] \Rightarrow \id\] exhibits the functor $[X] : \D \rightarrow \D$ as self-adjoint.
+\end{proposition}
+
+
+
+
+
+\begin{theorem}[Modules imply $m$-semiadditivity, \cite{harpazAmbidex} 3.19]\label{modulesImplySemiadditivity}
+Let $\D$ be tensored over $\spc^m_m$ such that the action functor $\spc^m_m\times \D \rightarrow \D$ preserves $\K_m$-colimits in each variable. Then $\D$ is $m$-semiadditive.
+\end{theorem}
+\begin{proof}
+We will prove that $\D$ is $m'$-semiadditive for every $-2\leq m'\leq m$ by induction on $m'$. Since every category is $(-2)$-semiadditive, the base case $m' = -2$ is done. Now suppose that $\D$ is $m'$-semiadditive for some $-2\leq m'< m$. We want to use the trace criterion (\ref{traceObstructionTheorem}) to see that $\D$ is $(m'+1)$-semiadditive, and so let $X \in \spc_{m'+1}^{m'}$. We want to show that 
+\[[\trace_X] : [X]\circ [X] \Rightarrow \id\] exhibits as $[X] : \D \rightarrow \D$ as self-adjoint. In other words, by the triangle identity characterisation of adjunctions, we need to see that the triangles 
+\begin{center}
+    \begin{tikzcd}
+     {[}X{]} \rar["{[}X{]}({[}\Delta{]})"] \ar[equal, dr]& {[}X{]}\circ {[}X{]}\circ {[}X{]} \dar["{[}\trace_X{]}_{{[}X{]}}"] && {[}X{]}\rar["{[}\Delta{]}_{{[}X{]}}"]\ar[dr,equal] & {[}X{]}\circ {[}X{]}\circ {[}X{]} \dar["{[}X{]}({[}\trace_X{]})"]\\
+     & {[}X{]} && & {[}X{]}
+    \end{tikzcd}
+\end{center}
+commute. But then these are given precisely by the triangles witnessing self-duality of $X$ in a span category (\ref{selfDualityOrbits}), and so we're done.
+\end{proof}
+
+
+\subsubsection{Universality of spans}
+The key result for everything else in the paper is the identification of the universal property of $m$-spans. Once we have this, the rest follow more or less formally as in the case of ordinary commutative monoids.
+\begin{theorem}[Universal property of $m$-spans, \cite{harpazAmbidex} 4.1]\label{UnivPropMSpans}
+Let $-2\leq m\leq n$ and $\D$ be $m$-semiadditive which admits $\K_n$-colimits. Then evaluation at $\ast\in \spc^m_n$ induces an equivalence of categories 
+\[\func_{\K_n}(\spc^m_n, \D) \xrightarrow{\simeq} \D\] 
+\end{theorem}
+
+% In this subsubsection, we will give a brief sketch of the proof strategy, which is done via a double induction on the pair $(n,m)$ with $m\leq n$. For the purpose of formulating the proof, it will be convenient to say that a category $\D$ is $(n,m)$-good if $\D$ satisfies the hypotheses and conclusion of the theorem above. Here is the pair of results we need.
+
+% \begin{lemma}[\cite{harpazAmbidex} 4.4, 4.8]
+% Let $-2 \leq m\leq n$ be integers and $\D$ a category.
+% \begin{enumerate}
+%     \item If $\D$ admits $\K_n$-colimits, then the restriction map 
+%     \[\func_{\K_n}(\spc^m_n, \D) \longrightarrow \func_{\K_{n-1}}(\spc^m_{n-1},\D)\] is an equivalence with inverse given by left Kan extension.
+%     \item If $\D$ is $m$-semiadditive, then the restriction map 
+%     \[\func_{\K_m}(\spc^m_m, \D) \longrightarrow \func_{\K_{m}}(\spc^{m-1}_{m},\D)\] is an equivalence.
+% \end{enumerate}
+% \end{lemma}
+% \begin{proof}[Sketch of part (1):]
+% This is the proof of \cite{harpazAmbidex} 4.3. We want to show that the left Kan extension along $\spc^m_{n-1}\hookrightarrow \spc^m_n$ exists and are precisely the $\K_n$-colimit preserving functors. Let $Y \in \spc^m_n$ and $F : \spc^m_{n-1}\rightarrow \D$ a $\K_{n-1}$-colimit preserving functor. We will use the following notations for various comma categories:
+% \begin{itemize}
+%     \item $\J_Y := \spc^m_{n-1}\times_{\spc^m_n}(\spc^m_n)_{/Y}$
+%     \item $\mathcal{I}_Y := \spc_{n-1}\times_{{\mathcal{S}_n}}({\mathcal{S}_n})_{/Y}$
+%     \item $\mathcal{I}'_Y := \mathcal{I}_Y\times_{\spc_{n-1}}\{\ast\}$ the full subcategory of $\I_Y$ spanned by objects of form $\ast \xrightarrow{y} Y$. Note that $\I'_Y \simeq Y$.
+% \end{itemize}
+% To obtain the desired left Kan extension one must show that 
+% \[\J_Y \rightarrow \spc^m_{n-1} \xrightarrow{F} \D\] admits a colimit. For this one shows that the fully faithful functor $\I_Y \hookrightarrow \J_Y$ is cofinal by analysing the associated comma categories. This would then reduce the problem to showing that
+% \[\I_Y \hookrightarrow \J_Y \rightarrow \spc^m_{n-1} \xrightarrow{F} \D\] can be extended to a colimit diagram.\todo{something about right fibration dont get it}
+
+% Finally, to see that the essential image of the left Kan extension consists precisely of $\K_n$-colimit preserving functors $\spc^m_n \rightarrow \D$, the above arguments show that an arbitrary functor $\Bar{F} : \spc^m_n\rightarrow \D$ is a left Kan extension of $F$ iff the extensions $\Bar{F}|_{(\I'_Y)^{\triangleright}} : (\I'_Y)^{\triangleright} \rightarrow \D$ are colimit diagrams for all $Y \in \spc^m_n$. But then recall that the restriction $\I'_Y \rightarrow \spc^m_n \xrightarrow{\Bar{F}}\D$ is the constant functor with value $\Bar{F}(\ast)$ and moreover by (\ref{harpaz2.12}) that $\I'_Y\simeq Y \simeq \colim(\I'_Y \xrightarrow{\ast} \spc^m_n)$. Therefore, the extensions $\Bar{F}|_{(\I'_Y)^{\triangleright}} : (\I'_Y)^{\triangleright} \rightarrow \D$ are colimit diagrams iff $\Bar{F}$ preserves diagrams of form $Y \xrightarrow{\constant_{\ast}} {\mathcal{S}_n}\subseteq \spc^m_n$. By (\ref{harpaz2.11}) and (\ref{harpaz2.12}) this is equivalent to $\Bar{F}$ preserving $\K_n$-colimits, as required.
+% \end{proof}
+
+
+% Equipped with this pair of statements, we obtain the following pair of inductive steps which will easily yield (\ref{UnivPropMSpans}).
+
+% \begin{corollary}[Double induction steps, \cite{harpazAmbidex}, 4.5, 4.9]
+% Let $-2\leq m\leq n$ and $\D$ an $m$-semiadditive category.
+% \begin{enumerate}
+%     \item If $n' \geq n$ is another integer and $\D$ admits $\K_{n'}$-colimits, then $\D$ is $(n',m)$-good iff it is $(n,m)$-good.
+    
+%     \item If $-1\leq m\leq n$ and $\D$ admits $\K_n$-colimits, then $\D$ being $(n, m-1)$-good implies that it is $(n,m)$-good.
+% \end{enumerate}
+% \end{corollary}
+
+
+
+\subsection{Formal consequences}\label{sec:FormalConsequences}
+
+\subsubsection{Semiadditivity as modules}
+We want now to formulate and prove the equivalence between $m$-semiadditivity and being modules over spans. To this end, we will analyse the forgetful functor
+\[\U : \module_{\cat_{\K_m}}(\spc^m_m) \longrightarrow \cat_{\K_m}\]
+
+
+\begin{notation}
+Let $\semiadditivites_m \subseteq \cat_{\K_m}$ be the full subcategory spanned by $m$-semiadditive categories.
+\end{notation}
+
+\begin{lemma}[Idempotence of $m$-spans, \cite{harpazAmbidex} 5.1]\label{idempotenceOfMSpans}
+Let $\C$ be an $\spc^m_m$-module. Then the counit map
+\[\nu_C : \spc^m_m\otimes_{\K_m}\U(\C) \longrightarrow \C\]
+from the adjunction $\spc^m_m\otimes_{\K_m}(-) : \cat_{\K_m} \rightleftarrows \module_{\cat_{\K_m}}(\spc^m_m) : \U$ is an equivalence of $\spc^m_m$-modules. In particular, this means that the adjunction is a smashing localisation and $\spc^m_m$ is an idempotent commutative algebra object.
+\end{lemma}
+\begin{proof}
+Since the forgetful functor $\U$ is conservative it will suffice to show that $\U(\nu_C)$ is an equivalence. Now by the triangle identity of adjunctions we have that the composite
+\[\U(\C) \xrightarrow{u_{\U(\C)}} \spc^m_m\otimes_{\K_m}\U(\C) \xrightarrow{\U(\nu_C)} \U(\C)\] is the identity. Hence it will be enough to show that the first map
+\[u_{\U(\C)} : \U(\C) \rightarrow \spc^m_m\otimes_{\K_m}\U(\C)\] is an equivalence. Since both sides admit canonical structures of $\spc^m_m$-module (where for the right hand term we use the $\spc^m_m\otimes_{\K_m}-$ part for the module structure), by Yoneda it will suffice to show that 
+\begin{equation}\label{unitEquivalence}
+    u^*_{\U(\C)} : \func_{\K_m}(\spc^m_m\otimes_{\K_m}\U(\C), \D) \longrightarrow \func_{\K_m}(\U(\C), \D)
+\end{equation}
+is an equivalence for all $\D \in \module_{\cat_{\K_m}}(\spc^m_m)$. Now since $\D$ was an $\spc^m_m$-module, we get that $\func_{\K_m}(\U(\C), \D)$ is too (since $\module_{\cat_{\K_m}}(\spc^m_m) \subseteq \cat_{\K_m}$ is closed under cotensors). Hence by the universal property of $m$-spans (\ref{UnivPropMSpans}) we see that 
+\[\func_{\K_m}(\spc^m_m, \func_{\K_m}(\U(\C), \D) \longrightarrow \func_{\K_m}(\U(\C), \D)\] is an equivalence, and so by currying, the map (\ref{unitEquivalence}) is an equivalence, as required.
+\end{proof}
+
+
+\begin{theorem}[Semiadditivity as modules, \cite{harpazAmbidex} 5.2]\label{semiadditivityAsModules}
+The forgetful functor induces an equivalence
+\[\U : \module_{\cat_{\K_m}}(\spc^m_m) \xrightarrow{\simeq} \semiadditivites_m \] Hence we have the adjunctions
+\begin{center}
+    \begin{tikzcd}
+     \semiadditivites_m \rar[hook] & \cat_{\K_m}\lar[bend right = 40, "\spc^m_m\otimes_{\K_m}(-)"'] \lar[bend left = 40, "\func_{\K_m}(\spc^m_m{,}-)"]
+    \end{tikzcd}
+\end{center}
+where the top adjunction is a smashing localisation. In particular means that for any $\D \in \cat_{\K_m}$, $\func_{\K_m}(\spc^m_m, \D)$ is the universal $m$-semiadditive category equipped with a $\K_m$-colimit preserving functor to $\D$.
+\end{theorem}
+\begin{proof}
+We have a few things to show, namely:
+\begin{enumerate}
+    \item That $\spc^m_m$-modules are $m$-semiadditive.
+    \item That the forgetful map is essentially surjective on $\semiadditivites_m$.
+    \item That the forgetful map is fully faithful.
+\end{enumerate}
+Point (1) is by (\ref{modulesImplySemiadditivity}), and point (2) is by the universal property of $m$-spans (\ref{UnivPropMSpans}) since we can write $\D \simeq \func_{\K_m}(\spc^m_m, \D)$ which then attains a canonical structure of an $\spc^m_m$-module by evaluation. Finally, point (3) is just because (\ref{idempotenceOfMSpans}) says that $\spc^m_m\otimes_{\K_m}(-)$ is a smashing localisation, and so in particular the whole forgetful functor
+\[\U : \module_{\cat_{\K_m}}(\spc^m_m) \rightarrow \semiadditivites_m \hookrightarrow \cat_{\K_m}\] is fully faithful. Since the second map in this factorisation is fully faithful, so is the first map, as required.
+\end{proof}
+
+Via this equivalence we can then obtain a symmetric monoidal structure $\semiadditivites_m^{\otimes}$ on the $m$-semiadditives, and the following statements are standard consequences of the equivalence.
+
+\begin{corollary}[\cite{harpazAmbidex} 5.6-5.8]
+The fully faithful inclusion $\semiadditivites_m \hookrightarrow \cat_{\K_m}$ can be canonically refined to a lax symmetric monoidal functor and $\spc^m_m$ is the initial object in $\calg(\semiadditivites_m)$.
+\end{corollary}
+
+
+
+\subsubsection{Higher commutative monoids}
+\begin{notation}
+Let $X\in {\mathcal{S}_m}$. Note that the inclusion of a point $x\in X$, $i_x : \ast \rightarrow X$, is an $(m-1)$-truncated map by the $\pi_*$-long exact sequence. We then write $\widehat{i}_x$ to denote the span $X \xleftarrow{i_x} \ast \rightarrow \ast$ which is in $\spc^{m-1}_m$. 
+\end{notation}
+\begin{definition}
+Let $\D$ be a category admitting $\K_m$-limits. Then an \textit{m-commutative monoid} is a functor $F : \spc^{m-1}_m \rightarrow\D$ such that for every $X \in \K_m$, the set of maps $\{\widehat{i}_x : X \leftarrow \ast\}_{x\in X}$ induce an equivalence $F(X) \xrightarrow{\simeq} \lim^{\D}_{X}F(\ast)$. We write $\cmonoid_m(\D) \subseteq \func(\spc^{m-1}_m, \D)$ for the full subcategory of the $m$-commutative monoids.
+\end{definition}
+
+\begin{remark}
+In the case where $m = 0$, we see that $\spc^{-1}_0 = \effBurn(\finite, \finite^{\text{inj}}) = \finite_*$. Moreover, the $0$-commutative monoid condition is precisely demanding that $F : \finite_* \rightarrow \D$ preserves products (recall that the categorical products in $\finite_*$ are given by disjoint unions). Hence $0$-commutative monoids agree with Segal's notion of commutative monoids mentioned in the introduction.
+\end{remark}
+
+\begin{lemma}[\cite{harpazAmbidex} 5.13, 5.14]
+Let $m\geq -1$. For $\D$ admitting $\K_m$-limits, then the restriction $\func^{\K_m}(\spc^{m}_m, \D) \rightarrow \func^{\K_m}(\spc^{m-1}_m, \D)$ factors through an equivalence $\func^{\K_m}(\spc^m_m, \D) \xrightarrow{\simeq} \cmonoid_m(\D)$, and so we can just as well think of $m$-commutative monoids in these terms. 
+\end{lemma}
+\begin{proof}
+We only argue essential surjectivity, which is \cite{harpazAmbidex} 5.13. For this just consider the sequence of equivalences:\\
+
+\begin{tabular}{l l}
+     &  $\spc^m_m \xrightarrow{F} \D$ preserves $\K_m$-limits\\
+     iff & $(\spc^m_m)\op\xrightarrow{F\op}\D\op$ preserves $\K_m$-colimits\\
+     iff & ${\mathcal{S}_m} \hookrightarrow (\spc^m_m)\op\xrightarrow{F\op}\D\op$ preserves $\K_m$-colimits\\
+     iff & the set of maps $\{i_x : \ast \rightarrow X\}_{x\in X}$ induce an equivalence $\colim^{\D\op}_{X}F\op(\ast) \xrightarrow{\simeq} F\op(X)$ for all $X \in \K_m$\\
+     iff & the set of maps $\{\widehat{i}_x : X \leftarrow \ast\}_{x\in X}$ in $\spc^{m-1}_m$ induce an equivalence $F(X) \xrightarrow{\simeq} \lim^{\D}_{X}F(\ast)$ for all $X \in \K_m$\\
+     iff & $F|_{\spc^{m-1}_m}$ is $m$-commutative monoid.
+\end{tabular}\\  
+
+where the third line is by (\ref{harpaz2.16}), the fourth by (\ref{harpaz2.11}), and the fifth just by taking opposites everywhere of the fourth line: here we are using that the span $i_x : \ast \leftarrow \ast \xrightarrow{i_x} X$ gets sent to $\widehat{i}_x : X \xleftarrow{i_x} \ast \rightarrow \ast$.
+\end{proof}
+
+\begin{observation}[An alternate life of $m$-commutative monoids]\label{alternateLifeCommutativeMonoids}
+We have the identification $\cmonoid_m(\spc) \simeq \presheaf_{\K_m}(\spc^m_m)$ since by construction $\presheaf_{\K_m}(\spc^m_m) := \func^{\K_m}((\spc^m_m)\op, \spc)$, and $(\spc^m_m)\op\simeq \spc^m_m$ since spans are always self-dual. 
+\end{observation}
+
+
+\begin{lemma}[\cite{harpazAmbidex} 5.15]\label{cmonoidAsSemiadditives}
+Let $\D$ admit $\K_m$-limits. Then $\cmonoid_m(\D)$ is $m$-semiadditive and the restriction along $\{\ast\} \hookrightarrow \spc^m_m$ induces a functor
+\[\cmonoid_m(\D)\rightarrow \D\] which is the universal $\K_m$-limit preserving functor to $\D$ from an $m$-semiadditive category. In particular, $\D$ is $m$-semiadditive iff this functor is an equivalence.
+\end{lemma}
+\begin{proof}
+By hypothesis $\D\op$ admits $\K_m$-colimits. Hence by (\ref{semiadditivityAsModules}) we get that 
+\[\func_{\K_m}(\spc^m_m, \D\op) \rightarrow \D\op\] is the universal $\K_m$-colimit preserving functor from an $m$-semiadditive category to $\D\op$, so by taking opposites everywhere and using the result that says that opposites of $m$-semiadditives are $m$-semiadditive, we obtain the desired statement.
+\end{proof}
+
+
+
+\begin{corollary}\label{lawvereTensorSplitting}
+If $\C$ is an $m$-semiadditive presentable category, then $\C \simeq \cmonoid_m(\spc)\otimes\C$. In particular, $\C$ attains a canonical $\cmonoid_m(\spc)$-module structure.
+\end{corollary}
+\begin{proof}
+The equivalence is essentially due to the formula for the Lurie tensor product of presentables \cite{lurieHA} 4.8.1.17: for $\D, \E$ presentables, we have $\D\otimes \E\simeq \rfunc(\D\op, \E)$ where $\rfunc$ is the full subcategory spanned by functors which are right adjoints. To wit, 
+\begin{equation*}
+    \begin{split}
+        \C & \simeq \cmonoid_m(\C)\\
+        &:= \func^{\K_m}(\spc^m_m, \C)\\
+        &\simeq \func^{\K_m}(\spc^m_m, \C\otimes \spc)\\
+        &\simeq \func^{\K_m}\big(\spc^m_m, \rfunc(\C\op,\spc)\big)\\
+        &\simeq \rfunc\big(\C\op, \func^{\K_m}(\spc^m_m, \spc)\big)\\
+        &\simeq \C\otimes \cmonoid_m(\spc)
+    \end{split}
+\end{equation*}
+where the first equivalence is by (\ref{cmonoidAsSemiadditives}). This completes the proof.
+\end{proof}
+
+\begin{construction}
+Let $\widehat{\cat}_{\text{small}}$ be the category of not necessarily small categories admitting small colimits and functors preserving these.
+\end{construction}
+
+
+\begin{lemma}\label{idempotenceOfCMon}
+$\cmonoid_m(\spc) \in \presentable^L$ is an idempotent commutative algebra object.
+\end{lemma}
+\begin{proof}
+By \cite{lurieHA} 4.8.1.16 and 4.8.1.17 we know that the inclusion $\presentable^L \subseteq \widehat{\cat}_{\text{small}}$ is symmetric monoidal. Moreover, \cite{lurieHA} 4.8.1.10 gives that the functor $\presheaf_{\K_m} : \cat_{\K_m} \rightarrow \widehat{\cat}_{\text{small}}$ is symmetric monoidal and so in particular preserves idempotent commutative algebra objects. Now by (\ref{alternateLifeCommutativeMonoids}) we know that $\cmonoid_m(\spc) \simeq \presheaf_{\K_m}(\spc^m_m)$ and by (\ref{idempotenceOfMSpans}) we know that $\spc^m_m$ is an idempotent commutative algebra object, and so we're done.
+\end{proof}
+
+
+
+\begin{theorem}[\cite{harpazAmbidex} 5.21]
+There is a smashing localisation
+\begin{center}
+    \begin{tikzcd}
+     \presentable^L \ar[rr, shift left =2 , "\cmonoid_m(\spc) \otimes (-)"] && \module_{\presentable^L}(\cmonoid_m(\spc)) \ar[ll,shift left = 2, "i", hook]
+    \end{tikzcd}
+\end{center}
+where the essential image of the fully faithful inclusion $i$ consists precisely of the $m$-semiadditive presentable categories.
+\end{theorem}
+\begin{proof}
+We need to show two things:
+\begin{enumerate}
+    \item That we have the smashing localisation (easy and formal, given by idempotence of $\spc^m_m$)
+    \item To identify the essential image as the $m$-semiadditives.
+\end{enumerate}
+Point (1) is by idempotence of $\cmonoid_m(\spc)$ (\ref{idempotenceOfCMon}) and point (2) is just because (\ref{lawvereTensorSplitting}) implies that the inclusion $i$ is essentially surjective onto the $m$-semiadditive presentables.
+\end{proof}
+
+
