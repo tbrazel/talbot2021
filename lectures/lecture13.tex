@@ -1,0 +1,410 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage{pgf}
+\usepackage{parskip}
+\usepackage{stmaryrd}
+\usepackage{amscd}
+\usepackage[mathscr]{euscript}
+\usepackage{graphicx}
+\usepackage{tikz-cd}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{xfrac}
+\usepackage[utf8]{inputenc}
+\usepackage[verbose]{wrapfig}
+\usepackage{geometry} %[margin=1in]
+\usepackage{fancyhdr}
+\usepackage[sc,small, center]{titlesec}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{cancel} %need for strikethrough
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\usepackage{bbm}
+\usepackage{hyperref}
+\usepackage{todonotes}
+%\usepackage{fourier} % just for the \danger [= hazard] sign
+
+%formatting
+\setitemize{noitemsep}
+%\setlength{\parindent}{0pt} replaced with package 'parskip'
+%\setlength{\parskip}{3mm plus 2mm minus 2mm}
+%\setenumerate[0]{label=(\Alph*)}
+
+%fixes weird spacing issue with theorem environments
+\begingroup
+    \makeatletter
+    \@for\theoremstyle:=definition,remark,plain\do{%
+        \expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{%
+            \addtolength\thm@preskip\parskip
+            }%
+        }
+\endgroup
+
+% Macros
+
+\newcommand{\R}{{\mathbb{R}}}
+\renewcommand{\C}{{\mathbb{C}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\T}{{\mathbb{T}}}
+\newcommand{\nat}{{\mathbb{N}}}
+\newcommand{\W}{{\mathbb{W}}}
+\newcommand{\sph}{{\mathbb{S}}}
+\newcommand{\E}{{\mathbb{E}}}
+\newcommand{\F}{{\mathbb{F}}}
+\renewcommand{\G}{{\mathbb{G}}}
+\newcommand{\ep}{{\epsilon}}
+\newcommand{\cat}{{\mathcal{C}}}
+\newcommand{\bicat}{{\mathcal{B}}}
+\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
+\newcommand{\Set}{\catname{Set}}
+\newcommand{\Spc}{\catname{Spc}}
+\newcommand{\AbGrp}{\catname{AbGrp}}
+\newcommand{\Ring}{\catname{Ring}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\Grp}{\catname{Grp}}
+\newcommand{\Alg}{\catname{Alg}}
+\newcommand{\map}{\text{map}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ev}{\text{ev}}
+\newcommand{\op}{\text{op}}
+\newcommand{\et}{\text{{\'e}t}}
+\newcommand{\loops}{\Omega}
+\newcommand{\Tor}{\mathrm{Tor}}
+
+\newcommand{\del}{\partial}
+\newcommand{\surj}{\twoheadrightarrow}
+\renewcommand{\S}{{\mathbb{S}}}
+\newcommand{\Ex}{\text{Ex}}
+\newcommand{\Sp}{\text{Sp}}
+\newcommand{\Ass}{\text{Ass}}
+\newcommand{\CycSp}{\text{CycSp}}
+\newcommand{\Fun}{\text{Fun}}
+\newcommand{\Fin}{\text{Fin}}
+\newcommand{\THH}{\text{THH}}
+\newcommand{\inv}{\text{inv}}
+\newcommand{\Mot}{\mathcal{M}}
+\newcommand{\Perf}{\mathscr{P}\text{erf}}
+\newcommand{\Cat}{\mathbf{Cat}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\End}{\text{End}}
+\newcommand{\Aut}{\text{Aut}}
+\renewcommand{\Spc}{\catname{Spc}}
+\newcommand{\Ch}{\catname{Ch}}
+\newcommand{\Sch}{\catname{Sch}}
+\newcommand{\Vect}{\catname{Vect}}
+\newcommand{\Idem}{\text{Idem}}
+\newcommand{\Hom}{\text{Hom}}
+\DeclareMathOperator{\Ind}{Ind}
+\newcommand{\Shv}{{\text{Shv}}}
+\newcommand{\Pic}{\text{Pic}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Pre}{\mathrm{Pre}}
+\newcommand{\Ran}{\text{Ran}}
+\newcommand{\Ob}{\mathrm{Ob}}
+
+\newcommand{\inj}{\hookrightarrow}
+
+\DeclareMathOperator{\Eq}{Eq}
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Mod}{Mod}
+
+
+\newcommand{\larrow}{\longleftarrow}
+\newcommand{\llarrows}{\mathrel{\substack{\textstyle\longleftarrow\\[-0.6ex]
+                      \textstyle\longleftarrow}}}
+\newcommand{\lllarrows}{\mathrel{\substack{\textstyle\longleftarrow\\[-0.6ex]
+                      \textstyle\longleftarrow \\[-0.6ex]
+                      \textstyle\longleftarrow}}}
+\newcommand{\rrarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
+                      \textstyle\longrightarrow}}}
+\newcommand{\rrrarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
+                      \textstyle\longrightarrow \\[-0.6ex]
+                      \textstyle\longrightarrow}}}
+\newcommand{\rlrarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
+                      \textstyle\longleftarrow \\[-0.6ex]
+                      \textstyle\longrightarrow}}}
+\newcommand{\rlrlrarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
+                      \textstyle\longleftarrow \\[-0.6ex]
+                      \textstyle\longrightarrow  \\[-0.6ex]
+                      \textstyle\longleftarrow  \\[-0.6ex]
+                      \textstyle\longrightarrow}}}
+
+%\renewcommand\qedsymbol{$\triangle$}
+
+\theoremstyle{definition} \newtheorem*{defn}{Definition}
+\theoremstyle{plain} \newtheorem*{prop}{Proposition}
+\theoremstyle{plain} \newtheorem*{lemma}{Lemma}
+\theoremstyle{plain} \newtheorem*{cor}{Corollary}
+\theoremstyle{remark} \newtheorem*{ex}{Example}
+\theoremstyle{remark} \newtheorem*{exs}{Examples}
+\theoremstyle{remark} \newtheorem*{nonex}{Non-example}
+\theoremstyle{remark} \newtheorem*{rmk}{Remark}
+\theoremstyle{remark} \newtheorem*{exc}{Exercise}
+\theoremstyle{remark} \newtheorem*{idea}{Idea}
+\theoremstyle{remark} \newtheorem*{obs}{Observation}
+\theoremstyle{plain} \newtheorem*{theorem}{Theorem}
+\theoremstyle{plain} \newtheorem*{conj}{Conjecture}
+\theoremstyle{remark} \newtheorem*{q}{Question}
+\theoremstyle{definition} \newtheorem*{fact}{Fact}
+\theoremstyle{definition} \newtheorem*{facts}{Facts}
+\theoremstyle{remark} \newtheorem*{ntn}{Notation}
+\theoremstyle{remark} \newtheorem*{goal}{Goal}
+\theoremstyle{remark} \newtheorem*{sketch}{Sketch}
+\theoremstyle{definition} \newtheorem{claim}{Claim}
+
+\newenvironment{proofsketch}{%
+  \renewcommand{\proofname}{Proof Sketch}\proof}{\endproof}
+
+\title{E-theory of Eilenberg-MacLane spaces}
+\author{Paul Van Koughnett}
+\date{\today}
+%\pagestyle{fancy}
+%\rhead{Lucy Yang}
+%\lhead{Notes}
+
+\begin{document}
+\maketitle
+
+%\tableofcontents
+\setcounter{section}{-1}
+
+\section{Introduction}
+
+Throughout this talk, we'll use $ \G_0 $ to denote a formal group of height $ n $ over a finite field $ k $, and $ E = E(k, \G_0) $ the associated Lubin-Tate spectrum with $ \pi_0 E = \W(k) \llbracket u_1, \ldots, u_{n} \rrbracket $. 
+Let $ \G $ denote the universal deformation of $ \G_0 $ over $ \pi_0 E $. 
+
+The goal of this talk is to prove the following
+\begin{theorem}
+	\begin{equation}\label{eq:pvkthm1} 
+		\Spec E_0\hat B^d \Z/p^t  = Alt^{(d)}_{\G[p^t]} = \left(\Lambda^d \G[p^t] \right)^\vee 
+	\end{equation}
+\end{theorem}
+\begin{proofsketch}[Case d = 1]
+	Observe that we have the following pullback square \todo{there is a problem with using braces in tikz}
+	\begin{equation}
+	\begin{tikzcd}
+		B\Z/p^t \ar[r] \ar[d]	& B^2 \Z \ar[d,"p^t"] \\
+		* \ar[r] & B^2 \Z
+	\end{tikzcd}
+	\end{equation}
+	which, upon taking E cohomology gives a diagram
+	\begin{equation}
+	\begin{tikzcd}
+		\mathcal{O}_{\G p^t} = E^0 B\Z/p^t \ar[r] \ar[d]	& E^0 B^2 \Z \ar[d,"p^t"] = \mathcal{O}_G \\
+		E_0 \ar[r] & E^0 B^2 \Z = \mathcal{O}_\G
+	\end{tikzcd}
+	\end{equation}
+	where $ \mathcal{O}_\G $ is the ring of functions on the formal group $ \G $\footnote{this is true for any complex-oriented ring spectrum.} 
+	Note that in fact the map on $ E $-cohomology induced by $ [p^t] $ is a flat map, so that the upper left is just an honest (i.e. underived) tensor product. 
+	So what this tells us is that the upper left is the ring of functions on the $ p^t $-torsion in $ \G $. 
+
+	So this says that $ \Spec E^0 B \Z/p^t = \G [p^t] $. 
+	Since this is a finite free $ E^0 $-module, we can dualize this (this is Cartier duality) to obtain $ \Spec E_0^\vee B\Z/p^t  = \G[p^t]^\vee $. 
+	This is the case $ d = 1 $, and the dual is the dual of the first exterior power. 
+
+	Now we have to extend this to higher values of $ d $. 
+	In general, there is a cup product
+	\begin{equation*}
+		(B \Z/p^t)^{\times d} \to B^d \Z/p^t
+	\end{equation*}
+	which is a skew-symmetric map. 
+	Applying $ \Spec E^0 (-) $, we get a map
+	\begin{equation*}
+		\Spec E^0(B \Z/p^t)^{\times d} = \G[p^t]^{\times d} \to \Spec E^0 B^d \Z/p^t
+	\end{equation*}
+	Because the map is skew-symmetric, as long as we know that exterior powers exist, the map must factor through the exterior power. 
+	Dualizing the resulting map gives the map in the theorem statement. 
+
+	Finally, have to put together a couple of facts
+	\begin{itemize}
+		\item The Ravenel-Wilson calculation showed that $ K(n)_* B^d \Z/p^t $ is concentrated in even degrees and finite free of dimension $p^{t{n \choose d}}$. 
+
+		This implies that the same is true for the $ E $-homology, i.e. that $ E^\vee_*B^d \Z/p^t $ is even and finite free of the same dimension. 
+
+		\item We have a map between these two objects, which is an isomorphism when one tensors down to the residue field $ k $. 
+
+		\item The idea of the proof is to (a) observe that $ E^\vee_*B^d \Z/p^t $ is finite and free over a complete local ring, (b) show that the right hand side of \ref{eq:pvkthm1eq} is also finite free over a complete local ring, (c) if they are isomorphic after tensoring down to the residue field, then they were isomorphic to begin with.\footnote{This is not \emph{quite} what's going to happen, but it's close.}
+	\end{itemize}
+\end{proofsketch}
+A map of finite free $ E_0 $-modules that's an isomorphism over $  k $ is an isomorphism. 
+
+Let me explain step 1. 
+There's a more general statement
+\begin{theorem}
+	Let $ X $ be a spectrum such that $ K(n)_*(X) $ is even and finite over $ k $. 
+	Then the $ E^\vee_*X $ is even and finite free over $ E_0 $. \todo{completed $ E $-homology notation?}
+\end{theorem}
+\begin{proof} 
+	Pick some generators for the $ K(n) $ homology of $ X $: $ K(n)_*(X) = k\{x_1, \ldots, x_m \} $. 
+	There's a map $ E_*(X) \to K(n)_*(X) $ which is surjective by a $ v_i $ Bockstein spectral sequence argument, so the classes $ x_i $ lift to classes $ \tilde{x}_i $in the $ E $-homology of $ X $, i.e. there is a map
+	\begin{equation*}
+		E_0^{\oplus m} \xrightarrow{\oplus \tilde{x}_i} E_*X \twoheadrightarrow K(n)_* X
+	\end{equation*}
+	The left arrow lifts to a map of spectra $ E^{\oplus m} \to E \otimes X $, which is a $ K(n) $-local isomorphism, so we are done.
+\end{proof}
+
+
+The hard part is defining exterior powers of these group schemes--this will occupy most of the rest of the talk. 
+Before getting into it, let's make some observations. 
+\begin{rmk}
+	We want to think about finite flat commutative group schemes over $ R $.\footnote{I want to convince you that these are nice things to think about.} 
+
+	You should think of this category as analogous to the category of finite abelian groups. 
+
+	Over a field $ k $, this category is an abelian category\footnote{This is not true over a general ring, but it is still an exact category in that case.}. 
+	The monomorphisms correspond to closed immersions, and the epimorphisms correspond to faithfully flat maps. 
+
+	Every object in this category has an \emph{order} (at least when $ \Spec R $ is connected). 
+	(Take any residue field of $ R $ and consider its dimension over that residue field.) 
+
+	There's a duality\footnote{think of this as analogous to Pontrjagin duality. }
+
+	This is equivalent to the category of finite flat, commutative, cocommutative Hopf algebras over $ R $. 
+\end{rmk}
+
+The Hopkins-Lurie paper identifies these categories using the covariant functor $ H \mapsto \Spec H^\vee $. 
+
+There are a few simple examples worth always having in mind
+\begin{itemize}
+	\item constant group schemes $ \Z/p = \Spec R^{\Z/p} $
+	\item multiplicative group $ \mu_p = \Spec R[x]/(x^p - 1) $
+	\item additive group $ \alpha_p = \Spec R[x]/(x^p ) $
+\end{itemize}
+In a certain sense, these are the three most important examples. 
+
+The only group schemes that we need to talk about for the sake of this theorem are of the form $ p^t $-torsion in some formal group. 
+So we might want to restrict to `groups which look like $ p^t $-torsion.' 
+We're going to be slightly more broad than that, because the exterior power operation takes you out of the world of formal groups. 
+
+\begin{defn}
+	A \emph{p-divisible group $ \G $} is a diagram\footnote{In particular, it is an Ind-object in finite group schemes} $ \G[p] \hookrightarrow \G[p^t] \hookrightarrow $ such that
+	\begin{itemize}
+		\item Each $ \G[p^t] $ is $ p^t $-torsion
+		\item Each $ \G[p^t] $ is order $ p^{nt}$ for some fixed $ n $ which is the \emph{height} of $ \G $
+		\item There is a short exact sequence
+		\begin{equation*}
+			0 \to \G[p] \to \G[p^t] \to \G[p^{t-1}] \to 0 
+		\end{equation*}
+	\end{itemize}
+\end{defn}
+\begin{ex}
+	The constant group scheme $ \Z/p^\infty = \left\{\Z/p \to \Z/p^2 \to \cdots \right\} $. 
+
+	$ \hat{\G}_m = \mu_{p^\infty} = \left\{\mu_p \to \mu_{p^2} \to \cdots \right\} $. 
+\end{ex}
+Over a field of characteristic $ p $, you can recover a formal group from its $ p $-divisible part, so passing from a formal group to its $ p $-divisible part doesn't destroy information. 
+
+If $ \G $ is a height $ n $ formal group, the diagram of $ p $-torsion $ \G[p] \hookrightarrow \G[p^t] \hookrightarrow $ is a $ p $-divisible group. 
+
+Note that this is a generalization of $ \hat{\G}_m $, but not $ \Z/p^\infty $ because the latter is disconnected (while a formal group must be connected). 
+
+In general, given a formal group $ \G $ over a field $ k $, there is an exact sequence
+\begin{equation*}
+	0 \to \G^{form} \to \G \to \G^{\'et} \to 0 
+\end{equation*}
+where the étale part looks like a twist\footnote{something involving base changing to an algebraically closed field} of $ (\Z/p^\infty)^k $ for some $ k $. 
+
+A \emph{truncated $ p $-divisible group of level $ t $} is something that can appear as the $ p^t $-torsion of some $ p $-divisible group $ \G $. 
+\begin{ex}
+	$ t = 1 $: $ \Z/p $ and $ \mu_p $ are examples, but $ \alpha_p $ is not. 
+\end{ex}
+
+The \emph{dimension} of a $ p $-divisible group is defined to be the dimension of its formal part. 
+
+\begin{q}
+	Why is $ \alpha_p $ not a truncated $ p $-divisible group? 
+\end{q}
+Answer: its Dieudonn\'e module is given by $ DM(\alpha_p) = 0 $ with $ F = V = 0 $. 
+Sidebar: given a $p $-divisible group, there's a way to take a limit of the Dieudonn\'e modules of the constituent pieces to get the Dieudonn\'e module of the whole group, which would have to be a free module over $ \W(k) $. 
+But there's no way to lift this to a Dieudonn\'e module which is free over $ \W(k) $. 
+
+Sidebar: This is a pretty nonexplicit way to define a truncated $ p $-divisible group--there's a way to define it in terms of properties of $ p $-divisible groups, but I'm not going to do that. 
+
+\section{The exterior powers}
+We will define the duals first, as group schemes of alternating maps. 
+Let $ G $ be a finite flat commutative group scheme over a ring $ R $ of odd order. 
+\begin{defn}
+	An \emph{alternating map} $ G^{\times d} \xrightarrow{f} \G_m $ is a map of schemes that is multilinear, alternating $ f(x_1, x_2, \ldots, x_d) = f(x_1, \ldots, x_i, x_{i+1}, \ldots, x_d)^{-1} $. 
+
+	We can define the functor
+	\begin{align}
+		Alt_G^{(d)}: A \mapsto \{\text{alternating maps } G_A^{\times d} \to \G_{m, A} \}
+	\end{align}
+	This functor has a group structure inherited from the group structure on $ \G_m $. 
+\end{defn}
+\begin{rmk}
+	This is \emph{not} the correct definition when $ p = 2 $
+\end{rmk}
+
+\begin{claim}
+	$ Alt_G^{(d)} $ is representable by a group scheme. 
+\end{claim}
+It is easier to convince yourself of this if you drop the alternating assumption: multilinear maps are represented by $ ( G^{\otimes d})^\vee $\footnote{using the tensor product of Hopf algebras that Jan defined.} 
+\begin{rmk}
+	[Jacob] The tensor product is not a well-behaved object before you hom into $ \G_m $. 
+
+	$ Alt_G^{(d)} $ is a scheme, but it's not at all obvious that it's going to be finite (indeed, it is not finite in general). 
+	It's finite exactly in the situations that we're interested in. 
+\end{rmk} 
+
+\subsection{The problem when $ p = 2 $} 
+An alternating map $ G \times G \xrightarrow{f} \G_m $ is one such that $ f(x, y) = f(y, x)^{-1} $. 
+One way to produce such a map is to start with a two-cocycle $ c : G \times G \to \G_m $, i.e. a map satisfying $ c(x, y) c(x+y, z) = c(y, z)c(x+y, z) $. 
+We can define $ f_c(x, y) = c(x,y) c(y, x)^{-1} $. 
+\begin{exc}
+	$ f_c $ is skew-symmetric.
+\end{exc} 
+So the correct definition for an alternating map is one which you can lift to a 2-cocycle:
+\begin{equation*}
+	Alt^{(d)}_G =\left\{\text{skew-symmetric maps which come from a 2-cocycle} \right\}
+\end{equation*} 
+If your group is of odd order, then very map which is alternating comes from such a $ c $. 
+\begin{exc}
+	If $ G $ has order $ 2m+1 $, and $ f(x, y) = f(y, x)^{-1} $, then $ f $ lifts to a cocycle defined by the formula $ c(x, y) = f(x, my) $. 
+\end{exc}
+However, when $ G $ is even this no longer holds. 
+
+Once these definitions are set up, we need
+ \begin{theorem}\todo{label and reorganize?}
+	$ \G_0 $ a formal group over $ k $. 
+	The group scheme of alternating maps $ Alg^{(d)}_{G[p^t]} = \Spec K(n)_0 B^d \Z/p^t $. 
+\end{theorem} 
+Recall that the way we computed this was to understand their Dieudonn\'e modules, i.e. (because we've already understood the RHS) that the LHS is a finite flat group scheme with Dieudonn\'e module $ DM(Alg^{(d)}_{G[p^t]}) = \bigwedge^d DM(\G_0[p^t])^\vee $\footnote{Question by Jan to clarify that these are exterior powers of $ \W(k) $-modules. Part of the work that goes into this is constructing a Dieudonn\'e module structure on the exterior power.}
+\begin{rmk}
+	This construction does \emph{not} work for $ p $-divisible groups of dimension > 1. 
+\end{rmk}
+Let $ G $ be a truncated $ p $-divisible group of height $ n $, dimension $ 1 $, and level  $ t $. 
+Then these invariants can be seen from the Dieudonn\'e module: $ DM(G) $ is a free rank $ n $ module over $ \W(k)/p^t $, and $ DM(G)/VDM(G) \simeq k $. 
+Here's why that matters: We can pick an element $ x \in DM(G) $ such that $ x, Vx, V^2x, \ldots, V^{n-1}x $ generate the $ DM(G) $. 
+$$ V^n \in p \cdot DM(G) $$
+Note that the Frobenius is almost determined from this information: $ Fx \in x V^{n-1} x + p \cdot DM(G) $. 
+Now, $ DM(\bigwedge^d G) $ is spanned by $ a = V^{i_1} x \wedge \cdots \wedge V^{i_d}x $ for $ i_1 < i_2 < \ldots < i_d $. 
+The point is that if I consider the $ \W(k) $-module spanned by these monomials, then I can define $ F $ and $ V $ such that they preserve the module\todo{submodule?}:
+\begin{align*}
+	V(a) &= V^{i_1 + 1}x \wedge \cdots \wedge V^{i_d + 1}x \\
+	F(x \wedge V^{i_2} x \wedge \cdots \wedge V^{i_d}x ) &= F(x) \wedge V^{i_2 -1} x \wedge \cdots \wedge V^{i_d-1}x \qquad \text{ by the projection formula}
+\end{align*}
+
+\begin{theorem}
+	$ Alg^{(d)}_{\G[p^t]} $ is finite flat over $ E_0 $. 
+\end{theorem}
+
+\begin{comment}
+\begin{equation}
+\begin{tikzcd}
+	& 
+\end{tikzcd}
+\end{equation}
+\end{comment}
+\end{document}
