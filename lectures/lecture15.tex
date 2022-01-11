@@ -1,0 +1,224 @@
+\renewcommand{\thespeaker}{Piotr Pstragowski}
+\renewcommand{\thetitle}{Tempered cohomology (elliptic III)}
+\section{\thetitle~(\thespeaker)}
+\providecommand{\OSpc}{\texttt{OSpc}}
+\let\v\check
+\providecommand{\Spec}{\text{Spec}}
+\providecommand{\CP}{\mathbb{C}\text{P}}
+
+Suppose that $X$ is a finite CW complex. We can take complex vector bundles $[V \to X]$ and make it into a Grothendieck group $\Z[V] \big/ [V \oplus W] = [V] + [W]$. This gives $\KU^0(X)$, which extends to a 2-periodic cohomology theory $\KU$.
+
+Given two bundles $V,W \to X$, we can associated to it their tensor product $V \otimes W \to X$, which is a new element in $\KU^0(X)$, making $\KU^0$ into a ring. The associativity and commutativity endows $\KU$ with an $E_\infty$-structure.
+
+If $G$ is a finite group acting on $X$, we can take a Grothendieck group of bundles with actions of $G$. This is the complex $G$-equivariant $K$-theory $\KU_G^0(X)$.
+
+\begin{example} $\KU_G^0(\ast)$ is the Grothendieck group of representations of $G$, which is $\Rep(G)$.
+\end{example}
+
+We have a comparison map
+\begin{align*}
+    \KU_G^0(X) &\to \KU^0(X_{hG}) \\
+    \left[ V \to X \right] &\mapsto \left[ V/G \to X/G \right] 
+\end{align*}
+given by quotienting out by the action.
+
+This remembers quite a bit about the equivariant picture.
+
+\begin{theorem} (Atiyah--Segal) Let $I \subseteq \Rep(G)$ denote the augmentation ideal (of virtual representations of rank zero). Then the Atiyah--Segal map
+\begin{align*}
+    \KU_G^0(X) \to \KU^0(X_{hG})
+\end{align*}
+is an isomorphism after $I$-adic completion.
+\end{theorem}
+As an example if $X=\ast$, then
+\begin{align*}
+    \Rep(G)_I^\wedge \simeq \KU^0(BG)_I^\wedge.
+\end{align*}
+
+Assume that $G$ is a $p$-group. Then the augmentation ideal lands in $I \subseteq p \Rep(G)$. So $p$-completion is a stronger form of completion than completion at the augmentation ideal, so a priori it remembers less information:
+\begin{align*}
+    \Rep(G)_p^\wedge \simeq \KU_p^{0,\wedge}(BG).
+\end{align*}
+At the right we have $p$-complete $K$-theory, which is the same as the Lubin--Tate spectrum to the formal group $\mathbb{G}_m$ associated to $\KU$:
+\begin{align*}
+    \KU_p^\wedge = E_1.
+\end{align*}
+
+So chromatic objects are closely related to representation theory if they are evaluated on classifying spaces of finite groups. We are going to try to generalize this relation between chromatic cohomology theories and cohomology of classifying spaces of finite groups.
+
+\textbf{Plan}:
+\begin{enumerate}
+    \item Show that the equivariant generalization of $\KU$ (i.e. $\KU_G(-)$) is determined by its chromatic structure
+    \item For any $E_\infty$-ring $A$ with a choice of (an orientation on) a $p$-divisible group $G$ over $A$, there is an equivariant extension of the cohomology theory determined by $A$.
+\end{enumerate}
+
+
+\textbf{Recall} If $k$ is a classical ring, then a $p$-divisible group $G$ is a formal group scheme which looks like ``$\left( \mathbb{Q}_p / \mathbb{Z}_p \right)^{\oplus n}$'' which is like $\left( \Z/p^\infty \right)^{\oplus n}$.
+\begin{enumerate}
+    \item If $B \in \CAlg_k$, it can be mapped to $\Hom_\mathbb{Z} \left( M, G(B) \right)$. We want to ask that this is representable by a finite flat group scheme
+    \item Multiplication by $p$ as a map $G \to G$ is an epimorphism in a suitable category
+\end{enumerate}
+
+We want to generalize this to an $E_\infty$-ring. There are two generalizations we will make
+\begin{enumerate}
+    \item Allow $A$ to be an $E_\infty$-ring
+    \item We will remove dependence on $p$. More precisely we can do $p$-divisible groups for all primes at once.
+\end{enumerate}
+
+\begin{notation} Write $\mathcal{P}$ for the set of primes.
+\end{notation}
+
+\begin{definition} Let $A$ be an $E_\infty$-ring. Then we say a $\mathcal{P}$\textit{-divisible functor} $\O_G: \Ab^{\text{fin}} \to \CAlg_A$ such that
+\begin{enumerate}
+    \item $\O_G$ preserves direct sums -- it maps sums to tensor products. This implies $\O_G(G) = A$ and $\O_G(M)$ is a Hopf algebra for any $M$ (it is a cogroup object in $\CAlg_A$).
+    
+    \item Given a short exact sequence $0 \to M' \to M \to M'' \to 0$ of finite abelian groups, the corresponding diagram is a pushout:
+\[ \begin{tikzcd}
+    {\O_G(M')}\rar\dar & A\dar\\
+    \O_G(M)\rar & {\O_G(M'')},\po
+\end{tikzcd} \]
+and the vertical maps are finite flat.
+\end{enumerate}
+\end{definition}
+
+Informally, if $M$ is an abelian $p$-group, then
+\begin{align*}
+    \Map_{\Alg_A} \left( \O_G(M), B \right) \cong \Map_\mathbb{Z} \left( \v{M}, G_p(B) \right),
+\end{align*}
+where $G_p$ is a $p$-divisible group. Here $\v{M} = \Hom_\mathbb{Z} \left( M, \Q/\Z \right)$ is the Pontryagin dual.
+
+So we can show that there is a 1-1 correspondence
+\begin{align*}
+    \left\{ \mathcal{P}\text{-divisible functors } \O_G \right\} \leftrightarrows \left\{ (G_p)_{p\in \mathcal{P}} \colon G_p \text{ is } p\text{-divisible} \right\}.
+\end{align*}
+
+\begin{example} (Constant) We have the constant $\mathcal{P}$-divisible group $\mathbb{Q}/\mathbb{Z}$. This is $M \mapsto A^{\v{M}}$.
+\end{example}
+
+\begin{example} (Multiplicative) We can take
+\begin{align*}
+    M \mapsto A \otimes \Sigma_+^\infty M.
+\end{align*}
+In this case,
+\begin{align*}
+    \Map_{\Alg_A} \left( A \otimes \Sigma_+^\infty M, B \right) \cong \Map_{E_\infty} \left( M, \GL_1(B) \right).
+\end{align*}
+This is the multiplicative group.
+\end{example}
+
+\begin{example} Suppose $A$ is $K(n)$-local and even periodic (think about $A = E_n$). Then we have the \textit{Quillen} $\mathcal{P}$\textit{-divisible group} (since we are $K(n)$-local this is just $p$-divisible since we have already localized at a prime):
+\begin{align*}
+    M \mapsto A^{B\v{M}}.
+\end{align*}
+The underlying $p$-divisible group over $\pi_0$ is:
+\begin{align*}
+    \Spec \left( A^0 \left( B \Z/p^n \right) \right) \cong \Spf A^0 \left( \CP^\infty \right)[p^n].
+\end{align*}
+\end{example}
+
+\begin{notation} Let $\mathcal{T} \subseteq \Spc$ be the full subcategory spanned by classifying spaces of the form $BM$ where $M$ is finite and abelian.
+\end{notation}
+
+
+\begin{proposition} For $A$ an $E_\infty$-ring, and $\O_G: \Ab^\text{fin} \to \CAlg_A$ some $\mathcal{P}$-divisible functor, the following two sets of data are equivalent:
+\begin{enumerate}
+    \item a natural transformation $\O_G(M)\to A^{B\v{M}}$.\footnote{In the Quillen case this is just an equivalence.}
+    \item a factorization
+\[ \begin{tikzcd}
+    \Ab^\text{fin}\rar["\O_G"]\dar["{B\v{(-)}}" left]& \CAlg_A\\
+    \mathcal{T}^\op \ar[ur,dashed] &
+\end{tikzcd} \]
+    We call this a \textit{preorientation}.
+\end{enumerate}
+\end{proposition}
+
+\begin{example} If $A = k$ is a classical ring, then any flat algebra $B\in \CAlg_A$ is discrete. Thus $\O_G$ factors through the category of discrete $A$-algebras. Since $\Ab^{\text{fin}} \to \mathcal{T}^\op$ is an equivalence of homotopy categories, there is a unique preorientation.
+\[ \begin{tikzcd}
+    \Ab^\text{fin}\rar["\O_G"]\dar["\sim" left] & \CAlg_A^\heart\rar[hook] & \CAlg_A\\
+    \mathcal{T}^\op\ar[ur,dashed] &  & \\
+\end{tikzcd} \]
+\end{example}
+
+\begin{example} If $A$ is $K(n)$-local even periodic, we defined $\O_G(M) = A^{B\v{M}}$. Here the comparison transformation can be taken to be a natural equivalence.
+\end{example}
+
+\begin{example} (Oriented $\mathcal{P}$-divisible group over $\KU$) We can associate
+\begin{align*}
+    B\v{M} \mapsto \Fun \left( B\v{M}, \Vect_\mathbb{C}^\simeq \right).
+\end{align*}
+As soon as we fix a basepoint, we could identify this functor category with complex representations of $M$, but we don't have to fix a basepoint. We could define a spectrum as the group completion at the level of $E_\infty$-spaces
+\begin{align*}
+    \ku(BM) = \Gr \left( \Fun \left(B\v{M}, \Vect_\mathbb{C}^\simeq \right)\right).
+\end{align*}
+Finally, we can define from this connective one
+\begin{align*}
+    \KU(B\v{M}) = \ku(B\v{M}) \otimes_\ku \KU \in \CAlg_{\KU}.
+\end{align*}
+We can verify this is always finite free since $\pi_0 \Fun(\cdots )$ is always the representation ring. This has a preorientation.
+\end{example}
+
+\textbf{Question}: What's the corresponding $\mathcal{P}$-divisible group?
+
+The functor sends
+\begin{align*}
+    M \mapsto \KU(B\v{M}) \xto{\pi_0} \Rep( \v{M}) \cong \Z [M].
+\end{align*}
+This is because an element on the right is like a function $\lambda : \v{M} \to \mathbb{Q}/\mathbb{Z} \subseteq \mathbb{C}^\times$, which is a complex representation of $\v{M}$. From this we see that $\pi_0 \KU(B\v{M})$ is the multiplicative group. This is also true over $\KU$ itself.
+
+This construction is a \textit{preorientation} on $\mu_\infty$ over $\KU$.
+
+
+\begin{definition} An \textit{orbispace} $\mathbb{X}: \mathcal{T}^\op \to \Spc$ is a presheaf of spaces on $\mathcal{T}$.
+\end{definition}
+
+\begin{example} If $X \in \Spc$, we can take $\mathbb{X} = X \in \OSpc$, so that $\mathbb{X}(S) = \Map(S,X)$. This is the Yoneda embedding, and it admits an inverse, given by geometric realization
+\begin{align*}
+    |\cdot| : \OSpc \to \Spc,
+\end{align*}
+given by left Kan extension of the inclusion of $\mathcal{T}$ into $\Spc$ and $\OSpc$. This is the same as evaluation of $\mathbb{X}$ on a point.
+\end{example}
+
+Given $X\in G-\Spc$, we can associate to $X$ the \textit{orbispace quotient} $X \to X//G$. This is defined by
+\begin{align*}
+    X//G = \colim_{G/H \to X} BH,
+\end{align*}
+indexed over all equivariant maps $G/H \to X$ with $H$ abelian. This is again a left Kan extension.
+
+\begin{definition} Let $A$ be an $E_\infty$-ring, and $\O_G: \mathcal{T}^\op \to \CAlg_A$ a preoriented $\mathcal{P}$-divisible group. The \textit{tempered cohomology} cochain spectrum $A_G^{(-)} : \OSpc^\op \to \CAlg$ is the unique extension
+\[ \begin{tikzcd}
+    \mathcal{T}^\op\rar\dar & \CAlg_A\\
+    \OSpc^\op\ar[ur,dashed,"{A_G^{(-)}}" below right] & 
+\end{tikzcd} \]
+\end{definition}
+
+\begin{notation} We denote by $A_G^\ast \left( \mathbb{X}) \right) = \pi_{- \ast} A_G^{\mathbb{X}}$.
+\end{notation}
+
+\begin{example} (Complex equivariant $K$-theory) The preorientation is given by the Segal construction as we have seen. Say for now that $G$ is abelian. Then
+\begin{align*}
+    \KU_{\mu_\infty}^\ast \left( \left( H\backslash G \right)//G \right) = \pi_{- \ast} \O_{\mu_\infty}(H) = \KU_H^\ast.
+\end{align*}
+\end{example}
+Since both sides take colimits to limits, we deduce that in general, given any finite CW complex acted on by $G$, we have that
+\begin{align*}
+    \KU_{\mu_\infty}^\ast \left( X//G \right) \simeq \KU_G^\ast(X).
+\end{align*}
+What is surprising is that this is still true when $G$ is not abelian.
+
+
+\begin{theorem} Assume that $A$ is $K(n)$-local and even periodic. Then the comparison map
+\begin{align*}
+    A^\ast_{G_Q} \left( \mathbb{X} \right) \cong A^\ast \left( |\mathbb{X}| \right),
+\end{align*}
+where $G_Q$ is the Quillen $\mathcal{P}$-divisible formal group.
+\end{theorem}
+\begin{proof} Both sides take colimits to limits, so we just have to check it on $BM$ for $M$ finite. But here $A^\ast_{B_Q}(BM) \cong A^\ast(BM)$ by construction.
+\end{proof}
+
+Say $A \to B$ is a flat extension of $E_\infty$ rings. Then if $\O_G$ is a $\mathcal{P}$-divisible functor, we get an extension $\O_{G_B} \left( B\v{M} \right):= B \otimes_A \O_G(B\v{M})$, by extending scalars.
+
+\begin{theorem} If $X$ is a finite CW complex with an $H$-action, and $G$ is an oriented $\mathcal{P}$-divisible group, then
+\begin{align*}
+    B_{G_B}^\ast \left( X // H \right) \simeq B^\ast \otimes_{A^\ast} A_G^\ast \left( X // H \right).
+\end{align*}
+\end{theorem}

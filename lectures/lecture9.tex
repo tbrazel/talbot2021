@@ -1,0 +1,208 @@
+\renewcommand{\thespeaker}{Ishan Levy}
+\renewcommand{\thetitle}{$T(n)$-local ambidexterity}
+\section{\thetitle~(\thespeaker)}
+\providecommand{\Supp}{\text{Supp}}
+
+\begin{theorem} (Bootstrap machine) If $F: \mathscr{C} \to \mathscr{D}$ is a symmetric monoidal functor between stable categories, and
+\begin{enumerate}
+    \item $\mathscr{C}$ and $\mathscr{D}$ are $k$-semiadditive for $k\ge 1$
+    \item $F$ detects units in $\End \left( 1_\mathscr{C} \right)$
+    \item $|BC_p|_D \in \mathbb{Q}-0$ and there exists $A$ with $\pi_k A \ne 0$, and $|A|_D \in \mathbb{Q}-0$
+\end{enumerate}
+then $\mathscr{C}$ and $\mathscr{D}$ are $(k+1)$-semiadditive.
+\end{theorem}
+
+We want to apply this to $\Sp_{T(n)} \to \hat{\Mod}_{E_n}$, mapping to $K(n)$-local $E_n$-modules.
+
+WE have seen that $\Sp_{T(n)}$ is $1$-semiadditive, and since this functor is symmetric monoidal, so is $\hat{\Mod}_{E_n}$. So property (1) is true by induction on $k$ and Tate vanishing.
+
+For condition (2), once we have a unit in the target category, we can get a unit in the source category. We want to give a criterion for when (2) will be satisfied. First we need some definitions.
+
+\begin{definition} A \textit{weak ring} is a right unital ring. That is, it comes with a multiplication which is unital on the right:
+\[ \begin{tikzcd}
+    R \otimes R\rar["\mu"] & R\\
+    R \otimes \mathbb{S}\uar\ar[ur,equal] & 
+\end{tikzcd} \]
+We don't require any further structure (associativity, etc.)
+\end{definition}
+
+$T(n)$ can be made an $E_1$-ring, and hence a weak ring, by taking $\End \left( \text{type } n \right)[v_n^{-1}]$.
+
+\begin{definition} A symmetric monoidal functor $F: \mathscr{C} \to \mathscr{D}$ is \textit{nilconservative} if $F(R) = 0$ if and only if $R=0$ for all weak rings $R$.
+\end{definition}
+
+\begin{lemma} If a symmetric monoidal exact functor $F: \mathscr{C} \to \mathscr{D}$ is nilconservative, then it detects units.\footnote{If a functor is nilconservative, then it is conservative on the subcategory of dualizable objects.}
+\end{lemma}
+\begin{proof} We can construct a particular ring and use the definition. We have that $x$ is unit if its cofiber is zero, which occurs if and only if $\cof \left( x \right) \otimes \cof(x)^\ast= 0$. This occurs if and only if
+\begin{align*}
+    \cof(Fx) \otimes \cof(Fx)^\ast = 0,
+\end{align*}
+which occurs if and only if $Fx$ is a unit.
+\end{proof}
+
+\begin{theorem} The map
+\begin{align*}
+    \Sp \to \prod_{0\le n\le \infty} \Sp_{K(n)}
+\end{align*}
+is nilconservative. That is in order to check a ring is zero, it suffices to check it in all the Morava $K$-theories.
+\end{theorem}
+
+Given an object $X$, we can define its \textit{support} to be
+\begin{align*}
+    \Supp(X) := \left\{ n \colon K(n) \otimes X \ne 0 \right\}.
+\end{align*}
+We have that $\Supp(X \otimes Y) = \Supp(X) \cap \Supp(Y)$.
+
+\begin{example} We have that
+\begin{align*}
+    \Supp(T(n)) &= \left\{ n \right\} \\
+    \Supp(K(n)) &= \left\{ n \right\} \\
+    \Supp(E_n) &= \left\{ 0, \ldots, n \right\} \\
+    \Supp \left( \text{type } n \text{ spectrum} \right) &= \left\{ n, \ldots, \infty \right\}.
+\end{align*}
+\end{example}
+
+
+
+Given a ring, in the $R$-local category we can get an analogue of the nilpotence theory looking just at the Morava $K$-theories in its support.
+\begin{proposition} If $R$ is a weak ring, then the map
+\begin{align*}
+    \Sp_R \to \prod_{0\le n \le \infty} \Sp_{K(n)}
+\end{align*}
+is nilconservative.
+\end{proposition}
+\begin{proof} If $S$ is sent to zero, then $\Supp(S) \cap \Supp(R) = 0$, implying that $\Supp(R \otimes S) = 0$. By nilpotence, this says that $S \otimes R = 0$, and therefore $S=0$.
+\end{proof}
+Nilpotence here is that a weak ring is zero if and only if it has zero support.
+
+Since $T(n)$ is only supported at $n$, this tells us that
+\begin{align*}
+    \Sp_{T(n)} \to \Sp_{K(n)}
+\end{align*}
+is nilconservative. We can post-compose with the map to $K(n)$-local $E_n$-modules, and we have a conservative functor
+\begin{align*}
+    \Sp_{K(n)} \xto{E_n \otimes (-)} \hat{\Mod}_{E_n}.
+\end{align*}
+Nilconservative implies conservative, and nilconservativity is closed under composition. Therefore $\Sp_{T(n)} \to \hat{\Mod}_{E_n}$ is nilconservative. So condition (2) is satisfied.
+
+
+\begin{claim} In a symmetric monoidal category, if $A$ is any $\pi$-finite $m$-finite space, then the cardinality of the free loop space is
+\begin{align*}
+    \left| A^{S^1} \right| = \dim(A) = \left( 1 \to A \otimes A^\ast \to A^\ast \otimes A \to 1 \right).
+\end{align*}
+\end{claim}
+\begin{proof} We can check this in the universal case. The universal $n$-semiadditive category is spans of $n$-finite spaces. We see that since $A$ is self-dual, the composition of spans gives us
+\[ \begin{tikzcd}
+    A^{S^1}\rar\dar\pb & A\rar\dar & \ast\\
+    A\rar\dar & A \times A & \\
+    \ast &  & 
+\end{tikzcd} \]
+\end{proof}
+
+\begin{theorem} (Ravenel, Wilson) We have that
+\begin{align*}
+    \dim_{\mathbb{F}_p} K(n)_0 B^k C_p = p^{\binom{n}{k}},
+\end{align*}
+and its $K(n)_1$ is equal to 0.
+\end{theorem}
+We can upgrade this to being able to understand the Morava $E$-theory of $B^kC_p$, because we claim that
+\begin{align*}
+    E_n \hat{\otimes} B^k C_p &= E_n^{p^{\binom{n}{k}}}.
+\end{align*}
+The proof is that we run the $v_i$ Bockstein spectral sequence.
+
+Since the dimension of a free module is just its rank, this tells us that
+\begin{align*}
+    \dim_{\hat{\Mod}_{E_n}} B^k C_p &= p^{\binom{n}{k}}.
+\end{align*}
+Since $(B^k C_p)^{S^1} = B^k C_p \times \Omega B^k C_p$\footnote{This splitting is true for any group object in any $\infty$-category.}, then this dimension will be equal to
+\begin{align*}
+    \left| B^k C_p \right| \cdot \left| B^{k-1} C_p \right|.
+\end{align*}
+Since both of these are nonzero, this completes condition (3).
+
+Moreover, we see that
+\begin{align*}
+    \binom{n}{k} = \binom{n-1}{k} + \binom{n-1}{k-1}.
+\end{align*}
+We can use this to inductively compute the cardinality of $B^k C_p$ as
+\begin{align*}
+    \left| B^k C_p \right| = p^{\binom{n-1}{k}}.
+\end{align*}
+We note that it is $1$ if $k >n-1$, i.e. when $k\ge n$. So $B^k C_p$ is \textit{amenable} in $\hat{\Mod}_{E_n}$ in these cases, and since our functor detects units, this will imply that it is amenable in $\Sp_{T(n)}$.
+
+\begin{theorem} If $F \to X \xto{f} Y$ is a fiber sequence of spaces, where $F$ is $\pi$-finite and $n$-connected, then $\Sigma^\infty_+ f$ is a $T(n)$-equivalence.
+\end{theorem}
+Once we have a space that is sufficiently connected, $T(n)$-homology won't see the bottom finitely many homotopy groups of it.
+
+\begin{proof} We observe that $f = \colim_Y \fib(f)$, so we can reduce to the case of $f: F \to \ast$. We can further reduce via the Postnikov tower to the case of $F = B^kC_p$, and since $F$ is $n$-connected, we have $k>n$. So now we are claiming that $B^k C_p$ is $T(n)$-acyclic for $k>n$. This is because the map to a point admits a section
+\begin{align*}
+    B^k C_p \to \ast
+\end{align*}
+which is a retract on $T(n)_\ast$. The other map is $\ast \to B^k C_p$, whose fiber is $B^{k-1}C_p$. Since $B^{k-1} C_p$ is amenable, this map is also a retract on $T(n)$-homology by Maschke's theorem.\footnote{If the fiber is amenable, then the map will admit a retract.} Both of the maps are retracts, so they are both equivalences.
+\end{proof}
+
+Thus $B^k C_p$ dies in $\Sp_{T(n)}$ if $k\ge n$.
+
+\begin{proposition} The following are equivalent for a weak ring $R$
+\begin{enumerate}
+    \item $R \otimes \Sigma^\infty B^n C_p = 0$
+    \item $R \otimes \left\{ \text{type } n \right\} = 0$
+    \item $\Supp(R) \subseteq \left\{ 0, \ldots, n-1 \right\}$.
+\end{enumerate}
+\end{proposition}
+\begin{proof} Given (1), we can look at the support $\Supp \left( \Sigma^\infty B^n C_p \right) = \left\{ n, \ldots, \infty \right\}$. So
+\begin{align*}
+    \Supp(R) \cap \Supp \left( \Sigma^\infty B^n C_p \right) = \emptyset,
+\end{align*}
+so $\Supp(R) \subseteq \left\{ 0, \ldots, n-1 \right\}$.
+
+Given (3), we can see that $R \otimes \End \left( \text{type } n \right) = 0$ by the nilpotence theorem, implying (2).
+
+Finally given (2), we have that $L_R$ factors through $L_{n-1}^f$. We have seen that $T(i)$-homology vanishes on all the Eilenberg Maclane spaces for $i\le n-1$. So the result is true for $L_n^f$, which gives (1).
+\end{proof}
+
+We can characterize higher semiadditivity among weak rings.
+
+\begin{proposition} If $\Sp_R$ is 1-semiadditive, then $\Supp(R) = \left\{ n \right\}$ for some $n<\infty$.
+\end{proposition}
+\begin{proof} We note that $L_R \mathbb{F}_p = 0$ because $\pi_0$ is $p$-torsion semi-$\delta$ ring, and we can't have a torsion thing which is nonzero. Therefore $\infty$ is not in the support.
+
+If we had $n< m < \infty$ which were both in the support of $R$, we can look at $L_R \left( E_n \otimes E_m \right)$. This will be nonzero, and it admits maps from $E_n$ and $E_m$ which are $R$-local maps. We can look at $|BC_p|$ in all of these rings. In $E_n$ we have $|BC_p| = p^{n-1}$, while in $E_m$ we have $|BC_p| = p^{m-1}$. These have to coincide in $E_n \otimes E_m$. This tells us that the map
+\begin{align*}
+    \mathbb{Z} \to \pi_0 \End \left( E_n \otimes E_m \right)
+\end{align*}
+is not injective, which can't happen in these semi-$\delta$ rings.
+\end{proof}
+
+\begin{theorem} The following are equivalent for a nonzero weak ring $R$
+\begin{enumerate}
+    \item $\Sp_R$ sits between $\Sp_{K(n)} \subseteq \Sp_R \subseteq \Sp_{T(n)}$
+    \item Either $\Sp_R = \Sp_\mathbb{Q}$ or the functor
+    \begin{align*}
+        \Omega^\infty : \Sp_R \to \mathcal{S}_\ast
+    \end{align*}
+    admits a retraction
+    \item $\Sp_R$ is 1-semiadditive
+    \item $\Sp_R$ is $\infty$-semiadditive
+    \item $\Supp(R) = \left\{ n \right\}$ for some $n<\infty$.
+\end{enumerate}
+\end{theorem}
+\begin{proof} (1) implies (2): This is clear for $n>0$, since we can take $\Omega^\infty : \Sp_R \to \mathcal{S}_\ast$, then take a Bousfield--Kuhn functor $\Phi: \mathcal{S}_\ast \to \Sp_{T(n)}$, then localize $L_R : \Sp_{T(n)} \to \Sp_R$.
+
+(2) implies (3): Tate vanishing argument from Clausen--Mathew.
+
+(4) implies (3) is trivial
+
+(1) implies (4): We could use that $L_R$ is a symmetric monoidal functor from $\Sp_{T(n)}$, and we know $\infty$-semiadditivity for $\Sp_{T(n)}$.
+
+(3) implies (5): We just proved this
+
+(5) implies (1): $\Sp_{K(n)} \subseteq \Sp_R$ easily. For the second inclusion, observe that
+\begin{align*}
+    \left\langle R \right\rangle &=  \left\langle \oplus_{i=0}^n T(i) \otimes R \oplus \text{type } n+1 \right\rangle \\
+    &= \left\langle T(n) \otimes R \right\rangle.
+\end{align*}
+Whenever you are $T(n)$-acyclic, you are $T(n) \otimes R$-acyclic, and hence you are $R$-acyclic.
+\end{proof}
+

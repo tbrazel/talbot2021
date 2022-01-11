@@ -1,0 +1,226 @@
+\renewcommand{\thespeaker}{Yuqing Shi}
+\renewcommand{\thetitle}{Morava $K$-theory homology of $K \left(\Z/p^j \Z \right),m$}
+\section{\thetitle~(\thespeaker)}
+\providecommand{\Supp}{\text{Supp}}
+\providecommand{\HopfAlg}{\texttt{HopfAlg}}
+\let\sqtimes\boxtimes
+\providecommand{\DM}{\text{DM}}
+\providecommand{\Spf}{\texttt{Spf}}
+
+We are going to show Ravenel and Wilson's calculation of the $K(n)$-homology of $K \left( \Z/\pi^j \Z, m \right)$. Recall the result from Jan's talk:
+
+\begin{notation} Let $p$ be a fixed odd prime, and $K(n)$ the $n$th Morava $K$-theory with
+\begin{align*}
+    K(n)_\ast = \mathbb{F} \left[ v_n^{\pm 1} \right],
+\end{align*}
+with $|v_n| = 2p^n-2$. Let $K_m := K \left( \Z/p^j \Z, m \right)$ for $j$ fixed.
+\end{notation}
+
+\textbf{Structure of} $K(n)_\ast K_m$:
+\begin{itemize}
+    \item We have that $K(n)_\ast K_m$ is a cocommutative $K(n)_\ast$-coalgebra, with comultiplication
+    \begin{align*}
+        \psi : K(n)_\ast K_m \to K(n)_\ast K_m \otimes_{K(n)_\ast} K(n)_\ast K_m
+    \end{align*}
+    \item $K(n)_\ast K_m$ is an abelian group object in $\coAlg_{K(n)_\ast}$ with multiplication
+    \begin{align*}
+        \ast : K(n)_\ast K_m \otimes_{K(n)_\ast} K(n)_\ast K_m \to K(n)_\ast K_m
+    \end{align*}
+    induced by the $H$-space structure since these are infinite loop spaces
+    \item $K(n)_\ast K_m$ is a bicommutative $K(n)_\ast$ Hopf algebra
+
+    \item The cup product pairing $K_i \times K_n \to K_{i+n}$ induces another multiplication
+    \begin{align*}
+        \circ : K(n)_\ast K_i \otimes_{K(n)_\ast} K(n)_\ast K_m \to K(n)_\ast K_{i+m}.
+    \end{align*}
+    This multiplication is graded commutative, unital, and distributes over the algebra structure $\ast$.
+\end{itemize}
+
+So letting $m$ vary, we have that
+\begin{align*}
+    \oplus_{m\ge 0} K(n)_\ast K_m
+\end{align*}
+is a graded commutative monoid in the category of Hopf algebras over $K(n)_\ast$. These are the graded commutative Hopf rings over $K(n)_\ast$. In the original paper, they call this a graded commutative ring object in coalgebras.
+
+In particular, $\oplus_{m\ge 0} K(n)_\ast K_m$ belongs to the subcategory $\HopfAlg_{K(n)_\ast,p^j} \subseteq \HopfAlg_{K(n)_\ast}$, the Hopf algebras which are annihilated by multiplication by $p^j$. This is the set of $H[p^j]$ in the notation from the last talk. Recall again that $p^j$ is fixed.
+
+The category $\HopfAlg_{K(n)_\ast}$ is symmetric monoidal under $\sqtimes$ with unit $K(n)_\ast [\Z]$. This tensor product descends to $\HopfAlg_{K(n)_\ast,p^j}$, with unit $K(n)_\ast \left[ \Z/p^j \Z \right]\simeq K(n)_\ast K_0$.
+
+\begin{customenvironment}{Main theorem} (Ravenel--Wilson) The Hopf ring $\oplus_{m\ge 0} K(n)_\ast K_m$ is the free $K(n)_\ast K_0$-Hopf ring on the Hopf algebra $K(n)_\ast K_1$. That is,
+\begin{align*}
+    \oplus_{m\ge 0} K(n)_\ast K_m = K(n)_\ast K_0 \oplus \left(K(n)_\ast K_1 \oplus K(n)_\ast K_1 \right)/\Sigma_2 \oplus \cdots
+\end{align*}
+\end{customenvironment}
+
+\begin{remark} In this situation, given $a_{(i)} \in K(n)_{2p^i}(K_1)$ and $a_{(j)} \in K(n)_{2p^j}(K_1)$, then
+\begin{align*}
+    a_{(i)} \circ a_{(j)} = - a_{(j)} a_{(i)}.
+\end{align*}
+This is why we have an exterior algebra structure.
+\end{remark}
+
+Before explaining this theorem, we should discuss the relation to Dieudonn\'e modules.
+
+\begin{notation} We can define the cyclic graded $K(n)$-homology
+\begin{align*}
+    \bar{K(n)}_{\bar{t}}(X) = K(n)_t(X),
+\end{align*}
+with $\bar{t} \in \Z/(2p^n-2)$ the reduction of $t\in \mathbb{Z}$. There is always a map $K(n)_\ast \to \bar{K(n)}_\ast \cong \mathbb{F}_p$ sending $v_n \mapsto 1$.
+
+We will also define the Hopf algebra $H_j := \bar{K(n)}_\ast K_1$ with associated Diedonn\'e module $D_j :=\DM(H_j)$.
+
+Recall the Dieudonn\'e ring $D_{\mathbb{F}_p} \cong \Z_p[F,V]/FV=p$.
+\end{notation}
+
+Applying the Dieudonn\'e module functor $\DM$ to the objects in the theorem, we get
+\begin{align*}
+    \DM \left( \oplus_{m\ge 0} \bar{K(n)}_\ast(K_m) \right) &=\DM \left( \bar{K(n)}_\ast(K_1)\right) \oplus D_j \oplus \left( D_j \oplus D_j \right)/\Sigma_2 \oplus \cdots
+\end{align*}
+where here $\DM \left( \bar{K(n)}_\ast(K_1)\right) \cong \Z/p^j \Z$. This whole thing is $\Lambda_{\sqtimes} D_j$.
+
+We first want to know what $D_j$ is. First consider $\Z/p\Z \xto{p\cdot } \Z/p^2 \Z \xto{p} \cdots $ whose colimit is $\Q_p/\Z_p$. This gives an isomorphism
+\begin{align*}
+    H^\vee := \lim_j \bar{K(n)}^\ast \left( K \left( \Z/p^j \Z,1 \right) \right) \cong \bar{K(n)}^\ast \left( K \left( \Q_p/\Z_p, 1 \right) \right) \cong K(n)^\ast \left( K(\Z,2) \right).
+\end{align*}
+
+We have that $H^\vee = \bar{K(n)}_\ast [[t]]$.
+
+\begin{claim} $\DM(H) = \DM \left( \Spf H^\vee \right) \cong \mathbb{Z}_p [V,F]/VF=p, V^{n-1} = F$.
+\end{claim}
+\begin{proof}[Sketch] There is a bijection
+\begin{align*}
+    \left\{ \text{formal groups of finite height} \right\} & \leftrightarrows \left\{ \DM \text{ of finite rank} \right\} \\
+    \text{height} &\mapsto \text{rank} \\
+    \dim &\mapsto \text{length of } M/VM \\
+    \text{Frobenius} &\mapsto \text{Verschiebung}.
+\end{align*}
+\end{proof}
+
+\begin{corollary} The Dieudonn\'e module $D_j$ corresponding to $K_1$ is just a mod $p$ reduction:
+\begin{align*}
+    D_j = \DM(H_j) \cong \Z / p^t \Z \left[ F,V \right]/VF=p, pv^{n-1} = F.
+\end{align*}
+\end{corollary}
+
+We still want to understand the Frobenius and Verschiebung action on $\Lambda_\sqtimes D_j$, and from what we have seen before, it is sufficient to understand it on $\Lambda_\sqtimes \DM(H)$ mod $p^j$.
+
+We have that $\DM(H)$ is a free $\Z_p$-module generated by $\alpha_{n-1}, \ldots, \alpha_0$. The V and F action on $\Lambda_\sqtimes \DM(H) \cong \Lambda \underline{\DM(H)}$, the underlying $\mathbb{Z}_p$-module of $\DM(H)$. We see inductively that
+\begin{align*}
+    V \left( \alpha_{i_1} \circ \cdots \circ \alpha_{i_q} \right) = V \left( \alpha_{i_1} \circ \cdots \circ \alpha_{i_{q-1}} \right)\wedge \alpha_{i_q},
+\end{align*}
+and similarly for Frobenius.
+
+We want to prove the main theorem. We first have to show that $\oplus_{m\ge 0} K(n)_\ast K_m$ is generated by $K(n)_\ast K_1$.
+
+For simplicity, assume $j=1$ here, since the case $j>1$ works exactly the same.
+
+\textbf{Step 1}: Understand $K(n)_\ast K_1$. The Eilenberg-Maclane spaces fit into
+\begin{align*}
+    K_1 \xto{\delta} K(\Z,2) \xto{\cdot p} K(\Z,2).
+\end{align*}
+Recall that
+\begin{itemize}
+    \item As an algebra $K(n)^\ast \left( \CP^\infty \right) \cong K(n)_\ast [[c]]$ with $|c|=2$
+    \item As a $K(n)_\ast$-module
+    \begin{align*}
+        K(n)_\ast \left( \CP^\infty \right) \cong K(n)_\ast \left[ \beta_0,\beta_1, \ldots,  \right]
+    \end{align*}
+    with $|\beta_i| = 2i$ and $\left\langle c_i, \beta_j \right\rangle = \delta_{ij}$.
+
+    \item Denote by $\beta_{(i)} = \beta_{p^i}$ and $\beta_{(i)} := 0$ for $i<0$. Thus as an algebra
+    \begin{align*}
+        K(n)_\ast \left( \CP^\infty \right) \cong K(n)_\ast \left[ \beta_{(0)}, \beta_{(1)}, \ldots \right] \big/ \beta_{(n+i-1}^{\ast p} = v_n^{p^i} \beta_{(i)}.
+    \end{align*}
+    The coproduct here is
+    \begin{align*}
+        \psi(\beta_m) = \sum_{i=0}^m \beta_i \otimes \beta_{m-i}.
+    \end{align*}
+
+\end{itemize}
+
+\begin{theorem} We have that
+\begin{enumerate}
+    \item $\delta_\ast : K(n)_\ast K_1 \to K(n)_\ast \CP^\infty$ is a monomorphism of $K(n)_\ast$-Hopf algebras
+    \item As a $K(n)_\ast$-module, $K(n)_\ast K_1 \cong K(n)_\ast [a_0, \ldots, a_{p^n-1}]$ with $|a_m| = 2m$, and $\delta^{-1}(a_m) = \beta_m$.
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary} We define $a_{(i)} := a_{p^i}$, so as an algebra
+\begin{align*}
+    K(n)_\ast K_1 \cong K(n)_\ast \left[ a_{(0)}, \ldots, a_{(n-1)} \right] \big/ a_{(n+i-1)}^{\ast p} = v_n^{p^i} a_{(i)},
+\end{align*}
+with coproduct
+\begin{align*}
+        \psi(a_m) = \sum_{i=0}^m a_i \otimes a_{m-i}.
+    \end{align*}
+\end{corollary}
+
+\begin{proof}[Sketch of theorem] We use the Gysin sequence associated to the sphere bundle
+\begin{align*}
+    S^1 = \Omega K(\Z,2) \to K_1 \to K(\Z,2) \xto{p} K(\Z,2).
+\end{align*}
+So we get
+\begin{align*}
+    \cdots \to K(n)_\ast K_1 \xto{\delta_\ast} K(n)_\ast \left( \CP^\infty \right) \xto{\cap e_\delta} K(n)_{\ast - 2} \left( \CP^\infty \right).
+\end{align*}
+Here $e_\delta$ is the Euler class. We claim that capping with it is $y \mapsto y \cap [p]_{K(n)}(c)$. Because of the pairing, we have that $\beta_{n+i} \mapsto \beta_i$. Thus this map is surjective! Thus $\delta_\ast$ is a monomorphism.
+\end{proof}
+
+\begin{remark} $K(n)_\ast K_1$ is a truncated polynomial algebra
+\begin{align*}
+    K(n)_\ast K_1 \cong K(n)_\ast \left[ a_{(1)}, \ldots, a_{(n-1)} \right] \big/ a_{(i)}^{\ast p} = 0,\ 1\le i\le n-2,\ a_{(n-1)}^{\ast p^2} = 0.
+\end{align*}
+\end{remark}
+
+\begin{notation} For $I = \left( i_1, \ldots, i_q \right)$ with $0 \le i_q < n$, we define $a_I \in K(n)_\ast K_q$ via the iterated cup product pairing
+\begin{align*}
+    \circ^q : K(n)_\ast K_1 \sqtimes \cdots \sqtimes K(n)_\ast K_1 &\to K(n)_\ast K_q \\
+    a_{(i_1)}, \ldots, a_{(i_q)} &\mapsto a_I.
+\end{align*}
+\end{notation}
+
+\begin{theorem} We have
+\begin{enumerate}
+    \item $a_{(i)} \circ a_{(j)} = - a_{(j)} a_{(i)}$ and $a_{(i)} \circ a_{(i)} = 0$, which follows from the axiom of being a (graded) Hopf ring.
+    \item As an algebra,
+    \begin{align*}
+        K(n)_\ast K_0 &\cong K(n)_\ast \left[ \Z/p\Z \right] \\
+        K(n)_\ast K_\ell &\cong K(n)_\ast \text{ for } \ell > n \\
+        K(n)_\ast K_n &\cong K(n)_\ast \left[ a_I \right]\big/(a_I^{\ast p} + (-1)^n v_n a_I) \text{ with } I = (0,1, \ldots, n) \\
+        K(n)_\ast K_m &\cong \bigotimes_{I = 0< i_1 < \cdots < i_m < n}K(n)_\ast \left[ a_I \right]\big/\text{relations}
+    \end{align*}
+
+    \item The coalgebra structure follows from the coalgebra structure of $K(n)_\ast K_1$ and the ring map $\circ$, which is a coalgebra map by definition.
+\end{enumerate}
+\end{theorem}
+
+\textbf{Passage from $K(n)_\ast K_m$ to $K(n)_\ast K_{m+1}$}: We use here that $K_{m+1} = BK_m$, and that $K_{m+1}$ is the geometric realization of $ \cdots \rightrightarrows K_m \times K_m \rightrightarrows K_m \rightrightarrows \ast$.
+
+From the filtration
+\begin{align*}
+    \ast = B_0 K_m \subseteq B_1 K_m \subseteq \cdots \subseteq K_{m+1}
+\end{align*}
+we get a spectral sequence.
+
+\begin{theorem} There exists a spectral sequence $E_{\ast,\ast}(K_m)$ of $K(n)_\ast$-Hopf algebras converging to $K(n)_\ast K_{m+1}$ with first page
+\begin{align*}
+    E_{s,t}^1(K_m) = \widetilde{K(n)}_\ast \left( B_s K_m / B_{s-1} K_m \right) \cong \otimes_s \widetilde{K(n)}_\ast K_m.
+\end{align*}
+This gives the induced bar filtration $E_{s,t}^2(K_m) \cong \Tor_{s,t}^{K(n)_\ast K_m} \left( K(n)_\ast, K(n)_\ast \right) =: H_{s,t} \left( K(n)_\ast K_m \right)$.
+\end{theorem}
+
+
+\begin{example}\label{ex:labelname} Going from $K_1$ to $K_2$, let's take $n=2$ and $p=3$, so our periodicity is $2p^n-2 = 16$. In this case, as an algebra we have
+\begin{align*}
+    K(n)_\ast K_1 \cong K(n)_\ast \left[ a_{(1)} \right]\big/ a_{(1)}^q,
+\end{align*}
+so $\deg a_{(1)} = 6$. The $E^2$ page here is
+\begin{align*}
+    E_{s,t}^2(K_1) &= \Lambda \left( \sigma a_{(1)} \right) \otimes_{K(n)_\ast} \Gamma \left( \phi \left( a_{(1)}^{\ast 3} \right) \right),
+\end{align*}
+with elements $\sigma a_{(1)} \in E_{1,6}^{st}$ and $\gamma_1 = \phi \left( a_{(1)}^{\ast 3} \right) \in E_{2,54}^{st}$. This spectral sequence gives us an algebra isomorphism
+\begin{align*}
+    K(2)_\ast K_2 \cong K(2)_\ast \left[ a_{(0,1)} \right] \big/ a_{(0,1)}^{\ast 3} = v_2 a_{(0,1)}.
+\end{align*}
+\end{example}
+

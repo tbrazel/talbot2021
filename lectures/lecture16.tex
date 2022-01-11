@@ -1,0 +1,183 @@
+\renewcommand{\thespeaker}{Peter Haine}
+\renewcommand{\thetitle}{Character theory via tempered cohomology}
+\section{\thetitle~(\thespeaker)}
+\providecommand{\Supp}{\text{Supp}}
+
+\textbf{Plan}:
+\begin{enumerate}
+    \item Motivation from character theory
+    \item How the statements in (1) relate to tempered cohomology
+    \item Orientations
+\end{enumerate}
+
+\textbf{Key examples}:
+\begin{enumerate}
+    \item $\KU_{\mu_\mathcal{P}^\infty}$
+    \item $A=E_n$ and $G = \mathbb{G}^\text{Quillen}$
+\end{enumerate}
+
+\subsection{Character theory of finite groups}
+
+Given a finite group $G$, there is an isomorphism
+\begin{align*}
+    \Rep(G) &\xto{\chi} \left\{ \text{class function} G \to \mathbb{C} \right\},
+\end{align*}
+which is an isomorphism after applying $- \otimes_\mathbb{Z} \mathbb{C}$. We know that $\Rep(G) = \KU_G^0(\ast)$. Since the class functions are conjugation-invariant, they are functions on an adjoint quotient of $G$ by itself to the complex numbers. We think about this as $H^0(-, \mathbb{C})$ of a quotient of $G$ by its conjugation. That is, we think about the set of class functions as
+\begin{align*}
+    H^0 \left( G_{hG}, \mathbb{C} \right).
+\end{align*}
+
+\begin{theorem} If $X$ is a finite $G$-space, write $\amalg_{g\in G} X^g$ for the space with $G$-action given by conjugation on the indexing set $G$ and residual actions on the fixed point spaces $X^g := X^{\left\langle g \right\rangle}$ for each $g$. Then the \textit{equivariant Chern character} defines an isomorphism
+\begin{align*}
+    \mathbb{C} \otimes_\mathbb{Z} \KU_G^0(X) \xto{\sim} H^{\text{even}} \left( \left( \amalg_g X^g \right)_{hG}, \mathbb{C} \right).
+\end{align*}
+\end{theorem}
+
+\textbf{Question}: What about the $p$-complete $K$-theory analogue of this statement?
+
+We have that $G \cong \Hom(\mathbb{Z},G)$, so we are going to replace this by $\Hom \left( \mathbb{Z}_p, G \right)$. This latter group is finite, so they are factoring through some subgroup of finite order. This is
+\begin{align*}
+    \Hom \left( \Z_p, G \right) &= \left\{ g\in G \colon g^{p^k} = 1 \text{ for } k \gg 0 \right\}.
+\end{align*}
+These elements are called $p$\textit{-singular elements}.
+
+\begin{theorem} Fix a prime $p$ and an embedding $\mathbb{Z}_p \hookto \mathbb{C}$. Then there is a canonical isomorphism
+\begin{align*}
+    \mathbb{C} \otimes_{\mathbb{Z}_p} \KU_p^{\wedge,0} \left( X_{hG} \right) \xto{\sim} H^\text{even} \left( \left( \amalg_{\alpha:\mathbb{Z}_p \to G} X^{\im(\alpha)} \right)_{hG}, \mathbb{C} \right).
+\end{align*}
+On the left we have height 1, while on the right we have height zero.
+\end{theorem}
+
+\textbf{Question}: What about relating height $n$ and height $0$, or more generally height $m$ for $m\le n$. Relating height $n$ with height zero is Hopkins--Ravenel character theory. Height $n$ and $m$ is due to Stapleton.
+
+\textbf{Setup}:
+\begin{itemize}
+    \item Let $k$ be a perfect field of characteristic $p$, let $\hat{\mathbb{G}}_0$ be a height $n$ formal group, with $\hat{\mathbb{G}}$, the identity component of a $p$-divisible group, its universal deformation
+    \item $R$ a Lubin--Tate ring
+    \item $C_0= R$-algebra classifying isos $\mathbb{G} \cong \left( \mathbb{Q}_p/\mathbb{Z}_p \right)^\wedge$
+    \item $E$ the Lubin--Tate ring of $\hat{\mathbb{G}}_0$
+\end{itemize}
+
+\begin{customenvironment}{HKR theorem} Let $G$ be a finite group and $X$ a finite $G$-space:
+\begin{align*}
+     C_0 \otimes_R E^\ast \left( X_{hG} \right) \xto{\sim}  C_0 \otimes_{R_\mathbb{Q}} E_\mathbb{Q}^\ast \left( \left( \amalg_{\alpha: \mathbb{Z}_p \to \mathbb{C}} X^{\im(\alpha)} \right)_{hG} \right) 
+\end{align*}
+
+\end{customenvironment}
+
+\textbf{Key steps}:
+\begin{enumerate}
+    \item Understand what happens to tempered cohomology if we use something like $A_{\mathbb{G}_0 \oplus \left(\mathbb{Q}_p/\mathbb{Z}_p\right)^n}$
+    \item $B \otimes_A A_G^{\mathbb{X}}$ versus $B_{\mathbb{G}}^{\mathbb{X}}$
+\end{enumerate}
+
+\subsection{Formal loop spaces}
+
+Recall $\mathcal{T} \subseteq \Spc$ denotes the full subcategory on objects $BG$ with $G\in \Ab^\text{fin}$, $\O \Spc = \PSh(\mathcal{T})$
+
+\begin{definition} For $\mathbb{X} \in \Ospc$, and $\Lambda$ a torsion abelian subgroup, then the formal loop space $\mathcal{L}^\wedge(\mathbb{X})$ is defined as
+\begin{align*}
+    \mathcal{T}^\op &\to \Spc \\
+    T &\mapsto \colim_{\substack{\Lambda_0 \subseteq \Lambda \\ \text{finite}}} \left(\mathbb{X}^{T \times B\Lambda_0^\vee}\togjt)
+\end{align*}
+\end{definition}
+
+\begin{customenvironment}{Computation} If $X$ is a $G$-space, we can take the formal loop space on its orbispace quotient
+\begin{align*}
+    \mathcal{L}^\wedge \left( X // G \right) \simeq \left(\coprod_{\alpha: \Lambda^\vee \to G} X^{\im(\alpha)}\right) // G.
+\end{align*}
+\end{customenvironment}
+
+If $X$ is $\pi$-finite, then $\mathcal{L}^{\mathbb{Q}/\mathbb{Z}}(X) \simeq \mathcal{L}(X)$. Similarly if $X$ is $p$-finite, then $\mathcal{L}^{\mathbb{Q}_p / \mathbb{Z}_p}(X) \simeq \mathcal{L}(X)$.
+
+\textbf{Recall} That $\left( \mathbb{Q}_p/ \mathbb{Z}_p \right)^\vee \cong \mathbb{Z}_p$. Similarly $\left( \mathbb{Q}/\mathbb{Z} \right)^\vee \cong \hat{\mathbb{Z}}$.
+
+\begin{note} If $X\in \Spc$, we have $X^{(-)} \in \OSpc$, There's a map
+\begin{align*}
+    \left| \mathcal{L}^\wedge \left( X^{(-)} \right) \right| \simeq \colim_{\Lambda_0 \subseteq \Lambda} X^{B\Lambda_0^\vee} \to X^{B\Lambda^\vee},
+\end{align*}
+where in this last step we are ignoring the profinite topology. That gives you a natural map
+\begin{align*}
+    \mathcal{L}^\wedge X^{-)} \to \left( X^{B\Lambda ^\vee }\right)
+\end{align*}
+\end{note}
+
+\begin{definition} We say an abelian group $\Lambda$ is a \textit{collatice} if
+\begin{enumerate}
+    \item $\Lambda$ is torsion
+    \item For all $n$, the multiplication by $n$ map $\Lambda \xto{n\cdot-} \Lambda$ is a surjection with finite kernel.
+\end{enumerate}
+\end{definition}
+
+Equivalent, if for all $p$, we have that $\Lambda_{(p)} \cong \left( \mathbb{Q}_p / \mathbb{Z}_p \right)^{h_p}$ for various heights.
+
+\begin{proposition} Let $X$ be a $\pi$-finite space, and $\Lambda$ is a colattice, then
+\begin{align*}
+   \mathcal{L}^\wedge \left( X^{(-)} \right) \xto{\sim} \left( X^{B\Lambda^\vee} \right)^{(-)}
+\end{align*}
+\end{proposition}
+
+\begin{customenvironment}{Character isomorphism} Let $\mathbb{G}_0$ be a preoriented $\mathcal{P}$-divisible group, $\Lambda$ a colattice, and $\mathbb{G} := \mathbb{G}_0 \oplus \underline{\Lambda}$. Then for any $\mathbb{X} \in \OSpc$, we have an isomorphism
+\begin{align*}
+    \chi : A^\ast_{\mathbb{G}} \simeq A_{G_0}^{\mathcal{L}^\e}.
+\end{align*}
+\end{customenvironment}
+
+\begin{corollary} In the same setup, for $G$ a finite group and $X$ a $G$-spce, we have
+\begin{align*}
+    \chi : A_G^\ast(X // G) \simeq \mathbb{A}_{\mathbb{G}_0}^\ast \left( \left( \amalg_{\alpha : \Lambda^\vee \to \mathbb{C}} X^{\im(\alpha)} \right)  // G\right).
+\end{align*}
+\end{corollary}
+
+\subsection{Chern character via tempered cohomology}
+
+\textbf{Setup}: Write $\KU_\mathbb{C} := \mathbb{C} \otimes \KU$. Over $\mathbb{C}$ there is an exponential of $p$-divisible groups
+\begin{align*}
+    \exp : \underline{\mathbb{Q}/\mathbb{Z}} & \xto{\sim} \mu_{\mathcal{P}^\infty} \\
+    \lambda &\mapsto \exp \left( 2\pi i \lambda \right).
+\end{align*}
+We have that
+\begin{align*}
+    \left( \KU_\mathbb{C} \right)_{\mu_{\mathcal{P}^\infty}}^{\mathbb{X}} \simeq \left( \KU_\mathbb{C} \right)_{\underline{\mathbb{Q}/\mathbb{Z}}}^{\mathbb{X}} \simeq \KU_\mathbb{C}^{\left| \mathcal{L}^{\mathbb{Q}/\mathbb{Z}(\mathbb{X})} \right|}
+\end{align*}
+Precomposing with a map from ordinary $\KU$ we get a composite we call the Chern character
+\begin{align*}
+    \Ch: \KU_{\mu_{\mathcal{P}^\infty}}^\ast \left( \mathbb{X} \right) \to H^\ast \left( \left| \mathcal{L}^{\mathbb{Q}/\mathbb{Z}}(\mathbb{X}) \right|, \mathbb{C} \right)[\beta^{-1}].
+\end{align*}
+
+We haven't yet used Atiyah--Segal completion in tempered cohomology. We will introduce this, and this is when the base change theorem will hold.
+
+\subsection{Orientations}
+
+\textbf{Goal}: Construct a map
+\begin{align*}
+    \zeta : A_\mathbb{G}^{\mathbb{X}} \to A^{\left| \mathbb{X} \right|}.
+\end{align*}
+
+\begin{fact} $A_\mathbb{G}^{\underline{X}} \simeq A^X$.
+\end{fact}
+
+So it suffices, for constructing the map above, to construct a map $\underline{\left| \mathbb{X} \right|} \to \mathbb{X}$. But we already have one, this is just the counit. So the Atiyah--Segal completion map is just $\zeta$ above using the counit.
+
+\begin{note} The point $\ast \to BG$ determines a surjection $A_{\mathbb{G}}^0 (BG) \to A_\mathbb{G}^0(\ast) = \pi_0 A$. We will write $I_G$ for the kernel of this map.
+\end{note}
+
+\begin{definition} Let $A$ be an $E_\infty$-ring, $\mathbb{G}$ a preoriented $\mathcal{P}$-divisible group over $A$. Then we say that $\mathbb{G}$ is \textit{oriented} if:
+\begin{enumerate}
+    \item For all $p$, the Atiyah--Segal comparison map
+    \begin{align*}
+        \zeta: A_\mathbb{G}^{BC_p} \to A^{BC_p}
+    \end{align*}
+    exhibits $A^{BC_p}$ as the $I_{C_p}$-completion of the source.
+
+    \item The Tate construction $A^{tC_p}$ is $I_{C_p}$-local as an $A_\mathbb{G}^{BC_p}$-module.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem} (Base change) If $\mathbb{G}$ is an oriented $\mathcal{P}$-divisible group over $A$, then for every $\pi$-finite space $X$, given a map $f: A \to B$, we have that
+\begin{align*}
+    B \otimes_A A_\mathbb{G}^X \xto{\sim} B_\mathbb{G}^X
+\end{align*}
+is an equivalence.
+\end{theorem}
+

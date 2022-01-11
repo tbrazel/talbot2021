@@ -20,7 +20,7 @@
 \fancyhead[C]{\small\itshape\thetitle}
 \let\smashprod\wedge
 \usepackage{hyperref}
-
+\renewcommand{\O}{\mathcal{O}}
 
 \title{MIT Talbot Workshop 2021: Ambidexterity in Chromatic Homotopy Theory}
 \author{Mentored by Jacob Lurie and Tomer Schlank}
@@ -37,11 +37,15 @@
 
 
 \foreach \n in {1,...,8}{%
-
 \include{lectures/lecture\n.tex}
-
 }
 
+\section*{Interlude: Tomer's recap}
+\input{lectures/tomersinterlude.tex}
+
+\foreach \n in {9,...,18}{%
+\include{lectures/lecture\n.tex}
+}
 
 \bibliography{references}{}
 \bibliographystyle{alpha}

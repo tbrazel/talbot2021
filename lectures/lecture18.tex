@@ -1,0 +1,165 @@
+\renewcommand{\thespeaker}{Tomer Schlank}
+\renewcommand{\thetitle}{What else?}
+\section{\thetitle~(\thespeaker)}
+
+With Lior Yanovski and Shachar Carmeli.
+
+Just like in $\Ab$ we can decompose at primes and reassemble, in homotopy theory we have more primes --- these are the chromatic heights. Looking locally at a prime, there are two candidates for a local category --- $\Sp_{T(n)}$ or $\Sp_{K(n)}$. Usually we deal with $\Sp_{K(n)}$ because there are more tools available. It is hard to see ambidexterity looking at all heights at once, but zooming in at one prime we can see it.
+
+The $K(n)$-local sphere $\mathbb{S}^0_{K(n)}$ has a Galois closure, given by $E_n \left( \bar{\mathbb{F}}_p \right)$. This has a Galois group, the Morava stabilizer group $\mathbb{G}_n$. In chromatic homotopy theory, our tool to study this Galois theory is the Hopkins--Devinatz spectral sequence.
+
+What about $\mathbb{S}^0_{T(n)}$? Do we know anything about Galois extensions?
+
+\begin{definition} (Rognes) Given $R \in \CAlg(\mathscr{C})$ in a stable symmetric monoidal $\infty$-category, with an action of a finite group $G$, we say that it is a \textit{Galois extension} if
+\begin{align*}
+    1 \xto{\sim} R^{hG}
+\end{align*}
+is an equivalence, and the following map is an equivalence:
+\begin{align*}
+    R \otimes R &\xto{\sim} \prod_{g\in G} R \\
+    (r_1,r_2) &\mapsto r_1 \cdot gr_2.
+\end{align*}
+\end{definition}
+
+We don't know what the algebraic closure of $\mathbb{S}^0_{T(n)}$ is, but we can construct some Galois extensions, and ambidexterity is a useful tool. How do we construct Galois extensions?
+
+Given our field $\mathbb{Q}$, we have to add an element and divide by a polynomial to get $\mathbb{Q}[x]/f(x)$. This is too element-dependent to work in the $\infty$-world.
+
+There are however special Galois extensions that we can describe differently, for example a cyclotomic extension like $\mathbb{Q} \left[\zeta_{p^n} \right]$. Analogous to $\Gal \left( \mathbb{Q} \left[ \zeta_p \right] / \mathbb{Q} \right) = C_{p-1}$, we want to construct $\Gal \left( \mathbb{S}^0_{T(n)} \left[ \zeta_p \right] / \mathbb{S}^0_{T(n)} \right) = C_{p-1}$.
+
+We can take the group algebra $\mathbb{Q}[C_p] \cong \Q[x]/(x^p-1)$. This splits as $\mathbb{Q}[\zeta_p] \times \mathbb{Q}$. We define $\epsilon \in \mathbb{Q}[C_p]$ to be the idempotent element
+\begin{align*}
+    \epsilon &= \frac{\sum_{y\in C_p} y}{|C_p|} \in \mathbb{Q}[C_p].
+\end{align*}
+This is an idempotent since
+\begin{align*}
+    \epsilon^2 &= \frac{\sum_{g,h} gh}{|C_p|^2} = \frac{|C_p| \sum_g g}{|C_p|^2} = \epsilon.
+\end{align*}
+This is exactly the idempotent which splits the algebra.
+
+We want to:
+\begin{enumerate}
+    \item take a group algebra
+    \item sum things
+    \item divide by the order of $C_p$.
+\end{enumerate}
+We normally can't do this last thing in an additive category. However we learned this week that
+\begin{align*}
+    \left| B^n C_p \right| \in \pi_0 \left( \mathbb{S}_{T(n)}^0 \right)^\times.
+\end{align*}
+So let's first take
+\begin{align*}
+    \mathbb{S}_{T(n)}^0 \left[ B^n C_p \right].
+\end{align*}
+We have a canonical map
+\begin{align*}
+    B^n C_p \xto{\text{can}} \Map_{\Sp_{T(n)}} \left( \mathbb{S}^0, \mathbb{S}^0 \left[ B^n C_p \right] \right),
+\end{align*}
+sending every point to its corresponding component. Ambidexterity allows us to sum these things, to obtain
+\begin{align*}
+    \int_{g\in B^n C_p} \text{can}(g) \in \Map(\mathbb{S}^0, \mathbb{S}^0 \left[ B^n C_p \right]),
+\end{align*}
+and since $B^nC_p$ is amenable, we can divide by its order to get
+\begin{align*}
+    \epsilon:= \frac{1}{|B^n C_p|} \int_{g\in B^n C_p} \text{can}(g).
+\end{align*}
+Then $\epsilon$ will be an idempotent in $\pi_0 \mathbb{S}^0_{T(n)} \left[ B^n C_p \right]$. If we invert this idempotent, we get the $T(n)$-local sphere. If we invert $1-\epsilon$, we will get
+\begin{align*}
+    \mathbb{S}^0_{T(n)} \left[ B^n C_p \right] \left[ (1-\epsilon)^{-1} \right] =: \mathbb{S}_{T(n)}^0 \left[ \mu_p \right].
+\end{align*}
+
+We get an action here and we can ask if this is a Galois extension in the sense of Rognes, and the answer is yes.
+
+More generally, we can get a cyclotomic extension for the $p^n$ roots of unity.
+
+Given a map of rings $T \to K$, we get a map of Galois groups $\Gal(\bar{K}/K) \to \Gal(\bar{T}/T)$. Similarly we get a map
+\begin{align*}
+    \Gal \left( \Sp_{K(n)} \right) \to \Gal \left( \Sp_{T(n)} \right).
+\end{align*}
+On the left we get $\mathbb{G}$, which maps to its own abelianization $\mathbb{G}^\ab = \mathbb{Z}_p^\times \times \hat{\Z}$. We know that the kernel lies in the commutator, and that the kernel is a virtually $p$-Sylow subgroup in the commutator.
+
+So ambidexterity gives us higher analogues of the notions of $p$th roots of unity. What can we do with $p$th roots of unity?
+
+Kummer theory tries to understand Galois extensions of fields --- given a field $K$ with $\mu_p \subseteq K$ and $\frac{1}{p} \in K$, then $\Gal(K, \Z/p) = H^1_\Gal(K,\Z/p) \cong K^\times/(K^\times)^p$. If we are homologically-minded, we might describe this group as
+\begin{align*}
+    K^\times/(K^\times)^p = \Ext^1 \left( \Z/p, K^\times \right).
+\end{align*}
+In our culture, we write this as
+\begin{align*}
+    \left[ \Sigma^{-1} (\Z/p), K^\times \right] = \left[ \Sigma^{-1} (\Z/p), \GL_1(K) \right].
+\end{align*}
+
+Suppose that $R \in \CAlg \left( \Sp_{T(n)} \right)$, and $\mu_p \subseteq R$, meaning that there exists a map $\mathbb{S}^0_{T(n)} \left[ \mu_p \right] \to R$. Then the collection of $\Z/p$-Galois extensions of $R$ are given by\footnote{Here $h$ is the height, we were secretly working with $h=0$ before.}
+\begin{align*}
+    \Gal(R, \Z/p) &= \left[ \Sigma^{h-1} \Z/p, \GL_1(R) \right].
+\end{align*}
+
+Given roots of unity, we can also do a discrete Fourier transform. Given $R$ with $\frac{1}{p}\in R$ and $\mu_{p^\infty} \subseteq R$, and $A$ is a finite abelian $p$-group, then we can construct a category of representations of $A$ in $R$-modules, which we might denote by $\Rep_{\Mod_R}(A)$. The discrete Fourier transform tells you that every such representation decomposes into a sum indexed over the Pontryagin dual of $A$:
+\begin{align*}
+    \Rep_{\Mod_R}(A) = \oplus_{A^\ast} \Mod_R.
+\end{align*}
+We can rewrite these categories as
+\begin{align*}
+    \Rep_{\Mod_R}(A) &= \Fun \left( BA, \Mod_R \right) \\
+    \oplus_{A^\ast} \Mod_R &= \Fun \left( A^\ast, \Mod_R \right),
+\end{align*}
+where we are considering $A^\ast$ as a finite set here. If $R$ is a commutative ring, then the category of representations gets a tensor product computed pointwise, implying that $\Fun \left( A^\ast, \Mod_R \right)$ has a compatible symmetric monoidal structure. This is Day convolution, by remembering that $A^\ast$ is a group. We can then rewrite this equivalence as
+\begin{align*}
+    \Fun^{\otimes\text{-ptwise}} \left( B^1A, \Mod_R \right) \cong \Fun^{\otimes\text{-Day}} \left( B^0A^\ast, \Mod_R \right)
+\end{align*}
+Now assume $R \in \CAlg(\Sp_{T(n)})$ and $\mu_{p^\infty} \subseteq R$, and let $a+b = n+1$. Then there exists an equivalence
+\begin{align*}
+    \Fun^{\otimes\text{-ptwise}} \left( B^a A, \Mod_R \right) \cong \Fun^{\otimes\text{-Day}} \left( B^b A^\ast, \Mod_R \right)
+\end{align*}
+sending local systems tensored pointwise to the Day convolution. We could envision an even fancier version of this by noting that $B^a A = \Omega^\infty \Sigma^a A$ and that $B^b A^\ast = \Omega^\infty \Sigma^b A^\ast = \Omega^\infty \underline{\Hom}\left( \Sigma^a A, \Sigma^{n+1} I \right)$, where $I$ is the Brown--Comenetz dual. When we do this, we can replace $\Sigma^a A$ with any spectra with suitable homotopy groups.
+
+Bhatt--Clausen--Mathew has the following result --- suppose that $R$ is a ring in which $p$ is invertible. Then we have that
+\begin{align*}
+    L_{K(1)} \left( K \left( R \left[ \mu_{p^\infty} \right] \right) \right) \cong K_{K(1)} K(R) \hat{\otimes} \KU.
+\end{align*}
+There is a $\Z/p$-action on $R \left[ \mu_{p^\infty} \right]$, and the Adams operations on $\KU$ on the right, and this equivalence is equivariant. Since the telescope conjecture is true at height 1, we can replace this by $T(1)$.
+
+We have that $\KU$ is a Galois extension, given by
+\begin{align*}
+    \KU = \mathbb{S}^0_{K(1)} \left[ \mu_{p^\infty} \right].
+\end{align*}
+Tensoring with adding $p$th roots of unity is just adding $p$th roots of unity, so we can rewrite their result as
+\begin{align*}
+     L_{K(1)} \left( K \left( R \left[ \mu_{p^\infty} \right] \right) \right) \cong K_{K(1)} K(R) \left[ \mu_{p^\infty} \right].
+\end{align*}
+That is, taking $p$th roots of unity passes outside taking algebraic $K$-theory in an equivariant way.
+
+For $R\in \CAlg \left( \Sp_{T(n)} \right)$:
+\begin{align*}
+    L_{T(n+1)} K \left( R \left[ \mu_{p^\infty} \right] \right) \cong L_{T(n+1)} K(R) \left[ \mu_{p^\infty} \right].
+\end{align*}
+We call this \textit{cyclotomic redshift} because we moved from height $n$ to height $n+1$ here.
+
+\textbf{Q}: To what extent are results in chromatic homotopy theory given by the presence of ambidexterity and stability?
+
+Think about height --- given a semiadditive structure, can we talk about height in a category? Think about a prime as $p = |C_p|$, sitting in an infinite sequence $\left\{ |B^iC_p| \right\}_{i=0}^\infty$. Given an $\infty$-semiadditive $\infty$-category, given any object $X\in \mathscr{C}$ we have a bunch of transformations
+\begin{align*}
+    X \xto{|B^kC_p|} X.
+\end{align*}
+If $|B^kC_p|_X$ is an isomorphism, then so is $|B^{k+1}C_p|_X$. So we can say that the \textit{height} of $X$ is $\le k$ if $|B^kC_p|_X \in \End(X)^\times$. We say that the height of $X$ is $> k$ if $|B^kC_p|$-complete: that is,
+\begin{align*}
+    X \to \lim_k X / |B^k C_p|_X
+\end{align*}
+is an isomorphism. So we can use these to describe when the height of $X$ is \textit{exactly} height $k$.
+
+All objects in $\Sp_{T(n)}$ and $\Sp_{K(n)}$ have height exactly $n$. This is our discussion about amenability.
+
+We can take $\Sp$, the universal stable category, and force it to be $\infty$-semiadditive by taking $\CMon_\infty \left( \Sp \right)$. This is the universal stable $\infty$-semiadditive. Working $p$-locally, let's write this as
+\begin{align*}
+    \tsadi = \CMon_\infty \left( \Sp_{(p)} \right).
+\end{align*}
+We have that this splits as
+\begin{align*}
+    \tsadi = \tsadi_0 \times\tsadi_{\ge 1}.
+\end{align*}
+Here $\tsadi_0 = \Sp_\mathbb{Q}$. We see also that $\tsadi_{\ge 1} = \tsadi_1 \times \tsadi_{\ge 2}$, and so on.
+
+\begin{conjecture} $\tsadi_\infty = 0$.
+\end{conjecture}
+
+There is always a nice map $\tsadi_n \to \Sp_{T(n)}$. Yuan gave a counterexample to this always being an equivalence, for $n=1$.

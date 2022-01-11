@@ -1,0 +1,66 @@
+\begin{center}
+    \textbf{Ingredient 1}
+\end{center}
+
+We had that $\Sp_{T(n)}$ is 1-semiadditive. So if $A$ is a $\pi$-finite 1-truncated space, and $F: A \to \Sp_{T(n)}$, we have that $\colim_A F \cong \lim_A F$.
+
+Given a family of maps $f: A \to \Map(X,Y)$, we can integrate it to get
+\begin{align*}
+    \int_A f \in \Map(X,Y).
+\end{align*}
+
+We can think about $f\in \Map(X,Y^A) = \Map(X, \colim_A \underline{Y}) \xto{\nabla} \Map(X,Y)$. This composite is the integral $\int_A$.
+
+We want to now prove that $\Sp_{T(n)}$ is 2-semiadditive. If we have a $p$-space we can break it into pieces by a Postnikov tower, and we can reduce to Eilenberg-Maclane spaces. We want to show that $B^2 C_p$ is ambidextrous.
+
+For example, suppose we want to do it in $\Sp_{T(1)}$. We are going to look at the fiber sequence
+\begin{align*}
+    BC_p \to \ast \xto{q} B^2 C_p.
+\end{align*}
+We want to show that for every local system on $B^2 C_p$, the colimit and limit coincide. Given such a local system $F: B^2 C_p \to \Sp_{K(1)}$, we want $\colim F \cong \lim F$ through the norm map.
+
+If we take $q_! q^\ast F$ and $q_\ast q^\ast F$, these are the same, since the fiber of $q$ is a 1-type, and we have already seen that $\Sp_{T(n)}$ is 1-semiadditive. Calling the map to a point $\pi: B^2 C_p \to \ast$, we have that
+\begin{align*}
+    \pi_! X &= \pi_! q_! q^\ast F = q^\ast F \\
+    \pi_\ast X &= \pi_\ast q_\ast q^\ast F = q^\ast F.
+\end{align*}
+
+Thus local systems on $B^2 C_p$ which lie in the image of $q_!$, their limits and colimits coincide. In order to extend this to \textit{all} local systems, we use amenability.
+
+At height one, we have that $|BC_p|_X$ is an isomorphism. Once we go to height two, this won't be true anymore --- in height two, we have that $|BC_p|$ is essentially $p$.
+
+At height two, we could take the wreath product $C_p \wr C_p$ which is a $p$-group with $C_p$ in the center, so we get
+\begin{align*}
+    B \left( C_p \wr C_p \right) \to B \left( \frac{C_p \wr C_p}{C_p} \right) \to B^2 C_p.
+\end{align*}
+We have that $\left| B \left( C_p \wr C_p \right) \right|_{\mathbb{S}_{T(2)}} \in \pi_0 \left( \mathbb{S}_{T(2)} \right)^\times$, and that the middle term is the classifying space of a group, so its norm behaves well.
+
+So this whole discussion comes down to finding appropriate 1-types as fibers whose cardinalities are invertible.
+
+At height 3, $B^2C_p$ won't be amenable, but $\left( B^2 C_p \right)^p_{hC_p}$ is, and it's $\pi_2$ is $C_p^p$. At each stage, we want an appropriate $m$-type with invertible cardinality.
+
+\begin{center}
+    \textbf{Ingredient 2}
+\end{center}
+
+
+We don't know a lot about $\Sp_{T(n)}$. However the map
+\begin{align*}
+    \Sp_{T(n)} &\to \hat{\Mod}_{E_n} \\
+    \pi_0 \mathbb{S}_{T(n)} &\mapsto \pi_0 E_n = \mathbb{Z}_p[[u_1, \ldots, u_n]]
+\end{align*}
+detects invertibility. Moreover, the map below factors through $\mathbb{Z}_p$, so it doesn't hit the generators. So the only question is whether it is divisible by $p$.
+
+We could, for every $n$, write a specific space $A$, and then compute that $|A|_{E_n} \in \mathbb{Z}_p$, but we want to avoid these complicated computations. This is where $\delta$ comes in.
+
+The 1-semiadditive structure on both these rings is a $\delta$-structure. So it allows us to take an element which is not invertible and not zero in $\pi_0 \mathbb{S}_{T(n)}$ and reduce its valuation by 1. So we want to find some space which doesn't map to zero in $\mathbb{Z}_p$, and just grind it down with $\delta$.
+
+So now we can just compute $\left| B^m C_p \right|$, and show that they are nonzero. At height $n$, this is exactly $p^{\binom{n+1}{n}} \ne 0$.
+
+The essential things we haven't seen yet are:
+\begin{enumerate}
+    \item Why does $\pi_0 \mathbb{S}_{T(n)} \mapsto \pi_0 E_n$ detect invertibility? This will require some chromatic homotopy theory. The bottom line is that this is essentially the nilpotence theorem.
+    \item How is the computation $\left| B^m C_p \right|_n = p^{\binom{n+1}{n}}$ done? This will have to do with a relationship between cardinality and dimensions of dualizable objects. This reduces the question to a question about dimensions.
+    \item The dimension of $B^m C_p$ in $\pi_0 (E_m)$ is a computation of Ravenel and Wilson.
+\end{enumerate}
+
