@@ -1,6 +1,250 @@
-\renewcommand{\thespeaker}{Adela Zhang}
-\renewcommand{\thetitle}{}
-\section{\thetitle~(\thespeaker)}
-\providecommand{\Supp}{\text{Supp}}
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{verbatim}
+\usepackage{pgf}
+\usepackage{parskip}
+\usepackage{stmaryrd}
+\usepackage{amscd}
+\usepackage[mathscr]{euscript}
+\usepackage{graphicx}
+\usepackage{tikz-cd}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{xfrac}
+\usepackage[utf8]{inputenc}
+\usepackage[verbose]{wrapfig}
+\usepackage{geometry} %[margin=1in]
+\usepackage{fancyhdr}
+\usepackage[sc,small, center]{titlesec}
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{cancel} %need for strikethrough
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\usepackage{bbm}
+\usepackage{hyperref}
+\usepackage{todonotes}
+%\usepackage{fourier} % just for the \danger [= hazard] sign
 
-[tex'd by Lucy]
+%formatting
+\setitemize{noitemsep}
+%\setlength{\parindent}{0pt} replaced with package 'parskip'
+%\setlength{\parskip}{3mm plus 2mm minus 2mm}
+%\setenumerate[0]{label=(\Alph*)}
+
+%fixes weird spacing issue with theorem environments
+\begingroup
+    \makeatletter
+    \@for\theoremstyle:=definition,remark,plain\do{%
+        \expandafter\g@addto@macro\csname th@\theoremstyle\endcsname{%
+            \addtolength\thm@preskip\parskip
+            }%
+        }
+\endgroup
+
+% Macros
+
+\newcommand{\R}{{\mathbb{R}}}
+\renewcommand{\C}{{\mathbb{C}}}
+\newcommand{\Z}{{\mathbb{Z}}}
+\newcommand{\Q}{{\mathbb{Q}}}
+\newcommand{\T}{{\mathbb{T}}}
+\newcommand{\nat}{{\mathbb{N}}}
+\newcommand{\W}{{\mathbb{W}}}
+\newcommand{\sph}{{\mathbb{S}}}
+\newcommand{\E}{{\mathbb{E}}}
+\newcommand{\F}{{\mathbb{F}}}
+\renewcommand{\G}{{\mathbb{G}}}
+\newcommand{\ep}{{\epsilon}}
+\newcommand{\cat}{{\mathcal{C}}}
+\newcommand{\bicat}{{\mathcal{B}}}
+\newcommand{\catname}[1]{{\normalfont\textbf{#1}}}
+\newcommand{\Set}{\catname{Set}}
+\newcommand{\Spc}{\catname{Spc}}
+\newcommand{\AbGrp}{\catname{AbGrp}}
+\newcommand{\Ring}{\catname{Ring}}
+\newcommand{\Aff}{\mathrm{Aff}}
+\newcommand{\Grp}{\catname{Grp}}
+\newcommand{\Alg}{\catname{Alg}}
+\newcommand{\map}{\text{map}}
+\newcommand{\id}{\text{id}}
+\newcommand{\ev}{\text{ev}}
+\newcommand{\op}{\text{op}}
+\newcommand{\et}{\text{{\'e}t}}
+\newcommand{\loops}{\Omega}
+\newcommand{\Tor}{\mathrm{Tor}}
+
+\newcommand{\del}{\partial}
+\newcommand{\surj}{\twoheadrightarrow}
+\renewcommand{\S}{{\mathbb{S}}}
+\newcommand{\Ex}{\text{Ex}}
+\newcommand{\Sp}{\text{Sp}}
+\newcommand{\Ass}{\text{Ass}}
+\newcommand{\CycSp}{\text{CycSp}}
+\newcommand{\Fun}{\text{Fun}}
+\newcommand{\Fin}{\text{Fin}}
+\newcommand{\THH}{\text{THH}}
+\newcommand{\inv}{\text{inv}}
+\newcommand{\Mot}{\mathcal{M}}
+\newcommand{\Perf}{\mathscr{P}\text{erf}}
+\newcommand{\Cat}{\mathbf{Cat}}
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\End}{\text{End}}
+\newcommand{\Aut}{\text{Aut}}
+\renewcommand{\Spc}{\catname{Spc}}
+\newcommand{\Ch}{\catname{Ch}}
+\newcommand{\Sch}{\catname{Sch}}
+\newcommand{\Vect}{\catname{Vect}}
+\newcommand{\Idem}{\text{Idem}}
+\newcommand{\Hom}{\text{Hom}}
+\DeclareMathOperator{\Ind}{Ind}
+\newcommand{\Shv}{{\text{Shv}}}
+\newcommand{\Pic}{\text{Pic}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Pre}{\mathrm{Pre}}
+\newcommand{\Ran}{\text{Ran}}
+\newcommand{\Ob}{\mathrm{Ob}}
+
+\newcommand{\inj}{\hookrightarrow}
+
+\DeclareMathOperator{\Eq}{Eq}
+\DeclareMathOperator*{\colim}{colim}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Mod}{Mod}
+
+
+\newcommand{\larrow}{\longleftarrow}
+\newcommand{\llarrows}{\mathrel{\substack{\textstyle\longleftarrow\\[-0.6ex]
+                      \textstyle\longleftarrow}}}
+\newcommand{\lllarrows}{\mathrel{\substack{\textstyle\longleftarrow\\[-0.6ex]
+                      \textstyle\longleftarrow \\[-0.6ex]
+                      \textstyle\longleftarrow}}}
+\newcommand{\rrarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
+                      \textstyle\longrightarrow}}}
+\newcommand{\rrrarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
+                      \textstyle\longrightarrow \\[-0.6ex]
+                      \textstyle\longrightarrow}}}
+\newcommand{\rlrarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
+                      \textstyle\longleftarrow \\[-0.6ex]
+                      \textstyle\longrightarrow}}}
+\newcommand{\rlrlrarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
+                      \textstyle\longleftarrow \\[-0.6ex]
+                      \textstyle\longrightarrow  \\[-0.6ex]
+                      \textstyle\longleftarrow  \\[-0.6ex]
+                      \textstyle\longrightarrow}}}
+
+%\renewcommand\qedsymbol{$\triangle$}
+
+\theoremstyle{definition} \newtheorem*{defn}{Definition}
+\theoremstyle{plain} \newtheorem*{prop}{Proposition}
+\theoremstyle{plain} \newtheorem*{lemma}{Lemma}
+\theoremstyle{plain} \newtheorem*{cor}{Corollary}
+\theoremstyle{remark} \newtheorem*{ex}{Example}
+\theoremstyle{remark} \newtheorem*{exs}{Examples}
+\theoremstyle{remark} \newtheorem*{nonex}{Non-example}
+\theoremstyle{remark} \newtheorem*{rmk}{Remark}
+\theoremstyle{remark} \newtheorem*{exc}{Exercise}
+\theoremstyle{remark} \newtheorem*{idea}{Idea}
+\theoremstyle{remark} \newtheorem*{obs}{Observation}
+\theoremstyle{plain} \newtheorem*{theorem}{Theorem}
+\theoremstyle{plain} \newtheorem*{conj}{Conjecture}
+\theoremstyle{remark} \newtheorem*{q}{Question}
+\theoremstyle{definition} \newtheorem*{fact}{Fact}
+\theoremstyle{definition} \newtheorem*{facts}{Facts}
+\theoremstyle{remark} \newtheorem*{ntn}{Notation}
+\theoremstyle{remark} \newtheorem*{goal}{Goal}
+\theoremstyle{remark} \newtheorem*{sketch}{Sketch}
+\theoremstyle{definition} \newtheorem{claim}{Claim}
+
+\newenvironment{proofsketch}{%
+  \renewcommand{\proofname}{Proof Sketch}\proof}{\endproof}
+
+\title{The Global section functor}
+\author{Adela Zhang}
+\date{\today}
+%\pagestyle{fancy}
+%\rhead{Lucy Yang}
+%\lhead{Notes}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Today I'll try to bring us back to one of the motivations for this topic, which is is representation theory. 
+
+We know that for any space $ X $, there is an equivalence
+\begin{equation*}
+	\{\text{Local systems on }X\} \simeq \{\text{Representations of } \loops X \}
+\end{equation*}
+
+Given a map $ f: X \to * $, we get a pair of adjoints $ f_*: \Sp_{K(n)}^X \to \Sp_{K(n)} f^*$. 
+
+Denote the $ K (n)$-local sphere by $ \S = \S_{K(n)} $. 
+Then $ \Sp_{K(n)}^X \simeq LMod_{\underline{\S}_X}(\Sp_{K(n)}^X) \to LMod_{f_*\underline{\S}_X}(\Sp_{K(n)}) $ where $ \S_X $ is the constant sheaf. 
+\begin{equation}
+\begin{tikzcd}
+	\Sp_{K(n)}^X \ar[r, bend right = 20, "f_*"] & \ar[l, bend right=20, "f^*"] \Sp_{K(n)} \\
+	 LMod_{\underline{\S}_X}(\Sp_{K(n)}^X) \ar[u, equals] \ar[r, bend right = 20, "F"] & LMod_{f_*\underline{\S}_X}(\Sp_{K(n)}) \ar[u, "\text{free}"] \ar[l, bend right = 20, "G"]
+\end{tikzcd}
+\end{equation}
+Note that the pushforward of the constant sheaf is equivalent to the function spectrum $ f_*\underline{\S}_X \simeq C(X; \S) $. \todo{fix}
+
+Now the above picture holds for any space $ X $. 
+Now we can put some conditions on $ X $ and use our knowledge of $ K(n) $-local spectra:
+
+If $ X $ is $ \pi $-finite, then $ G $ is fully faithful. 
+
+Furthermore, if $ X $ is $ n $-truncated and $ p $-finite\todo{can't tell from the video where exactly this should belong?}, then $ G $ is an equivalence. 
+
+Note that $ \Sp_{K(n)}^X \simeq LMod_{\loops X}(\Sp_{K(n)}) $, so what we're saying is that when $ X $ satisfies the assumptions above, all representations are induced from the trivial representation.\footnote{I think Tomer is saying that this all holds with $ T(n) $-local instead of $ K(n) $-local.}
+
+Tomer pointed out yesterday that if $ X $ is $ \pi $-finite and $ (n+2) $-connective, then the pullback functor $ f^* $ is an equivalence--this says that $ K(n) $-local Morava $ E $-theory cannot distinguish between highly-connected spaces and a point. 
+
+The goal of my talk is to prove the various equivalences stated above. 
+
+\section{}
+We'll start by defining $ F, G $ from above in a more general situation. 
+
+Fix a map of spaces $ f:X \to Y $. 
+Recall that $ \Sp_{K(n)} $ is a symmetric monoidal category. 
+Therefore, local systems $ \Sp_{K(n)}^X $ inherit a symmetric monoidal structure given by the pointwise tensor product. 
+Now let's observe that the pullback functor $ f^* $ is a symmetric monoidal functor--in particular, it is oplax symmetric monoidal. 
+From this it follows that the pushforward $ f_* $ is lax symmetric monoidal, and it makes sense to pushforward algebra objects and modules over such. \todo{reword}
+
+For $ A \in \Alg\left(\Sp_{K(n)}^X\right) $, the pushforward $ f_*A \in \Alg\left(\Sp_{K(n)}^Y\right) $, and if $ M \in \LMod_A $, then $ f_*M \in \LMod_{f_*A} $. 
+
+Thus we get a pushforward functor 
+\begin{equation*}
+	F: LMod_A(\Sp^X_{K(n)}) \to LMod_{f_*A}(\Sp^Y_{K(n)})
+\end{equation*}
+
+The first result I will attempt to sketch is
+\begin{theorem}\label{thm:adelathm1}
+	\begin{enumerate}
+		\item If the homotopy fibers of $ f $ are $ \pi $-finite, then $ F $ admits a left adjoint $ G $ and $ G $ is fully faithful. 
+
+		\item If the homotopy fibers of $ f $ are $ p $-finite and $ n $-truncated, then $ G $ is an equivalence. 
+	\end{enumerate}
+\end{theorem}
+
+
+
+
+
+
+\begin{comment}
+\begin{equation}
+\begin{tikzcd}
+	& 
+\end{tikzcd}
+\end{equation}
+\end{comment}
+\end{document}
